@@ -6,6 +6,7 @@ class DashController extends Controller {
 	
 	public function index()
 	{
+		echo "sdas";die;
 		$template = 'dash::portal.home';
 
 		return View::make($this->layout, ['content' => View::make($template , [])->render();
