@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost',
+    'url' => env('APP_URL'),
 
     /*
     |--------------------------------------------------------------------------
@@ -140,10 +140,13 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        PeopleClues\Providers\AppServiceProvider::class,
+        PeopleClues\Providers\AuthServiceProvider::class,
+        PeopleClues\Providers\EventServiceProvider::class,
+        PeopleClues\Providers\RouteServiceProvider::class,
+
+
+        Pingpong\Modules\ModulesServiceProvider::class,
 
     ],
 
@@ -192,6 +195,8 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+
+        'Module'    => Pingpong\Modules\Facades\Module::class
 
     ],
 

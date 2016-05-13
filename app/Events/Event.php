@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace PeopleClues\Events;
 
 abstract class Event
 {

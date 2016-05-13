@@ -1,0 +1,15 @@
+{
+    "name": "Dash",
+    "alias": "dash",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Dash\\Providers\\DashServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "start.php"
+    ]
+}

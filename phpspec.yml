@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: PeopleClues
+        psr4_prefix: PeopleClues
         src_path: app
