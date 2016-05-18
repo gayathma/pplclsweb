@@ -27,7 +27,7 @@
 
                 <!-- LOGO -->
                 <div class="topbar-left">
-                    <a href="index.html" class="logo"><span>Admin<span>to</span></span><i class="zmdi zmdi-layers"></i></a>
+                    <img src="\images\logo_sidebar.png" width="250px">
                 </div>
 
                 <!-- Button mobile view to collapse sidebar menu -->
@@ -87,10 +87,10 @@
                     <!-- User -->
                     <div class="user-box">
                         <div class="user-img">
-                            <img src="images/users/avatar-1.jpg" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
+                            <img src="images/users/admin.png" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
                             <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
                         </div>
-                        <h5><a href="#">Mat Helme</a> </h5>
+                        <h5><a href="#">Welcome Admin</a> </h5>
                         <ul class="list-inline">
                             <li>
                                 <a href="#" >
@@ -229,7 +229,43 @@
 
         </div>
         <!-- END wrapper -->
-	
+
+
+
+    <script>
+        var resizefunc = [];
+    </script>
+
+    <!-- jQuery  -->
+    <script src="<?php echo asset('js/jquery.min.js') ?>"></script>
+    <script src="<?php echo asset('js/bootstrap.min.js') ?>"></script>
+    <script src="<?php echo asset('js/detect.js') ?>"></script>
+    <script src="<?php echo asset('js/fastclick.js') ?>"></script>
+    <script src="<?php echo asset('js/jquery.blockUI.js') ?>"></script>
+    <script src="<?php echo asset('js/waves.js') ?>"></script>
+    <script src="<?php echo asset('js/jquery.nicescroll.js') ?>"></script>
+    <script src="<?php echo asset('js/jquery.scrollTo.min.js') ?>"></script>
+
+    <!-- KNOB JS -->
+    <!--[if IE]>
+    <script type="text/javascript" src="<?php echo asset('plugins/jquery-knob/excanvas.js') ?>"></script>
+    <![endif]-->
+    <script src="<?php echo asset('plugins/jquery-knob/jquery.knob.js') ?>"></script>
+
+    <!-- Counter Up  -->
+    <script src="<?php echo asset('plugins/waypoints/lib/jquery.waypoints.js') ?>"></script>
+    <script src="<?php echo asset('plugins/counterup/jquery.counterup.min.js') ?>"></script>
+
+    <!--Morris Chart-->
+    <script src="<?php echo asset('plugins/morris/morris.min.js') ?>"></script>
+    <script src="<?php echo asset('plugins/raphael/raphael-min.js') ?>"></script>
+
+    <!-- Dashboard init -->
+    <script src="<?php echo asset('pages/jquery.dashboard.js') ?>"></script>
+
+    <!-- App js -->
+    <script src="<?php echo asset('js/jquery.core.js') ?>"></script>
+    <script src="<?php echo asset('js/jquery.app.js') ?>"></script>
 
 	
 </body>
