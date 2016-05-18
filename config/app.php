@@ -140,10 +140,10 @@ return [
         /*
          * Application Service Providers...
          */
-        PeopleClues\Providers\AppServiceProvider::class,
-        PeopleClues\Providers\AuthServiceProvider::class,
-        PeopleClues\Providers\EventServiceProvider::class,
-        PeopleClues\Providers\RouteServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
 
 
         Pingpong\Modules\ModulesServiceProvider::class,

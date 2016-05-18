@@ -20,7 +20,7 @@
             "database"
         ],
         "psr-4": {
-            "PeopleClues\\": "app/",
+            "App\\": "app/",
             "Modules\\": "modules/"
         }
     },

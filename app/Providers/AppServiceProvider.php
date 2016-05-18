@@ -1,6 +1,6 @@
 <?php
 
-namespace PeopleClues\Providers;
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

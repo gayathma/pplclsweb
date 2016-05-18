@@ -12,5 +12,8 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    mix
+    .sass('app.scss')
+    .copy('public/fonts/**', 'public/build/fonts')
+    .copy('public/images/users/avatar-1.jpg', 'public/build/images/users/avatar-1.jpg')
 });
