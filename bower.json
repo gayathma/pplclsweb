@@ -16,7 +16,14 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.2",
-    "jquery": "~1.10.2"
+    "jquery": "~1.10.2",
+    "raphael": "~2.1.4",
+    "jquery.blockUI": "*",
+    "jquery.scrollTo": "~1.4.6",
+    "jquery.nicescroll": "~3.5.0",
+    "fastclick": "*",
+    "waves": "*",
+    "detect": "*"
     
   }
 }
