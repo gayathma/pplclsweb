@@ -16,6 +16,10 @@
 	<link href="<?php echo asset('css/pages.css') ?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo asset('css/menu.css') ?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo asset('css/responsive.css') ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo asset('css/rappid.min.css') ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo asset('css/orgchart.css') ?>" rel="stylesheet" type="text/css" />
+
+	<script src="<?php echo asset('js/modernizr.min.js') ?>"></script>
 
 </head>
 <body class="fixed-left">
@@ -87,7 +91,7 @@
                     <!-- User -->
                     <div class="user-box">
                         <div class="user-img">
-                            <img src="images/users/admin.png" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
+                            <img src="/images/users/admin.png" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
                             <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
                         </div>
                         <h5><a href="#">Welcome Admin</a> </h5>
@@ -114,6 +118,9 @@
 
                             <li>
                                 <a href="/dash" class="waves-effect active"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                            </li>
+                            <li>
+                                <a href="/dash/team-structure" class="waves-effect active"><i class="zmdi zmdi-grid"></i> <span> Team Structure </span> </a>
                             </li>
 
                         </ul>
@@ -241,6 +248,7 @@
     <script src="<?php echo asset('js/bootstrap.min.js') ?>"></script>
     <script src="<?php echo asset('js/detect.js') ?>"></script>
     <script src="<?php echo asset('js/fastclick.js') ?>"></script>
+    <script src="<?php echo asset('js/jquery.slimscroll.js') ?>"></script>
     <script src="<?php echo asset('js/jquery.blockUI.js') ?>"></script>
     <script src="<?php echo asset('js/waves.js') ?>"></script>
     <script src="<?php echo asset('js/jquery.nicescroll.js') ?>"></script>
@@ -267,6 +275,11 @@
     <script src="<?php echo asset('js/jquery.core.js') ?>"></script>
     <script src="<?php echo asset('js/jquery.app.js') ?>"></script>
 
+    <!-- Org Chart JS -->
+    <script src="<?php echo asset('js/lodash.min.js') ?>"></script>
+    <script src="<?php echo asset('js/backbone-min.js') ?>"></script>
+    <script src="<?php echo asset('js/rappid.min.js') ?>"></script>
+    <script src="<?php echo asset('js/orgchart.js') ?>"></script>
 	
 </body>
 </html>

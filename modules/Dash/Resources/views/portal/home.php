@@ -1,17 +1,12 @@
-
 <div class="row">
-
-
-
-			<div class="col-lg-3 col-md-6">
-				<div class="card-box widget-user">
-					<div class="text-center">
-						<h2 class="text-custom" data-plugin="counterup">1254</h2>
-						<h5>Total Employees</h5>
-					</div>
-				</div>
+	<div class="col-lg-3 col-md-6">
+		<div class="card-box widget-user">
+			<div class="text-center">
+				<h2 class="text-custom" data-plugin="counterup">1254</h2>
+				<h5>Total Employees</h5>
 			</div>
-
+		</div>
+	</div>
 
 	<div class="col-lg-3 col-md-6">
 		<div class="card-box widget-user">
@@ -21,7 +16,6 @@
 			</div>
 		</div>
 	</div>
-
 
 	<div class="col-lg-3 col-md-6">
 		<div class="card-box">
@@ -43,9 +37,9 @@
 			<div class="widget-chart-1">
 				<div class="widget-chart-box-1">
 					<input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#10c469"
-						   data-bgColor="#AAE2C6" value="20"
-						   data-skin="tron" data-angleOffset="180" data-readOnly=true
-						   data-thickness=".15"/>
+					data-bgColor="#AAE2C6" value="20"
+					data-skin="tron" data-angleOffset="180" data-readOnly=true
+					data-thickness=".15"/>
 				</div>
 				<div class="widget-detail-1">
 					<p class="text-muted">Based on </p>
@@ -54,7 +48,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 	<div class="col-lg-3 col-md-6">
@@ -91,8 +84,6 @@
 				<div class="progress-bar progress-bar-success progress-animated wow animated animated" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%; visibility: visible; animation-name: animationProgress;">
 				</div><!-- /.progress-bar .progress-bar-success -->
 			</div><!-- /.progress .no-rounded -->
-
-
 		</div>
 	</div>
 </div>

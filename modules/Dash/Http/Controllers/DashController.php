@@ -13,5 +13,12 @@ class DashController extends Controller {
 		return View::make($this->layout, ['content' => View::make($template)->render()])->render();
 	
 	}
+
+	public function getTeamStructure(){
+
+		$template = 'dash::portal.team_structure';
+
+		return View::make($this->layout, ['content' => View::make($template)->render()])->render();
+	}
 	
 }
