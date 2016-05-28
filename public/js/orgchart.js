@@ -129,14 +129,13 @@ paper.on('cell:pointerup', function(cellView, evt, x, y) {
         var inspector = new joint.ui.Inspector({
             inputs: {
                 'rank': {
-                    type: 'text',
-                    label: 'Rank',
+                    type: 'select',
+                    label: 'Role',
+                    options: [
+                        { value: 'HR Manager', content: 'HR Manager' },
+                        { value: 'Project Manager', content: 'Project Manager' }
+                    ],
                     index: 1
-                },
-                'name': {
-                    type: 'text',
-                    label: 'Name',
-                    index: 2
                 },
                 'attrs/image/xlink:href': {
                     type: 'select',
@@ -162,7 +161,6 @@ paper.on('cell:pointerup', function(cellView, evt, x, y) {
             },
             cellView: cellView
         });
-
         var dialog = new joint.ui.Dialog({
             width: 250,
             title: 'Edit Member',
