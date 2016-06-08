@@ -117,8 +117,12 @@
                             <li>
                                 <a href="/dash" class="waves-effect active"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
                             </li>
-                            <li>
-                                <a href="/dash/team-structure" class="waves-effect active"><i class="zmdi zmdi-grid"></i> <span> Team Structure </span> </a>
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect active"><i class="zmdi zmdi-chart"></i><span> Dynamics </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="/dash/analytical-designer">Analytical Designer</a></li>
+                                    <li><a href="/dash/team-structure">Predictive Analytics</a></li>
+                                </ul>
                             </li>
 
                         </ul>
