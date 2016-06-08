@@ -56,12 +56,12 @@ function link(source, target) {
 }
 
 var members = [
-    member('Founder & Chairman', 'Pierre Omidyar', '/images/male.png', '#31d0c6').position(100,350),
-    member('President & CEO', 'Margaret C. Whitman', '/images/female.png', '#31d0c6'),
-    member('President, PayPal', 'Scott Thompson', '/images/male.png', '#7c68fc'),
-    member('President, Ebay Global Marketplaces' , 'Devin Wenig', '/images/male.png', '#7c68fc'),
-    member('Senior Vice President Human Resources', 'Jeffrey S. Skoll', '/images/male.png', '#fe854f'),
-    member('Senior Vice President Controller', 'Steven P. Westly', '/images/male.png', '#feb663')
+    member('Project Manager', '', '/images/male.png', '#31d0c6').position(100,350),
+    member('Team Lead', '', '/images/female.png', '#31d0c6'),
+    member('Software Engineer', '', '/images/male.png', '#7c68fc'),
+    member('Developer' , '', '/images/male.png', '#7c68fc'),
+    member('UI Engineer', '', '/images/male.png', '#fe854f'),
+    member('QA Engineer', '', '/images/male.png', '#feb663')
 ];
 
 var connections = [
@@ -114,7 +114,7 @@ paper.on('cell:pointerup', function(cellView, evt, x, y) {
 
     if (V(evt.target).hasClass('add')) {
 
-        var newMember = member('Employee', 'New Employee', '/images/female.png', '#c6c7e2');
+        var newMember = member('Employee', '', '/images/female.png', '#c6c7e2');
         var newConnection = link(cellView.model, newMember);
         graph.addCells([newMember, newConnection]);
         graphLayout.prepare().layout();
