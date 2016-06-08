@@ -6,7 +6,7 @@
 	<meta name="hash" content="<?php echo csrf_token(); ?>">
 	<title>People Clues</title>
 
-	<link rel="stylesheet" href="<?php echo asset('plugins/morris/morris.css') ?>">
+	
 
 	<!-- App css -->
 	<link href="<?php echo asset('css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
@@ -18,37 +18,35 @@
 	<link href="<?php echo asset('css/responsive.css') ?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo asset('css/rappid.min.css') ?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo asset('css/orgchart.css') ?>" rel="stylesheet" type="text/css" />
+    <!--Chartist Chart CSS -->
+    <link rel="stylesheet" href="<?php echo asset('plugins/chartist/dist/chartist.min.css') ?>">
 
-	<script src="<?php echo asset('js/modernizr.min.js') ?>"></script>
+    <script src="<?php echo asset('js/modernizr.min.js') ?>"></script>
 
 </head>
 <body class="fixed-left">
 	<!-- Begin page -->
-        <div id="wrapper">
+    <div id="wrapper">
 
-            <!-- Top Bar Start -->
-            <div class="topbar">
+        <!-- Top Bar Start -->
+        <div class="topbar">
 
-                <!-- LOGO -->
-                <div class="topbar-left">
-                    <img src="\images\logo_sidebar.png" width="250px">
-                </div>
+            <!-- LOGO -->
+            <div class="topbar-left">
+                <img src="\images\logo_sidebar.png" width="250px">
+            </div>
 
-                <!-- Button mobile view to collapse sidebar menu -->
-                <div class="navbar navbar-default" role="navigation">
-                    <div class="container">
+            <!-- Button mobile view to collapse sidebar menu -->
+            <div class="navbar navbar-default" role="navigation">
+                <div class="container">
 
-                        <!-- Page title -->
-                        <ul class="nav navbar-nav navbar-left">
-                            <li>
-                                <button class="button-menu-mobile open-left">
-                                    <i class="zmdi zmdi-menu"></i>
-                                </button>
-                            </li>
-                            <li>
-                                <h4 class="page-title">Dashboard</h4>
-                            </li>
-                        </ul>
+                    <!-- Page title -->
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <button class="button-menu-mobile open-left">
+                                <i class="zmdi zmdi-menu"></i>
+                            </button>
+                        </li>                        </ul>
 
                         <!-- Right(Notification and Searchbox -->
                         <ul class="nav navbar-nav navbar-right">
@@ -72,7 +70,7 @@
                             <li class="hidden-xs">
                                 <form role="search" class="app-search">
                                     <input type="text" placeholder="Search..."
-                                           class="form-control">
+                                    class="form-control">
                                     <a href="#"><i class="fa fa-search"></i></a>
                                 </form>
                             </li>
@@ -239,22 +237,22 @@
 
 
 
-    <script>
+        <script>
         var resizefunc = [];
-    </script>
+        </script>
 
-    <!-- jQuery  -->
-    <script src="<?php echo asset('js/jquery.min.js') ?>"></script>
-    <script src="<?php echo asset('js/bootstrap.min.js') ?>"></script>
-    <script src="<?php echo asset('js/detect.js') ?>"></script>
-    <script src="<?php echo asset('js/fastclick.js') ?>"></script>
-    <script src="<?php echo asset('js/jquery.slimscroll.js') ?>"></script>
-    <script src="<?php echo asset('js/jquery.blockUI.js') ?>"></script>
-    <script src="<?php echo asset('js/waves.js') ?>"></script>
-    <script src="<?php echo asset('js/jquery.nicescroll.js') ?>"></script>
-    <script src="<?php echo asset('js/jquery.scrollTo.min.js') ?>"></script>
+        <!-- jQuery  -->
+        <script src="<?php echo asset('js/jquery.min.js') ?>"></script>
+        <script src="<?php echo asset('js/bootstrap.min.js') ?>"></script>
+        <script src="<?php echo asset('js/detect.js') ?>"></script>
+        <script src="<?php echo asset('js/fastclick.js') ?>"></script>
+        <script src="<?php echo asset('js/jquery.slimscroll.js') ?>"></script>
+        <script src="<?php echo asset('js/jquery.blockUI.js') ?>"></script>
+        <script src="<?php echo asset('js/waves.js') ?>"></script>
+        <script src="<?php echo asset('js/jquery.nicescroll.js') ?>"></script>
+        <script src="<?php echo asset('js/jquery.scrollTo.min.js') ?>"></script>
 
-    <!-- KNOB JS -->
+        <!-- KNOB JS -->
     <!--[if IE]>
     <script type="text/javascript" src="<?php echo asset('plugins/jquery-knob/excanvas.js') ?>"></script>
     <![endif]-->
@@ -264,22 +262,29 @@
     <script src="<?php echo asset('plugins/waypoints/lib/jquery.waypoints.js') ?>"></script>
     <script src="<?php echo asset('plugins/counterup/jquery.counterup.min.js') ?>"></script>
 
-    <!--Morris Chart-->
-    <script src="<?php echo asset('plugins/morris/morris.min.js') ?>"></script>
+
     <script src="<?php echo asset('plugins/raphael/raphael-min.js') ?>"></script>
+
+    <script src="<?php echo asset('plugins/chartist/dist/chartist.min.js') ?>"></script>
+    <script src="<?php echo asset('plugins/chartist/dist/chartist-plugin-tooltip.min.js') ?>"></script>
+
+    <!-- Flot chart js -->
+    <script src="<?php echo asset('plugins/flot-chart/jquery.flot.js') ?>"></script>
+    <script src="<?php echo asset('plugins/flot-chart/jquery.flot.pie.js') ?>"></script>
 
     <!-- Dashboard init -->
     <script src="<?php echo asset('pages/jquery.dashboard.js') ?>"></script>
-
-    <!-- App js -->
-    <script src="<?php echo asset('js/jquery.core.js') ?>"></script>
-    <script src="<?php echo asset('js/jquery.app.js') ?>"></script>
 
     <!-- Org Chart JS -->
     <script src="<?php echo asset('js/lodash.min.js') ?>"></script>
     <script src="<?php echo asset('js/backbone-min.js') ?>"></script>
     <script src="<?php echo asset('js/rappid.min.js') ?>"></script>
     <script src="<?php echo asset('js/orgchart.js') ?>"></script>
-	
+    <script src="<?php echo asset('js/custom_js.js') ?>"></script>
+
+    <!-- App js -->
+    <script src="<?php echo asset('js/jquery.core.js') ?>"></script>
+    <script src="<?php echo asset('js/jquery.app.js') ?>"></script>
+
 </body>
 </html>

@@ -4,9 +4,7 @@ joint.shapes.org.Member.prototype.markup = [
     '<rect class="card"/><image/>',
     '</g>',
     '<text class="rank"/><text class="name"/>',
-    '<g class="btn add"><circle class="add"/><text class="add">+</text></g>',
-    '<g class="btn del"><circle class="del"/><text class="del">-</text></g>',
-    '<g class="btn edit"><rect class="edit"/><text class="edit">EDIT</text></g>',
+    '<a href="http://localhost:8000/dash/profile/1" class="btn edit"><rect class="edit"/><text class="profile">View</text></a>',
     '</g>'
 ].join('');
 
@@ -56,20 +54,24 @@ function link(source, target) {
 }
 
 var members = [
-    member('Project Manager', '', '/images/male.png', '#31d0c6').position(100,350),
-    member('Team Lead', '', '/images/female.png', '#31d0c6'),
-    member('Software Engineer', '', '/images/male.png', '#7c68fc'),
-    member('Developer' , '', '/images/male.png', '#7c68fc'),
-    member('UI Engineer', '', '/images/male.png', '#fe854f'),
-    member('QA Engineer', '', '/images/male.png', '#feb663')
+    member('Project Manager', 'Niroshan Samarawikrama', '/images/male.png', '#7c68fc').position(100,350),
+    member('Team Lead', 'Hasitha Dharmasena', '/images/female.png', '#31d0c6'),
+    member('Senior Software Engineer', 'Viran Fernando', '/images/male.png', '#fe854f'),
+    member('Software Engineer' , 'Heshani Herath', '/images/female.png', '#feb663'),
+    member('Developer' , 'Randika Nonis', '/images/male.png', '#feb663'),
+    member('Developer' , 'Hashan Alwis', '/images/male.png', '#feb663'),
+    member('Senior UI Engineer', 'Nirmal Fernando', '/images/male.png', '#fe854f'),
+    member('QA Engineer', 'Nishan Peiris', '/images/male.png', '#fe854f')
 ];
 
 var connections = [
     link(members[0], members[1]),
     link(members[1], members[2]),
-    link(members[1], members[3]),
-    link(members[1], members[4]),
-    link(members[1], members[5])
+    link(members[2], members[3]),
+    link(members[2], members[4]),
+    link(members[2], members[5]),
+    link(members[1], members[6]),
+    link(members[1], members[7])
 ];
 
 var graph = new joint.dia.Graph();
@@ -123,6 +125,9 @@ paper.on('cell:pointerup', function(cellView, evt, x, y) {
 
         cellView.model.remove();
         graphLayout.prepare().layout();
+
+    } else if (V(evt.target).hasClass('profile')) {
+
 
     } else if (V(evt.target).hasClass('edit')) {
 

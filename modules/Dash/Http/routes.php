@@ -4,4 +4,5 @@ Route::group(['prefix' => 'dash', 'namespace' => 'Modules\Dash\Http\Controllers'
 {
 	Route::get('/', 'DashController@index');
 	Route::get('/team-structure', 'DashController@getTeamStructure');
+	Route::get('/profile/{id}', 'EmployeeController@getProfile');
 });
