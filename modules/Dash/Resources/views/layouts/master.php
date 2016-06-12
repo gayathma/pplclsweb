@@ -7,21 +7,34 @@
 	<title>People Clues</title>
 
 	
+   <link rel="stylesheet" href="<?php echo asset('plugins/morris/morris.css') ?>">
+   <!-- App css -->
+   <link href="<?php echo asset('css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
+   <link href="<?php echo asset('css/core.css') ?>" rel="stylesheet" type="text/css" />
+   <link href="<?php echo asset('css/components.css') ?>" rel="stylesheet" type="text/css" />
+   <link href="<?php echo asset('css/icons.css') ?>" rel="stylesheet" type="text/css" />
+   <link href="<?php echo asset('css/pages.css') ?>" rel="stylesheet" type="text/css" />
+   <link href="<?php echo asset('css/menu.css') ?>" rel="stylesheet" type="text/css" />
+   <link href="<?php echo asset('css/responsive.css') ?>" rel="stylesheet" type="text/css" />
+   <link href="<?php echo asset('css/rappid.min.css') ?>" rel="stylesheet" type="text/css" />
+   <link href="<?php echo asset('css/orgchart.css') ?>" rel="stylesheet" type="text/css" />
+   <!--Chartist Chart CSS -->
+   <link rel="stylesheet" href="<?php echo asset('plugins/chartist/dist/chartist.min.css') ?>">
+   
+   <!-- jQuery  -->
+   <script src="<?php echo asset('js/jquery.min.js') ?>"></script>
+   <script src="<?php echo asset('js/bootstrap.min.js') ?>"></script>
+   <script src="<?php echo asset('js/modernizr.min.js') ?>"></script>
+   <!--Morris Chart-->
+   <script src="<?php echo asset('plugins/morris/morris.min.js') ?>"></script>
+   <script src="<?php echo asset('plugins/raphael/raphael-min.js') ?>"></script>
 
-	<!-- App css -->
-	<link href="<?php echo asset('css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
-	<link href="<?php echo asset('css/core.css') ?>" rel="stylesheet" type="text/css" />
-	<link href="<?php echo asset('css/components.css') ?>" rel="stylesheet" type="text/css" />
-	<link href="<?php echo asset('css/icons.css') ?>" rel="stylesheet" type="text/css" />
-	<link href="<?php echo asset('css/pages.css') ?>" rel="stylesheet" type="text/css" />
-	<link href="<?php echo asset('css/menu.css') ?>" rel="stylesheet" type="text/css" />
-	<link href="<?php echo asset('css/responsive.css') ?>" rel="stylesheet" type="text/css" />
-	<link href="<?php echo asset('css/rappid.min.css') ?>" rel="stylesheet" type="text/css" />
-	<link href="<?php echo asset('css/orgchart.css') ?>" rel="stylesheet" type="text/css" />
-    <!--Chartist Chart CSS -->
-    <link rel="stylesheet" href="<?php echo asset('plugins/chartist/dist/chartist.min.css') ?>">
+   <script src="<?php echo asset('plugins/chartist/dist/chartist.min.js') ?>"></script>
+   <script src="<?php echo asset('plugins/chartist/dist/chartist-plugin-tooltip.min.js') ?>"></script>
 
-    <script src="<?php echo asset('js/modernizr.min.js') ?>"></script>
+   <!-- Flot chart js -->
+   <script src="<?php echo asset('plugins/flot-chart/jquery.flot.js') ?>"></script>
+   <script src="<?php echo asset('plugins/flot-chart/jquery.flot.pie.js') ?>"></script>
 
 </head>
 <body class="fixed-left">
@@ -114,14 +127,14 @@
                         <ul>
                         	<li class="text-muted menu-title">Navigation</li>
 
-                            <li>
-                                <a href="/dash" class="waves-effect active"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                            <li id="dash_main_menu">
+                                <a href="/dash" class="waves-effect" id="dash_sub_menu"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
                             </li>
                             <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect active"><i class="zmdi zmdi-chart"></i><span> Dynamics </span> <span class="menu-arrow"></span></a>
+                                <a href="javascript:void(0);" class="waves-effect" id="dynamics_main_menu"><i class="zmdi zmdi-chart"></i><span> Dynamics </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="/dash/analytical-designer">Analytical Designer</a></li>
-                                    <li><a href="/dash/team-structure">Predictive Analytics</a></li>
+                                    <li id="analytic_sub_menu"><a href="/dash/analytical-designer" >Analytical Designer</a></li>
+                                    <li  id="predict_sub_menu"><a href="/dash/team-structure">Predictive Analytics</a></li>
                                 </ul>
                             </li>
 
@@ -245,9 +258,7 @@
         var resizefunc = [];
         </script>
 
-        <!-- jQuery  -->
-        <script src="<?php echo asset('js/jquery.min.js') ?>"></script>
-        <script src="<?php echo asset('js/bootstrap.min.js') ?>"></script>
+
         <script src="<?php echo asset('js/detect.js') ?>"></script>
         <script src="<?php echo asset('js/fastclick.js') ?>"></script>
         <script src="<?php echo asset('js/jquery.slimscroll.js') ?>"></script>
@@ -266,16 +277,6 @@
     <script src="<?php echo asset('plugins/waypoints/lib/jquery.waypoints.js') ?>"></script>
     <script src="<?php echo asset('plugins/counterup/jquery.counterup.min.js') ?>"></script>
 
-
-    <script src="<?php echo asset('plugins/raphael/raphael-min.js') ?>"></script>
-
-    <script src="<?php echo asset('plugins/chartist/dist/chartist.min.js') ?>"></script>
-    <script src="<?php echo asset('plugins/chartist/dist/chartist-plugin-tooltip.min.js') ?>"></script>
-
-    <!-- Flot chart js -->
-    <script src="<?php echo asset('plugins/flot-chart/jquery.flot.js') ?>"></script>
-    <script src="<?php echo asset('plugins/flot-chart/jquery.flot.pie.js') ?>"></script>
-
     <!-- Dashboard init -->
     <script src="<?php echo asset('pages/jquery.dashboard.js') ?>"></script>
 
@@ -284,7 +285,6 @@
     <script src="<?php echo asset('js/backbone-min.js') ?>"></script>
     <script src="<?php echo asset('js/rappid.min.js') ?>"></script>
     <script src="<?php echo asset('js/orgchart.js') ?>"></script>
-    <script src="<?php echo asset('js/custom_js.js') ?>"></script>
 
     <!-- App js -->
     <script src="<?php echo asset('js/jquery.core.js') ?>"></script>

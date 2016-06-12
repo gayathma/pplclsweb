@@ -308,7 +308,7 @@ File: Menu
   display: block;
   padding: 12px 20px;
   margin: 4px 0px;
-  background-color: #ffffff;
+  /*background-color: #ffffff; */
   border-left: 3px solid transparent;
 }
 #sidebar-menu > ul > li > a:hover {
@@ -641,3 +641,4 @@ input.app-search-input::-moz-placeholder {
 input.app-search-input:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
+
