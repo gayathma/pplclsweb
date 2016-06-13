@@ -1,5 +1,5 @@
 <div class="row">
-	<div id="paper" class="paper"></div>
+	<div id="paper_apparel" class="paper"></div>
 </div>
 
 <script type="text/javascript">

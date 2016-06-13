@@ -19,7 +19,7 @@
                 <div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(24,138,226);overflow:hidden"></div></div>
               </td>
               <td class="legendLabel">
-                <div style="font-size:14px;">&nbsp;Programming</div>
+                <div style="font-size:13px;">&nbsp;Programming</div>
               </td>
             </tr>
             <tr>
@@ -27,7 +27,7 @@
                 <div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(16,196,105);overflow:hidden"></div></div>
               </td>
               <td class="legendLabel">
-                <div style="font-size:14px;">&nbsp;Communication</div>
+                <div style="font-size:13px;">&nbsp;Communication</div>
               </td>
             </tr>
             <tr>
@@ -35,7 +35,7 @@
                 <div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(249,200,81);overflow:hidden"></div></div>
               </td>
               <td class="legendLabel">
-                <div style="font-size:14px;">&nbsp;Project Mgmt</div>
+                <div style="font-size:13px;">&nbsp;Project Mgmt</div>
               </td>
             </tr>
             <tr>
@@ -43,7 +43,7 @@
                 <div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(255,138,204);overflow:hidden"></div></div>
               </td>
               <td class="legendLabel">
-                <div style="font-size:14px;">&nbsp;Leadership</div>
+                <div style="font-size:13px;">&nbsp;Leadership</div>
               </td>
             </tr>
             <tr>
@@ -51,7 +51,7 @@
                 <div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(91,105,188);overflow:hidden"></div></div>
               </td>
               <td class="legendLabel">
-                <div style="font-size:14px;">&nbsp;Client Mgmt.</div>
+                <div style="font-size:13px;">&nbsp;Client Mgmt.</div>
               </td>
             </tr>
             <tr>
@@ -59,7 +59,7 @@
                 <div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(67,89,102);overflow:hidden"></div></div>
               </td>
               <td class="legendLabel">
-                <div style="font-size:14px;">&nbsp;Documentation</div>
+                <div style="font-size:13px;">&nbsp;Documentation</div>
               </td>
             </tr>
             <tr>
@@ -67,7 +67,7 @@
                 <div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(53,184,224);overflow:hidden"></div></div>
               </td>
               <td class="legendLabel">
-                <div style="font-size:14px;">&nbsp;Design</div>
+                <div style="font-size:13px;">&nbsp;Design</div>
               </td>
             </tr>
           </tbody>

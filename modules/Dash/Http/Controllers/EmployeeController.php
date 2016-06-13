@@ -12,5 +12,12 @@ class EmployeeController extends Controller {
 
 		return View::make($this->layout, ['content' => View::make($template)->render()])->render();
 	}
+
+	public function getProfileApparel($id){
+
+		$template = 'dash::portal.profile_apparel';
+
+		return View::make($this->layout, ['content' => View::make($template)->render()])->render();
+	}
 	
 }

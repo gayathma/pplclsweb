@@ -286,6 +286,7 @@
     <script src="<?php echo asset('js/backbone-min.js') ?>"></script>
     <script src="<?php echo asset('js/rappid.min.js') ?>"></script>
     <script src="<?php echo asset('js/orgchart.js') ?>"></script>
+    <script src="<?php echo asset('js/orgchart_apparel.js') ?>"></script>
 
     <!-- App js -->
     <script src="<?php echo asset('js/jquery.core.js') ?>"></script>

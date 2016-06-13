@@ -27,5 +27,12 @@ class DashController extends Controller {
 
 		return View::make($this->layout, ['content' => View::make($template)->render()])->render();
 	}
+
+	public function getTeamStructureApparel(){
+
+		$template = 'dash::portal.team_structure_apparel';
+
+		return View::make($this->layout, ['content' => View::make($template)->render()])->render();
+	}
 	
 }
