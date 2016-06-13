@@ -7,6 +7,7 @@ Route::group(['prefix' => 'dash', 'namespace' => 'Modules\Dash\Http\Controllers'
 	Route::get('/team-structure', 'DashController@getTeamStructure');
 	Route::get('/profile/{id}', 'EmployeeController@getProfile');
 
+	Route::get('/home-apparel', 'DashController@getApparelDashboard');
 	Route::get('/team-structure-apparel', 'DashController@getTeamStructureApparel');
 	Route::get('/profile-apparel/{id}', 'EmployeeController@getProfileApparel');
 });

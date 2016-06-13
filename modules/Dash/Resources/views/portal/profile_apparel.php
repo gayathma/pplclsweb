@@ -66,8 +66,8 @@
 
         <div class="kanban-detail">
             <span class="label label-success pull-right">Closed</span>
-            <h4><a href="">Naturi</a> </h4>
-            <p class="font-600 m-b-5">Softlogic T-shirt Project<span class="text-pink pull-right">75.8%</span></p>
+            <h4><a href="">Softlogic T-shirt Project</a> </h4>
+            <p class="font-600 m-b-5">Project Success Rate<span class="text-pink pull-right">75.8%</span></p>
             <div class="progress progress-bar-pink-alt progress-sm m-b-20">
               <div class="progress-bar progress-bar-pink progress-animated wow animated animated" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%; visibility: visible; animation-name: animationProgress;">
               </div><!-- /.progress-bar .progress-bar-danger -->
