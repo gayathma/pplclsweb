@@ -199,7 +199,7 @@
 
 <script type="text/javascript">
 //menu active
-$('#dash_sub_menu').addClass('active');
+$('#dash_menu').addClass('active');
 
 //Stacked bar chart
 new Chartist.Bar('#stacked-bar-chart', {

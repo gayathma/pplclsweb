@@ -1,18 +1,12 @@
 /*
-Template Name: Adminto Dashboard
+Template Name: Ubold Dashboard
 Author: CoderThemes
 Email: coderthemes@gmail.com
 File: Responsive
 */
-@media only screen and (max-width: 6000px) and (min-width: 700px) {
-  .wrapper.right-bar-enabled .right-bar {
-    right: 0;
-    z-index: 99;
-  }
-}
-@media (max-width: 1023px) {
-  .button-menu-mobile {
-    display: block !important;
+@media (min-width: 768px) and (max-width: 1024px) {
+  .email-msg {
+    display: none;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -20,49 +14,9 @@ File: Responsive
     overflow-x: hidden;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   body {
     overflow-x: hidden;
-  }
-  .enlarged .left.side-menu {
-    margin-left: -75px;
-  }
-  .topbar-left {
-    width: 70px !important;
-  }
-  .topbar-left span {
-    display: none !important;
-  }
-  .topbar-left i {
-    display: block !important;
-    line-height: 75px !important;
-  }
-  .content-page .content {
-    margin-top: 95px;
-  }
-  .topbar .topbar-left {
-    height: 75px;
-  }
-  .navbar-default {
-    background-color: #ffffff;
-    box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
-  }
-  .navbar-nav {
-    margin: 0px;
-    display: inline-block;
-  }
-  .navbar-nav li {
-    display: inline-block;
-    line-height: 1px;
-  }
-  .navbar-nav.navbar-right {
-    float: right;
-  }
-  .content-page {
-    margin-left: 0px !important;
-  }
-  .footer {
-    left: 0px !important;
   }
   .mobile-sidebar {
     left: 0px;
@@ -74,15 +28,58 @@ File: Responsive
   .wrapper-page {
     width: 90%;
   }
+  .wizard > .steps > ul > li {
+    width: 100%;
+  }
+  .wizard > .content {
+    padding: 0px !important;
+  }
+  .wizard > .content > .body {
+    float: none;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0%;
+  }
+  .wizard.vertical > .steps {
+    display: inline;
+    float: none;
+    width: 100%;
+  }
+  .wizard.vertical > .content {
+    display: inline;
+    float: none;
+    margin: 0%;
+    width: 100%;
+  }
+  .navbar-nav .open .dropdown-menu {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    left: auto;
+    position: absolute;
+    right: 0;
+  }
+  .todo-send {
+    margin-top: 10px;
+    padding-left: 15px;
+  }
+  .chat-inputbar {
+    padding-left: 15px;
+  }
+  .chat-send {
+    margin-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
   .dataTables_wrapper .col-xs-6 {
     width: 100%;
     text-align: left;
   }
-  div#datatable-buttons_info {
-    float: none;
-  }
   .ms-container {
     width: 100%;
+  }
+  .email-msg {
+    display: none;
   }
 }
 @media (max-width: 480px) {
@@ -106,9 +103,6 @@ File: Responsive
   .container-alt {
     width: 750px;
   }
-  .nav-tabs.nav-justified > li > a {
-    border-bottom: 2px solid #eeeeee;
-  }
 }
 @media (min-width: 992px) {
   .container-alt {
@@ -124,13 +118,6 @@ File: Responsive
   .topbar-left {
     width: 70px !important;
   }
-  .logo .icon-c-logo {
-    display: inline-block !important;
-    line-height: 58px !important;
-  }
-  .logo span {
-    display: none !important;
-  }
   .content-page {
     margin-left: 70px;
   }
@@ -139,34 +126,5 @@ File: Responsive
   }
   .enlarged .side-menu.left {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) !important;
-  }
-  .page-title {
-    font-size: 15px;
-    line-height: 67px;
-    max-width: 250px;
-    white-space: nowrap;
-  }
-  .navbar-default {
-    padding: 0px;
-  }
-  .navbar-default .navbar-left {
-    padding-left: 0px !important;
-  }
-  .navbar-default .navbar-left li {
-    padding: 0px 5px;
-  }
-  .topbar-left {
-    display: none;
-  }
-  .editable-responsive {
-    overflow-x: auto;
-  }
-  .profile-info-name img {
-    float: none;
-    margin: 0px auto;
-    margin-bottom: 20px;
-  }
-  div.hopscotch-bubble .hopscotch-bubble-container {
-    max-width: 180px;
   }
 }

@@ -99,6 +99,7 @@ return [
             'command' => 'Console',
             'migration' => 'Database/Migrations',
             'model' => 'Entities',
+            'contracts' => 'Contracts',
             'repository' => 'Repositories',
             'seeder' => 'Database/Seeders',
             'controller' => 'Http/Controllers',

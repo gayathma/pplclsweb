@@ -28,7 +28,30 @@ class DashServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{		
-		//
+		$this->app->bind(
+	        'Modules\Dash\Contracts\ProjectRepositoryContract', 
+	        'Modules\Dash\Repositories\Eloquent\ProjectRepository'
+        );
+
+        $this->app->bind(
+	        'Modules\Dash\Contracts\ProjectTypeRepositoryContract', 
+	        'Modules\Dash\Repositories\Eloquent\ProjectTypeRepository'
+        );
+
+        $this->app->bind(
+	        'Modules\Dash\Contracts\PrphaseRepositoryContract', 
+	        'Modules\Dash\Repositories\Eloquent\PrphaseRepository'
+        );
+
+        $this->app->bind(
+	        'Modules\Dash\Contracts\TechnologyRepositoryContract', 
+	        'Modules\Dash\Repositories\Eloquent\TechnologyRepository'
+        );
+
+        $this->app->bind(
+	        'Modules\Dash\Contracts\SettingRepositoryContract', 
+	        'Modules\Dash\Repositories\Eloquent\SettingRepository'
+        );
 	}
 
 

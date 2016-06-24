@@ -1,296 +1,366 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="hash" content="<?php echo csrf_token(); ?>">
-	<title>People Clues</title>
+<html>
+  <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="BI Tool to select the best team for a given project.">
+        <meta name="author" content="People Clues">
 
-	
-   <link rel="stylesheet" href="<?php echo asset('plugins/morris/morris.css') ?>">
-   <!-- App css -->
-   <link href="<?php echo asset('css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
-   <link href="<?php echo asset('css/core.css') ?>" rel="stylesheet" type="text/css" />
-   <link href="<?php echo asset('css/components.css') ?>" rel="stylesheet" type="text/css" />
-   <link href="<?php echo asset('css/icons.css') ?>" rel="stylesheet" type="text/css" />
-   <link href="<?php echo asset('css/pages.css') ?>" rel="stylesheet" type="text/css" />
-   <link href="<?php echo asset('css/menu.css') ?>" rel="stylesheet" type="text/css" />
-   <link href="<?php echo asset('css/responsive.css') ?>" rel="stylesheet" type="text/css" />
-   <link href="<?php echo asset('css/rappid.min.css') ?>" rel="stylesheet" type="text/css" />
-   <link href="<?php echo asset('css/orgchart.css') ?>" rel="stylesheet" type="text/css" />
-   <!--Chartist Chart CSS -->
-   <link rel="stylesheet" href="<?php echo asset('plugins/chartist/dist/chartist.min.css') ?>">
-   
-   <!-- jQuery  -->
-   <script src="<?php echo asset('js/jquery.min.js') ?>"></script>
-   <script src="<?php echo asset('js/bootstrap.min.js') ?>"></script>
-   <script src="<?php echo asset('js/modernizr.min.js') ?>"></script>
-   <!--Morris Chart-->
-   <script src="<?php echo asset('plugins/morris/morris.min.js') ?>"></script>
-   <script src="<?php echo asset('plugins/raphael/raphael-min.js') ?>"></script>
+        <link rel="shortcut icon" href="assets/images/favicon_1.ico">
 
-   <script src="<?php echo asset('plugins/chartist/dist/chartist.min.js') ?>"></script>
-   <script src="<?php echo asset('plugins/chartist/dist/chartist-plugin-tooltip.min.js') ?>"></script>
+        <title>People Clues</title>
 
-   <!-- Flot chart js -->
-   <script src="<?php echo asset('plugins/flot-chart/jquery.flot.js') ?>"></script>
-   <script src="<?php echo asset('plugins/flot-chart/jquery.flot.pie.js') ?>"></script>
+        <!--Morris Chart CSS -->
+        <link rel="stylesheet" href="<?php echo asset('plugins/morris/morris.css') ?>">
+        <!--Form Wizard-->
+        <link rel="stylesheet" type="text/css" href="<?php echo asset('plugins/jquery.steps/demo/css/jquery.steps.css') ?>" />
+         <!-- multiselect css-->
+        <link href="<?php echo asset('plugins/multiselect/css/multi-select.css') ?>"  rel="stylesheet" type="text/css" />
+        <!-- select2 css-->
+        <link href="<?php echo asset('plugins/select2/select2.css') ?>" rel="stylesheet" type="text/css" />
+        <!-- Bootstrap-select css-->
+        <link href="<?php echo asset('plugins/bootstrap-select/dist/css/bootstrap-select.min.css') ?>" rel="stylesheet" />
+         <!-- Daterangepicker -->
+        <link href="<?php echo asset('plugins/bootstrap-daterangepicker/daterangepicker.css') ?>" rel="stylesheet">
+
+        <!-- Custom box css -->
+        <link href="<?php echo asset('plugins/custombox/dist/custombox.min.css') ?>" rel="stylesheet">
+
+        <!-- Sweet Alert -->
+        <link href="<?php echo asset('plugins/sweetalert/dist/sweetalert.css') ?>" rel="stylesheet" type="text/css">
+
+        <link href="<?php echo asset('css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo asset('css/core.css') ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo asset('css/components.css') ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo asset('css/icons.css') ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo asset('css/pages.css') ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo asset('css/menu.css') ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo asset('css/responsive.css') ?>" rel="stylesheet" type="text/css" />
+
+        <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="<?php echo asset('js/modernizr.min.js')?>"></script>
+         <!-- jQuery  -->
+        <script src="<?php echo asset('js/jquery.min.js') ?>"></script>
+        <script src="<?php echo asset('js/bootstrap.min.js') ?>"></script>
+            <!--Form Validation-->
+        <script src="<?php echo asset('plugins/bootstrapvalidator/dist/js/bootstrapValidator.js') ?>" type="text/javascript"></script>
+        <script type="text/javascript" src="<?php echo asset('plugins/jquery-validation/dist/jquery.validate.min.js') ?>"></script>
 
 
-</head>
-<body class="fixed-left">
-	<!-- Begin page -->
-    <div id="wrapper">
+    </head>
 
-        <!-- Top Bar Start -->
-        <div class="topbar">
 
-            <!-- LOGO -->
-            <div class="topbar-left">
-                <img src="\images\logo_sidebar.png" width="250px">
-            </div>
+    <body>
 
-            <!-- Button mobile view to collapse sidebar menu -->
-            <div class="navbar navbar-default" role="navigation">
+
+        <!-- Navigation Bar-->
+        <header id="topnav">
+            <div class="topbar-main">
                 <div class="container">
 
-                    <!-- Page title -->
-                    <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <button class="button-menu-mobile open-left">
-                                <i class="zmdi zmdi-menu"></i>
-                            </button>
-                        </li>                        </ul>
+                    <!-- Logo container-->
+                    <div class="logo">
+                        <a href="/dash" class="logo"><span>People<i
+                                class="md">Clues</i></span></a>
+                    </div>
+                    <!-- End Logo container-->
 
-                        <!-- Right(Notification and Searchbox -->
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <!-- Notification -->
-                                <div class="notification-box">
-                                    <ul class="list-inline m-b-0">
+
+                    <div class="menu-extras">
+
+                        <ul class="nav navbar-nav navbar-right pull-right">
+                                <li>
+                                    <form role="search" class="navbar-left app-search pull-left hidden-xs">
+                                         <input type="text" placeholder="Search..." class="form-control">
+                                         <a href="#"><i class="fa fa-search"></i></a>
+                                    </form>
+                                </li>
+                                <li class="dropdown hidden-xs">
+                                    <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                                        <i class="icon-bell"></i> <span class="badge badge-xs badge-danger">3</span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-lg">
+                                        <li class="notifi-title"><span class="label label-default pull-right">New 3</span>Notification</li>
+                                        <li class="list-group nicescroll notification-list">
+                                           <!-- list item-->
+                                           <a href="javascript:void(0);" class="list-group-item">
+                                              <div class="media">
+                                                 <div class="pull-left p-r-10">
+                                                    <em class="fa fa-diamond fa-2x text-primary"></em>
+                                                 </div>
+                                                 <div class="media-body">
+                                                    <h5 class="media-heading">A new order has been placed A new order has been placed</h5>
+                                                    <p class="m-0">
+                                                        <small>There are new settings available</small>
+                                                    </p>
+                                                 </div>
+                                              </div>
+                                           </a>
+
+                                           <!-- list item-->
+                                           <a href="javascript:void(0);" class="list-group-item">
+                                              <div class="media">
+                                                 <div class="pull-left p-r-10">
+                                                    <em class="fa fa-cog fa-2x text-custom"></em>
+                                                 </div>
+                                                 <div class="media-body">
+                                                    <h5 class="media-heading">New settings</h5>
+                                                    <p class="m-0">
+                                                        <small>There are new settings available</small>
+                                                    </p>
+                                                 </div>
+                                              </div>
+                                           </a>
+
+                                           <!-- list item-->
+                                           <a href="javascript:void(0);" class="list-group-item">
+                                              <div class="media">
+                                                 <div class="pull-left p-r-10">
+                                                    <em class="fa fa-bell-o fa-2x text-danger"></em>
+                                                 </div>
+                                                 <div class="media-body">
+                                                    <h5 class="media-heading">Updates</h5>
+                                                    <p class="m-0">
+                                                        <small>There are <span class="text-primary font-600">2</span> new updates available</small>
+                                                    </p>
+                                                 </div>
+                                              </div>
+                                           </a>
+
+                                           <!-- list item-->
+                                           <a href="javascript:void(0);" class="list-group-item">
+                                              <div class="media">
+                                                 <div class="pull-left p-r-10">
+                                                    <em class="fa fa-user-plus fa-2x text-info"></em>
+                                                 </div>
+                                                 <div class="media-body">
+                                                    <h5 class="media-heading">New user registered</h5>
+                                                    <p class="m-0">
+                                                        <small>You have 10 unread messages</small>
+                                                    </p>
+                                                 </div>
+                                              </div>
+                                           </a>
+
+                                           <!-- list item-->
+                                           <a href="javascript:void(0);" class="list-group-item">
+                                              <div class="media">
+                                                 <div class="pull-left p-r-10">
+                                                    <em class="fa fa-diamond fa-2x text-primary"></em>
+                                                 </div>
+                                                 <div class="media-body">
+                                                    <h5 class="media-heading">A new order has been placed A new order has been placed</h5>
+                                                    <p class="m-0">
+                                                        <small>There are new settings available</small>
+                                                    </p>
+                                                 </div>
+                                              </div>
+                                           </a>
+
+                                           <!-- list item-->
+                                            <a href="javascript:void(0);" class="list-group-item">
+                                                <div class="media">
+                                                    <div class="pull-left p-r-10">
+                                                     <em class="fa fa-cog fa-2x text-custom"></em>
+                                                    </div>
+                                                    <div class="media-body">
+                                                      <h5 class="media-heading">New settings</h5>
+                                                      <p class="m-0">
+                                                        <small>There are new settings available</small>
+                                                    </p>
+                                                    </div>
+                                              </div>
+                                           </a>
+                                        </li>
                                         <li>
-                                            <a href="javascript:void(0);" class="right-bar-toggle">
-                                                <i class="zmdi zmdi-notifications-none"></i>
+                                            <a href="javascript:void(0);" class="list-group-item text-right">
+                                                <small class="font-600">See all notifications</small>
                                             </a>
-                                            <div class="noti-dot">
-                                                <span class="dot"></span>
-                                                <span class="pulse"></span>
-                                            </div>
                                         </li>
                                     </ul>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="true"><img src="/images/admin.png" alt="user-img" class="img-circle"> </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile</a></li>
+                                        <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>
+                                        <li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li>
+                                        <li><a href="/auth/logout"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        <div class="menu-item">
+                            <!-- Mobile menu toggle-->
+                            <a class="navbar-toggle">
+                                <div class="lines">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
                                 </div>
-                                <!-- End Notification bar -->
-                            </li>
-                            <li class="hidden-xs">
-                                <form role="search" class="app-search">
-                                    <input type="text" placeholder="Search..."
-                                    class="form-control">
-                                    <a href="#"><i class="fa fa-search"></i></a>
-                                </form>
-                            </li>
-                        </ul>
-
-                    </div><!-- end container -->
-                </div><!-- end navbar -->
-            </div>
-            <!-- Top Bar End -->
-
-
-            <!-- ========== Left Sidebar Start ========== -->
-            <div class="left side-menu">
-                <div class="sidebar-inner slimscrollleft">
-
-                    <!-- User -->
-                    <div class="user-box">
-                        <div class="user-img">
-                            <img src="/images/users/admin.png" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
-                            <div class="user-status offline"><i class="zmdi zmdi-dot-circle"></i></div>
+                            </a>
+                            <!-- End mobile menu toggle-->
                         </div>
-                        <h5><a href="#">Welcome Admin</a> </h5>
-                        <ul class="list-inline">
-                            <li>
-                                <a href="#" >
-                                    <i class="zmdi zmdi-settings"></i>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="text-custom">
-                                    <i class="zmdi zmdi-power"></i>
-                                </a>
-                            </li>
-                        </ul>
                     </div>
-                    <!-- End User -->
-
-                    <!--- Sidemenu -->
-                    <div id="sidebar-menu">
-                        <ul>
-                        	<li class="text-muted menu-title">Navigation</li>
-
-                            <li id="dash_main_menu">
-                                <a href="/dash" class="waves-effect" id="dash_sub_menu"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
-                            </li>
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect" id="dynamics_main_menu"><i class="zmdi zmdi-chart"></i><span> Dynamics </span> <span class="menu-arrow"></span></a>
-                                <ul class="list-unstyled">
-                                    <li id="analytic_sub_menu"><a href="/dash/analytical-designer" >Analytical Designer</a></li>
-                                    <li  id="predict_sub_menu"><a href="/dash/team-structure">Predictive Analytics</a></li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <!-- Sidebar -->
-                    <div class="clearfix"></div>
 
                 </div>
-
-            </div>
-            <!-- Left Sidebar End -->
-
-
-
-            <!-- ============================================================== -->
-            <!-- Start right Content here -->
-            <!-- ============================================================== -->
-            <div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    <div class="container">
-                    	<?php echo $content; ?>
-                    </div> <!-- container -->
-
-                </div> <!-- content -->
-
-                <footer class="footer text-right">
-                    2016 © People Clues.
-                </footer>
-
             </div>
 
-
-            <!-- ============================================================== -->
-            <!-- End Right content here -->
-            <!-- ============================================================== -->
-
-
-            <!-- Right Sidebar -->
-            <div class="side-bar right-bar">
-                <a href="javascript:void(0);" class="right-bar-toggle">
-                    <i class="zmdi zmdi-close-circle-o"></i>
-                </a>
-                <h4 class="">Notifications</h4>
-                <div class="notification-list nicescroll">
-                    <ul class="list-group list-no-border user-list">
-                        <li class="list-group-item">
-                            <a href="#" class="user-list-item">
-                                <div class="avatar">
-                                    <img src="assets/images/users/avatar-2.jpg" alt="">
-                                </div>
-                                <div class="user-desc">
-                                    <span class="name">Michael Zenaty</span>
-                                    <span class="desc">There are new settings available</span>
-                                    <span class="time">2 hours ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#" class="user-list-item">
-                                <div class="icon bg-info">
-                                    <i class="zmdi zmdi-account"></i>
-                                </div>
-                                <div class="user-desc">
-                                    <span class="name">New Signup</span>
-                                    <span class="desc">There are new settings available</span>
-                                    <span class="time">5 hours ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#" class="user-list-item">
-                                <div class="icon bg-pink">
-                                    <i class="zmdi zmdi-comment"></i>
-                                </div>
-                                <div class="user-desc">
-                                    <span class="name">New Message received</span>
-                                    <span class="desc">There are new settings available</span>
-                                    <span class="time">1 day ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item active">
-                            <a href="#" class="user-list-item">
-                                <div class="avatar">
-                                    <img src="assets/images/users/avatar-3.jpg" alt="">
-                                </div>
-                                <div class="user-desc">
-                                    <span class="name">James Anderson</span>
-                                    <span class="desc">There are new settings available</span>
-                                    <span class="time">2 days ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item active">
-                            <a href="#" class="user-list-item">
-                                <div class="icon bg-warning">
-                                    <i class="zmdi zmdi-settings"></i>
-                                </div>
-                                <div class="user-desc">
-                                    <span class="name">Settings</span>
-                                    <span class="desc">There are new settings available</span>
-                                    <span class="time">1 day ago</span>
-                                </div>
-                            </a>
+            <div class="navbar-custom">
+                <div class="container">
+                <div id="navigation">
+                    <!-- Navigation Menu-->
+                    <ul class="navigation-menu">
+                        <li class="has-submenu" id="dash_menu">
+                            <a href="/dash"><i class="md md-dashboard"></i>Dashboard</a>
                         </li>
 
+                        <li class="has-submenu" id="team_builder_menu">
+                            <a href="/dash/team-builder"><i class="md md-account-circle"></i>Team Builder</a>
+                        </li>
+
+                        <li class="has-submenu" id="projects_menu">
+                            <a href="/dash/projects"><i class="md md-folder-special"></i>Projects</a>
+                        </li>
+                        
+                        <li class="has-submenu" id="team_builder_menu">
+                            <a href="/dash/human-resources"><i class="md md-group"></i>Human Resources</a>
+                        </li>
+
+                        <li class="has-submenu" id="settings_menu">
+                            <a href="#"><i class="md md-settings"></i>Settings</a>
+                            <ul class="submenu">
+                                <li id="general_setting_menu"><a href="/dash/general-setting/edit"> General Settings</a></li>
+                                <li id="project_phases_menu"><a href="/dash/project-phases"> Project Phases</a></li>
+                                <li id="technology_menu"><a href="/dash/technologies"> Technologies</a></li>
+                            </ul>
+                        </li>
                     </ul>
+                    <!-- End navigation menu        -->
                 </div>
             </div>
-            <!-- /Right-bar -->
+            </div>
+        </header>
+        <!-- End Navigation Bar-->
 
+
+        <div class="wrapper">
+            <div class="container">
+
+                <!-- Page-Content -->
+                  <?php echo $content; ?>
+                <!-- End Page-Content -->
+
+                <!-- Footer -->
+                <footer class="footer text-right">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                2016 © People Clues.
+                            </div>
+                            <div class="col-xs-6">
+                                <ul class="pull-right list-inline m-b-0">
+                                    <li>
+                                        <a href="#">About</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Help</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Contact</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End Footer -->
+
+            </div>
         </div>
-        <!-- END wrapper -->
 
 
 
-        <script>
-        var resizefunc = [];
-        </script>
-
-
+       
         <script src="<?php echo asset('js/detect.js') ?>"></script>
         <script src="<?php echo asset('js/fastclick.js') ?>"></script>
+
         <script src="<?php echo asset('js/jquery.slimscroll.js') ?>"></script>
         <script src="<?php echo asset('js/jquery.blockUI.js') ?>"></script>
         <script src="<?php echo asset('js/waves.js') ?>"></script>
+        <script src="<?php echo asset('js/wow.min.js') ?>"></script>
         <script src="<?php echo asset('js/jquery.nicescroll.js') ?>"></script>
         <script src="<?php echo asset('js/jquery.scrollTo.min.js') ?>"></script>
 
-        <!-- KNOB JS -->
-    <!--[if IE]>
-    <script type="text/javascript" src="<?php echo asset('plugins/jquery-knob/excanvas.js') ?>"></script>
-    <![endif]-->
-    <script src="<?php echo asset('plugins/jquery-knob/jquery.knob.js') ?>"></script>
+        <script src="<?php echo asset('plugins/peity/jquery.peity.min.js') ?>"></script>
 
-    <!-- Counter Up  -->
-    <script src="<?php echo asset('plugins/waypoints/lib/jquery.waypoints.js') ?>"></script>
-    <script src="<?php echo asset('plugins/counterup/jquery.counterup.min.js') ?>"></script>
+        <!-- jQuery  -->
+        <script src="<?php echo asset('plugins/waypoints/lib/jquery.waypoints.js') ?>"></script>
+        <script src="<?php echo asset('plugins/counterup/jquery.counterup.min.js') ?>"></script>
 
-    <!-- Dashboard init -->
-    <script src="<?php echo asset('pages/jquery.dashboard.js') ?>"></script>
+        <script src="<?php echo asset('plugins/morris/morris.min.js') ?>"></script>
+        <script src="<?php echo asset('plugins/raphael/raphael-min.js') ?>"></script>
 
-    <!-- Org Chart JS -->
-    <script src="<?php echo asset('js/lodash.min.js') ?>"></script>
-    <script src="<?php echo asset('js/backbone-min.js') ?>"></script>
-    <script src="<?php echo asset('js/rappid.min.js') ?>"></script>
-    <script src="<?php echo asset('js/orgchart.js') ?>"></script>
-    <script src="<?php echo asset('js/orgchart_apparel.js') ?>"></script>
+        <script src="<?php echo asset('plugins/jquery-knob/jquery.knob.js') ?>"></script>
 
-    <!-- App js -->
-    <script src="<?php echo asset('js/jquery.core.js') ?>"></script>
-    <script src="<?php echo asset('js/jquery.app.js') ?>"></script>
+        <script src="<?php echo asset('pages/jquery.dashboard.js') ?>"></script>
 
-</body>
+        <script src="<?php echo asset('js/jquery.form.js') ?>"></script>
+
+        <!-- Modal-Effect -->
+        <script src="<?php echo asset('plugins/custombox/dist/custombox.min.js') ?>"></script>
+        <script src="<?php echo asset('plugins/custombox/dist/legacy.min.js') ?>"></script>
+
+        <!-- Notifyjs -->
+        <script src="<?php echo asset('plugins/notifyjs/dist/notify.min.js') ?>"></script>
+        <script src="<?php echo asset('plugins/notifications/notify-metro.js') ?>"></script>
+
+        <!-- Sweet-Alert  -->
+        <script src="<?php echo asset('plugins/sweetalert/dist/sweetalert.min.js') ?>"></script>
+
+        <script src="<?php echo asset('js/jquery.core.js') ?>"></script>
+        <script src="<?php echo asset('js/jquery.app.js') ?>"></script>
+
+          <!-- multiselect  -->
+        <script type="text/javascript" src="<?php echo asset('plugins/multiselect/js/jquery.multi-select.js') ?>"></script>
+        <script type="text/javascript" src="<?php echo asset('plugins/jquery-quicksearch/jquery.quicksearch.js') ?>"></script>
+        <!-- select2  -->
+        <script src="<?php echo asset('plugins/select2/select2.min.js') ?>" type="text/javascript"></script>
+        <!-- Bootstrap-select  -->
+        <script src="<?php echo asset('plugins/bootstrap-select/dist/js/bootstrap-select.min.js') ?>" type="text/javascript"></script>
+
+        <!-- moment -->
+        <script src="<?php echo asset('plugins/moment/moment.js') ?>"></script>
+
+        <!-- daterangepicker -->
+        <script src="<?php echo asset('plugins/bootstrap-daterangepicker/daterangepicker.js') ?>"></script>
+
+        <!--Form Wizard-->
+        <script src="<?php echo asset('plugins/jquery.steps/build/jquery.steps.min.js') ?>" type="text/javascript"></script>
+
+        <!--wizard initialization-->
+        <script src="<?php echo asset('pages/jquery.wizard-init.js') ?>" type="text/javascript"></script>
+
+        <script src="<?php echo asset('js/app.js') ?>"></script>
+
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                $('.counter').counterUp({
+                    delay: 100,
+                    time: 1200
+                });
+
+                $(".knob").knob();
+
+            });
+        </script>
+
+
+    </body>
 </html>

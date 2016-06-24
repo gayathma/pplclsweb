@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'Auth\AuthController@getLogin');
+
+Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function()
+{
+    Route::get('/login', 'AuthController@getLogin');
+    Route::post('/login', 'AuthController@postLogin');
+    Route::get('/logout', 'AuthController@getLogout');
+    Route::get('/change-password', 'PasswordController@getChangePassword');
+    Route::post('/change-password', 'PasswordController@postChangePassword');
 });

@@ -42,10 +42,25 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if ($e instanceof ModelNotFoundException) {
-            $e = new NotFoundHttpException($e->getMessage(), $e);
-        }
+        if ((env('APP_ENV') == 'production') || (env('APP_ENV') == 'staging')) {
 
-        return parent::render($request, $e);
+            switch (true) {
+                case $e instanceof \Illuminate\Database\Eloquent\ModelNotFoundException:
+                    if ($request->ajax()) {
+                        return  response()->json(['success' => false, 'data'=> [], 'message' => 'The requested object could not be found'], 422);
+                    }
+
+                    abort(422);
+                    
+                    break;
+                
+                default:
+                    return parent::render($request, $e);
+                    break;
+            }
+
+        } else {
+            return parent::render($request, $e);
+        }
     }
 }
