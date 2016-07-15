@@ -7,14 +7,18 @@ from numpy import genfromtxt, savetxt
 import sys
 
 
-
 # Connect to the database
 mysql_cn = pymysql.connect(host='localhost',
                              user='root',
                              password='',
                              db='pplcls')
 
-df_mysql = pd.read_sql('select * from employeeit;', con=mysql_cn)
+df_mysql = pd.read_sql('select f.*,'
+                       'e.age,e.working_experience_current,e.dim_hrole_id,e.working_experience_previous,e.dim_hqualifications_id,e.is_pmp_certified,e.grade,'
+                       'p.type,p.project_value '
+                       ' from fact_knowledgebase f '
+                       'inner join dim_hemployee e on e.id = f.dim_hemployee_id '
+                       'inner join dim_hproject p on p.id = f.dim_hproject_id;', con=mysql_cn)
 col_names = df_mysql.columns.tolist()
 
 #print "Column names:"
@@ -25,7 +29,7 @@ predicted_result = df_mysql['is_suitable']
 y = predicted_result
 
 # Don't need these columns
-to_drop = ['id','name','is_suitable','updated_at','created_at','deleted_at','role_name']
+to_drop = ['id','dim_hemployee_id','dim_hproject_id','is_suitable','type','start_date','estimated_end_date','actual_end_date']
 predict_feat_space = df_mysql.drop(to_drop,axis=1)
 
 # Pull out features for future use
@@ -40,6 +44,7 @@ savetxt('processed.csv', X, delimiter=',',
 from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
 X = scaler.fit_transform(X)
+
 
 #print "Feature space holds %d observations and %d features" % X.shape
 #print "Unique target labels:", np.unique(y)

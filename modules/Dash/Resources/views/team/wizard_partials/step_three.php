@@ -1,3 +1,4 @@
+<p class="text-muted m-b-30 font-13">Select the attributes that needs to be accounted by the algorithm.</p>
 <?php if(!is_null($settingRepository->get('system_type')) && ($settingRepository->get('system_type') == 'apparel')): ?>
     <!--Parameters for Apparel Industry -->
 

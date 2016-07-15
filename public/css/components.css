@@ -2274,3 +2274,14 @@ button.confirm {
 .tech-multi >ul > li > input{
   border: none !important;
 }
+.loader{
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 1500;
+    background-image: url('../images/pixel.png');
+    width: 100%;
+    background-repeat: repeat;
+    height: 100%;
+}

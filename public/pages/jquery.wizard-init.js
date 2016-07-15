@@ -56,29 +56,37 @@
                         }
                     });
                 }
+
+                if (priorIndex === 1 && currentIndex === 2)
+                {
+                    $.ajax({
+                        url: '/dash/team-builder/algorithm-accuracy',
+                        type: 'get',
+                        data: {
+                            project_id : $('#project').val()
+                        },
+                        success: function (response) {
+                            $('.step_four').html(response);                   
+                        }
+                    });
+                }
             },
             onFinishing: function (event, currentIndex) {
                 $form_container.validate().settings.ignore = ":disabled";
                 return $form_container.valid();
             },
             onFinished: function (event, currentIndex) {
+                var button = $('#team_builder_form').find('a[href="#finish"]');
+                button.attr("href", '#finish-disabled');
+                button.parent().addClass("disabled");
+
+                var pre = $('#team_builder_form').find('a[href="#previous"]');
+                pre.attr("href", '#previous-disabled');
+                pre.parent().addClass("disabled");
+
                 $('#loader').show();
                 var form = $('#team_builder_form');
-                $(form).ajaxSubmit({
-                    dataType: 'json',
-                    beforeSubmit: bw.lockform(form),
-                    error :function( jqXhr ) {
-                        bw.unlockform(form);  
-                    },
-                    success: function (response) {
-                        if(response.success){ 
-                            $('#loader').hide(); 
-                            window.open('/dash/team-builder/team/'+$('#project').val());                 
-                        }else{
-                            bw.unlockform(form);   
-                        }
-                    }
-                });
+                $(form).submit();
             }
         });
 

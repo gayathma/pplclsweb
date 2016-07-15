@@ -24,24 +24,27 @@
 
                 <form  method="POST" action="/dash/team-builder/predict-team" id="team_builder_form">
                     <?php echo csrf_field(); ?>
-                    <div>
+                    <div >
                         <h3>Choose Your Project</h3>
                         <section>
-                            <div class="form-group clearfix">
-                                <label class="col-lg-2 control-label " for="project">Select Project </label>
-                                <div class="col-lg-4">
-                                    <select class="form-control  required" id="project" name="project">
-                                        <option value="">Select</option>
-                                        <?php foreach ($projects as  $project): ?>
-                                        <option value="<?php echo $project->id; ?>"><?php echo $project->name; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                            <div class="row">
+                                <div class="form-group clearfix">
+                                    <label class="col-lg-2 control-label " for="project">Select Project </label>
+                                    <div class="col-lg-4">
+                                        <select class="form-control  required" id="project" name="project">
+                                            <option value="">Select</option>
+                                            <?php foreach ($projects as  $project): ?>
+                                            <option value="<?php echo $project->id; ?>"><?php echo $project->name; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="col-lg-5">
+                                    <label class="col-lg-1 control-label "> Or </label>
+                                    <a class="btn btn-default waves-effect waves-light" href="/dash/project/new"> Add New Project</a>
+                                </div>
                             </div>
-                            <div class="col-lg-5">
-                                <label class="col-lg-1 control-label "> Or </label>
-                                <a class="btn btn-default waves-effect waves-light" href="/dash/project/new"> Add New Project</a>
+                            <div id="project_details" class="row">
                             </div>
-                            
                         </div>
                     </section>
                     <h3>Job Roles & Technologies</h3>
@@ -55,7 +58,7 @@
                     </section>
 
                     <h3> Select Algorithm</h3>
-                    <section>
+                    <section class="step_four">
                     </section>
                 </div>
             </form>
@@ -63,7 +66,7 @@
     </div>
 </div>
 <!-- End row -->
-<div class="row" id="loader" style="display:none">
+<div class="row loader" id="loader" style="display:none">
     <div class="sk-cube-grid">
       <div class="sk-cube sk-cube1"></div>
       <div class="sk-cube sk-cube2"></div>
@@ -81,5 +84,21 @@
 <script type="text/javascript">
 //menu active
 $('#team_builder_menu').addClass('active');
+
+$(document).ready(function () {
+    $("#project").change(function() {
+        $.ajax({
+            url: '/dash/project/get-project',
+            type: 'get',
+            data: {
+                project_id : this.value
+            },
+            success: function (response) {
+                $('#project_details').html('');
+                $('#project_details').html(response);
+            }
+        });
+    });
+});
 
 </script>

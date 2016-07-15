@@ -88,7 +88,7 @@ $(document).ready(function () {
 
         // Gender chart
         $('#gender_chart_container').highcharts({
-        	colors: ['#34d3eb', '#fb6d9d', '#5fbeaa'] ,
+        	colors: ['#fb6d9d', '#34d3eb', '#5fbeaa'] ,
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,

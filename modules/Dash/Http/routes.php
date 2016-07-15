@@ -9,11 +9,13 @@ Route::group(['prefix' => 'dash', 'namespace' => 'Modules\Dash\Http\Controllers'
 	Route::get('/team-builder', 'ProjectController@getTeamBuilder');
 	Route::get('/team-builder/phases', 'ProjectController@getTeamBuilderProjectPhases');
 	Route::post('/team-builder/predict-team', 'ProjectController@postPredictTeam');
-	Route::get('/team-builder/team/{id}', 'ProjectController@getTeam');
+	Route::get('/team-builder/team/{id}/{type}', 'ProjectController@getTeam');
+	Route::get('/team-builder/algorithm-accuracy', 'ProjectController@getAlgorithmAccuracy');
 
 	Route::get('/projects', 'ProjectController@getList');
 	Route::get('/project/new', 'ProjectController@getNew');
 	Route::post('/project/new', 'ProjectController@postNew');
+	Route::get('/project/get-project', 'ProjectController@getProjectDetails');
 
 	Route::get('/roles', 'RoleController@getList');
 

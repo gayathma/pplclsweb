@@ -59,6 +59,7 @@ class DashController extends Controller {
     	$this->settingRepository = $settingRepository;
     	$this->employeeitRepository = $employeeitRepository;
     	$this->projectRepository = $projectRepository;
+    	$this->employeeitRepository = $employeeitRepository;
     }
 	
 }
