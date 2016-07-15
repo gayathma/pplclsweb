@@ -20,9 +20,8 @@
 <div class="row">
     <div class="table-responsive">
         <?php if(count($roles)):
-            foreach ($roles as $role): 
-                ?>
-            <div class="col-md-3">
+            foreach ($roles as $role): ?>
+            <div class="col-md-4">
                 <div class="card-box">
                     <div class="text-center">
                         <h3 class="text-dark"><b><?php echo $role->name;?></b></h3>

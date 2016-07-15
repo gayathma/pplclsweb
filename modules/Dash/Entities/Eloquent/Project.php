@@ -19,7 +19,7 @@ class Project extends Model
 
     public function knowledgebases()
     {
-        return $this->hasMany(Knowledgebase::class,'dim_hprojects_id');
+        return $this->hasMany(Knowledgebase::class,'dim_hproject_id');
     }
 
 }

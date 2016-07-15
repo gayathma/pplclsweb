@@ -10,7 +10,8 @@ class Employeeit extends Model
     
     protected $table = 'dim_hemployee';
     
-    protected $fillable = ['emp_no', 'first_name', 'last_name', 'email', 'age', 'grade'];
+    protected $fillable = ['first_name', 'last_name', 'email', 'age', 'grade','dim_hsalutation_id',
+    'dim_hgender_id', 'working_experience_current', 'working_experience_previous', 'dim_hqualifications_id', 'is_pmp_certified','dim_hrole_id'];
 
     public function getNameAttribute()
     {

@@ -23,6 +23,7 @@
 	</div>
 </div>
 
+
 <div class="row">
     <?php
     if(count($employees)): 
@@ -143,6 +144,10 @@ jsPlumb.ready(function () {
                 maxConnections: -1
             });
         }
+        var arr = <?php echo $tree;?>;
+        jQuery.each(arr, function() {
+
+        }
 
         instance.connect({uuids: ["chartWindow3-bottom", "chartWindow6-top" ], overlays: overlays, detachable: true, reattach: true});
         instance.connect({uuids: ["chartWindow1-bottom", "chartWindow2-top" ], overlays: overlays});
@@ -159,10 +164,9 @@ jsPlumb.ready(function () {
 </script>
 
 <div class="jtk-demo-canvas canvas-wide chart-demo jtk-surface jtk-surface-nopan" id="canvas">
-                <div class="window" id="chartWindow1">window one</div>
-                <div class="window" id="chartWindow2">window two</div>
-                <div class="window" id="chartWindow3">window three</div>
-                <div class="window" id="chartWindow4">window four</div>
-                <div class="window" id="chartWindow5">window five</div>
-                <div class="window" id="chartWindow6">window six</div>
+    <?php foreach ($employees as $employee):?>
+                <div class="window" id="employee<?php echo $employee->id;?>">
+                    <?php echo $employee->getNameAttribute();?>
+                </div>
+                <?php endforeach;?>
             </div>

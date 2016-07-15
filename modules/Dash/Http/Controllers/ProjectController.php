@@ -18,6 +18,24 @@ class ProjectController extends Controller {
 	private $settingRepository;
 	private $employeeitRepository;
 
+	public function buildTree(\Illuminate\Pagination\LengthAwarePaginator $elements, $parentId = 0) {
+	    $branch = array();
+	    foreach ($elements as $element) {
+	    	$new_element = new \StdClass;
+	    	$new_element->name = $element->getNameAttribute();
+	    	$new_element->role = $element->role->name;
+	        if ($element->role->parent == $parentId) {
+	            $children = $this->buildTree($elements, $element->dim_hrole_id);
+	            if ($children) {
+	                $new_element->children = $children;
+	            }
+	            $branch[] = $new_element;
+	        }
+	    }
+
+	    return $branch;
+	}
+
 	public function getAlgorithmAccuracy(Request $request)
     {
     	$output = array();
@@ -49,9 +67,12 @@ class ProjectController extends Controller {
     		exec('python '.app_path().'/ItModel/KNN_Model.py '.$request::get('project'),$output, $return);
     	}
 
+    	$tree = $this->buildTree($this->employeeitRepository->paginate(6));
+
         return View::make($this->layout, ['content' => View::make('dash::team.team',[
 				'project' => $projectRepository->find($request::get('project')),
-				'employees' => $this->employeeitRepository->paginate(6)
+				'employees' => $this->employeeitRepository->paginate(6),
+				'tree' => json_encode($tree)
 			])->render()])->render();
     }
 

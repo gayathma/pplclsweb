@@ -12,9 +12,9 @@ class Role extends Model
     
     protected $fillable = ['name','parent'];
 
-    public function emplyeeits()
+    public function employeeits()
     {
-        return $this->hasMany(Employeeit::class);
+        return $this->hasMany(Employeeit::class, 'dim_hrole_id');
     }
 
 
