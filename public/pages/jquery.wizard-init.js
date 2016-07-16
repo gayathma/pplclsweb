@@ -56,20 +56,6 @@
                         }
                     });
                 }
-
-                if (priorIndex === 1 && currentIndex === 2)
-                {
-                    $.ajax({
-                        url: '/dash/team-builder/algorithm-accuracy',
-                        type: 'get',
-                        data: {
-                            project_id : $('#project').val()
-                        },
-                        success: function (response) {
-                            $('.step_four').html(response);                   
-                        }
-                    });
-                }
             },
             onFinishing: function (event, currentIndex) {
                 $form_container.validate().settings.ignore = ":disabled";
@@ -117,4 +103,14 @@
 function($) {
     "use strict";
     $.FormWizard.init()
+    $.ajax({
+        url: '/dash/team-builder/algorithm-accuracy',
+        type: 'get',
+        data: {
+            project_id : $('#project').val()
+        },
+        success: function (response) {
+            $('.step_four').html(response);                   
+        }
+    });
 }(window.jQuery);

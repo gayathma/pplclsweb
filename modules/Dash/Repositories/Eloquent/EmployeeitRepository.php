@@ -5,6 +5,7 @@ namespace Modules\Dash\Repositories\Eloquent;
 use Modules\Dash\Entities\Eloquent\Employeeit;
 use Modules\Dash\Entities\Eloquent\Technology;
 use Modules\Dash\Entities\Eloquent\Knowledgebase;
+use Modules\Dash\Entities\Eloquent\Predictionit;
 use Modules\Dash\Entities\Eloquent\EmployeeitTechnology;
 use Modules\Dash\Contracts\EmployeeitRepositoryContract;
 use Prettus\Repository\Eloquent\BaseRepository;
@@ -25,6 +26,26 @@ class EmployeeitRepository extends BaseRepository implements EmployeeitRepositor
 	public function model()
 	{
 		return Employeeit::class;
+	}
+
+	public function getTeamMembers(array $attributes, $algo)
+	{
+		$members = [];
+		foreach ($attributes['roles'] as $role) {
+			$count = $attributes['count'][$role];
+			$roleMembers = Predictionit::join('dim_hemployee', 'dim_hemployee.id', '=', 'predictionit.employee_id')
+				->join('dim_hrole', 'dim_hrole.id', '=', 'dim_hemployee.dim_hrole_id')
+				->join('dim_hgender', 'dim_hgender.id', '=', 'dim_hemployee.dim_hgender_id')
+				->select('dim_hrole.name as role_name', 'dim_hrole.parent as parent','dim_hemployee.*','dim_hgender.gender')
+				->where('project_id', $attributes['project'])
+				->where('dim_hrole_id', $role)
+				->orderBy($algo, 'desc')
+				->take($count)
+				->get()->flatten()->all();
+
+			$members[] = $roleMembers;	
+		}
+		return collect($members)->flatten()->all();
 	}
 
 	public function getGenderChartData($project_id)

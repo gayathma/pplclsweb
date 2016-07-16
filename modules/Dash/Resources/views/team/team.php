@@ -32,15 +32,15 @@
                 <div class="card-box">
                     <div class="contact-card">
                         <a class="pull-left" href="/dash/profile/<?php echo $employee->id;?>">
-                            <?php if($employee->gender->gender == 'F'):?>
+                            <?php if($employee->gender == 'F'):?>
                                 <img class="img-circle" src="/images/employees/girl.png" alt="">
                             <?php else:?>
                                 <img class="img-circle" src="/images/employees/boy.png" alt="">
                             <?php endif;?>
                         </a>
                         <div class="member-info">
-                            <h4 class="m-t-0 m-b-5 header-title"><b><?php echo ($employee->salutation)? $employee->salutation->title.'. ': ' ';?><?php echo $employee->getNameAttribute();?></b></h4>
-                            <p class="text-muted"><?php echo ($employee->role)? $employee->role->name: $employee->role_name;?></p>
+                            <h4 class="m-t-0 m-b-5 header-title"><b><?php echo $employee->first_name.' '.$employee->last_name;?></b></h4>
+                            <p class="text-muted"><?php echo $employee->role_name;?></p>
                             <p class="text-dark">
                                 <i class="icon-badge" style="font-size: 18px;"></i><span class="badge badge-xs badge-warning" style="position: absolute;top: 45px;left: 106px;"><?php echo $employee->grade?></span>
                             </p>
@@ -145,6 +145,22 @@ jsPlumb.ready(function () {
             });
         }
 
+        var arr = <?php echo $tree;?>;
+
+        function rec(c){
+
+            for(var x in c){
+               if ('children' in c[x]){
+                    rec(c[x].children);
+                    console.log(c[x].name+' '+c[x].role);
+                }else{
+                  console.log(c[x].name+' '+c[x].role);
+                  continue;
+                }
+            }
+        }
+
+        rec(arr);
         
         instance.connect({uuids: ["chartWindow3-bottom", "chartWindow6-top" ], overlays: overlays, detachable: true, reattach: true});
         instance.connect({uuids: ["chartWindow1-bottom", "chartWindow2-top" ], overlays: overlays});
@@ -163,7 +179,8 @@ jsPlumb.ready(function () {
 <div class="jtk-demo-canvas canvas-wide chart-demo jtk-surface jtk-surface-nopan" id="canvas">
     <?php foreach ($employees as $employee):?>
                 <div class="window" id="employee<?php echo $employee->id;?>">
-                    <?php echo $employee->getNameAttribute();?>
+                    <?php echo $employee->first_name.' '.$employee->last_name;?>
                 </div>
-                <?php endforeach;?>
-            </div>
+    <?php endforeach;?>
+</div>
+
