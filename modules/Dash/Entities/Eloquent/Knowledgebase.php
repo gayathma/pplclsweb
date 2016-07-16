@@ -13,5 +13,10 @@ class Knowledgebase extends Model
     protected $fillable = ['dim_hemployee_id', 'dim_hproject_id', 'workload_planned',
      'workload_actual', 'start_date', 'estimated_end_date', 'actual_end_date'];
 
+    public function project()
+    {
+        return $this->belongsTo(Project::class, 'dim_hproject_id');
+    }
+
 
 }

@@ -70,7 +70,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-9">
+	<div class="col-md-4">
         <div class="card-box">
             <h4 class="m-t-0 header-title m-b-30"><b>Skill Set</b></h4>
             <?php foreach ($employee->employeeittechnologies as $technology):?>
@@ -90,110 +90,33 @@
 			    </div>
 			 <?php endforeach; ?>
         </div>
-         <div class="card-box">
-		    <section id="cd-timeline" class="cd-container">
-		        <div class="cd-timeline-block">
-		            <div class="cd-timeline-img cd-success">
-		                <i class="fa fa-tag"></i>
-		            </div> <!-- cd-timeline-img -->
-
-		            <div class="cd-timeline-content">
-		                <h3>Timeline Event One</h3>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum
-		                    provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis
-		                    unde? Iste voluptatibus minus veritatis qui ut.</p>
-		                <span class="cd-date">May 23</span>
-		            </div> <!-- cd-timeline-content -->
-		        </div> <!-- cd-timeline-block -->
-
-		        <div class="cd-timeline-block">
-		            <div class="cd-timeline-img cd-danger">
-		                <i class="fa fa-thumbs-up"></i>
-		            </div> <!-- cd-timeline-img -->
-
-		            <div class="cd-timeline-content">
-		                <h3>Timeline Event Two</h3>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum
-		                    provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis
-		                    unde?</p>
-		                <button type="button"
-		                        class="btn btn-primary btn-rounded waves-effect waves-light m-t-15">See more
-		                    detail
-		                </button>
-
-		                <span class="cd-date">May 30</span>
-		            </div> <!-- cd-timeline-content -->
-		        </div> <!-- cd-timeline-block -->
-
-		        <div class="cd-timeline-block">
-		            <div class="cd-timeline-img cd-info">
-		                <i class="fa fa-star"></i>
-		            </div> <!-- cd-timeline-img -->
-
-		            <div class="cd-timeline-content">
-		                <h3>Timeline Event Three</h3>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, obcaecati,
-		                    quisquam id molestias eaque asperiores voluptatibus cupiditate error assumenda
-		                    delectus odit similique earum voluptatem doloremque dolorem ipsam quae rerum
-		                    quis. Odit, itaque, deserunt corporis vero ipsum nisi eius odio natus ullam
-		                    provident pariatur temporibus quia eos repellat ... <a href="#">Read more</a>
-		                </p>
-		                <span class="cd-date">Jun 05</span>
-		            </div> <!-- cd-timeline-content -->
-		        </div> <!-- cd-timeline-block -->
-
-		        <div class="cd-timeline-block">
-		            <div class="cd-timeline-img cd-pink">
-		                <i class="fa fa-image"></i>
-		            </div> <!-- cd-timeline-img -->
-
-		            <div class="cd-timeline-content">
-		                <h3>Timeline Event Four</h3>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum
-		                    provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis
-		                    unde? Iste voluptatibus minus veritatis qui ut.</p>
-		                <img src="assets/images/small/img1.jpg" alt="">
-		                <span class="cd-date">Jun 14</span>
-		            </div> <!-- cd-timeline-content -->
-		        </div> <!-- cd-timeline-block -->
-
-		        <div class="cd-timeline-block">
-		            <div class="cd-timeline-img cd-warning">
-		                <i class="fa fa-pencil-square-o"></i>
-		            </div> <!-- cd-timeline-img -->
-
-		            <div class="cd-timeline-content">
-		                <h3>Timeline Event Five</h3>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum
-		                    provident rerum.</p>
-		                <button type="button"
-		                        class="btn btn-primary btn-rounded waves-effect waves-light m-t-15">See more
-		                    detail
-		                </button>
-		                <span class="cd-date">Jun 18</span>
-		            </div> <!-- cd-timeline-content -->
-		        </div> <!-- cd-timeline-block -->
-
-		        <div class="cd-timeline-block">
-		            <div class="cd-timeline-img cd-primary">
-		                <i class="fa fa-paperclip"></i>
-		            </div> <!-- cd-timeline-img -->
-
-		            <div class="cd-timeline-content">
-		                <h3>Timeline Event End</h3>
-		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, obcaecati,
-		                    quisquam id molestias eaque asperiores voluptatibus cupiditate error assumenda
-		                    delectus odit similique earum voluptatem doloremque dolorem ipsam quae rerum
-		                    quis. Odit, itaque, deserunt corporis vero ipsum nisi eius odio natus ullam
-		                    provident pariatur temporibus quia eos repellat consequuntur perferendis enim
-		                    amet quae quasi repudiandae sed quod veniam dolore possimus rem voluptatum
-		                    eveniet eligendi quis fugiat aliquam sunt similique aut adipisci.</p>
-		                <span class="cd-date">Jun 30</span>
-		            </div> <!-- cd-timeline-content -->
-		        </div> <!-- cd-timeline-block -->
-		    </section> <!-- cd-timeline -->
-		</div>
 	</div>
+	<div class="col-lg-5">
+	    <div class="card-box">
+	      <h4 class="m-t-0 m-b-20 header-title"><b>Project Success Rates</b></h4>
+
+	      <div class="inbox-widget nicescroll mx-box" tabindex="5001" style="overflow: hidden; outline: none;">
+	        <?php foreach ($projects as $project) :?>
+	          <a href="#">
+	            <div class="inbox-item">
+	              <div class="inbox-item-img">
+	                 <img class="img-circle" src="/images/projects/mystery.png" class="img-circle">
+	              </div>
+	              <p class="inbox-item-author"><?php echo ($project->project)? $project->project->name : ' - ';?></p>
+	              <p class="inbox-item-text">
+	              	<h5 class="text-muted">Success Rate <span class="pull-right">57%</span></h5>
+	              	<div class="progress progress-sm m-0">
+	              		<div class="progress-bar progress-bar-pink" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style="width: 57%">
+	              			<span class="sr-only">57% Complete</span>
+	              		</div>
+	              	</div>
+	              </p>
+	            </div>
+	          </a>
+	        <?php endforeach;?>
+	      </div>
+	    </div>
+  	</div>
 </div>
 <script type="text/javascript">
 //menu active

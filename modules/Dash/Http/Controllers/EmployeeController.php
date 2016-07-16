@@ -16,12 +16,15 @@ class EmployeeController extends Controller {
 
 		if(!is_null($this->settingRepository->get('system_type')) && ($this->settingRepository->get('system_type') == 'apparel')){
 			$template = 'dash::employees.profile_apparel';
+			$projects = null;
 		}else{
 			$template = 'dash::employees.profile';
+			$projects = $this->employeeitRepository->find($id)->employeeitknowledgebases;
 		}
 
 		return View::make($this->layout, ['content' => View::make($template,[
-				'employee' => $this->employeeitRepository->find($id)
+				'employee' => $this->employeeitRepository->find($id),
+				'projects' => $projects
 			])->render()])->render();
 	}
 

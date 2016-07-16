@@ -65,6 +65,29 @@
       </div>
     </div>
   </div>
+  <div class="col-lg-4">
+    <div class="card-box">
+      <h4 class="m-t-0 m-b-20 header-title"><b>New Projects</b></h4>
+
+      <div class="inbox-widget nicescroll mx-box" tabindex="5001" style="overflow: hidden; outline: none;">
+        <?php 
+        foreach ($projects as $project) :
+          if(count($project->knowledgebases) == 0):
+        ?>
+            <a href="#">
+              <div class="inbox-item">
+                <div class="inbox-item-img">
+                     <img class="img-circle" src="/images/projects/mystery.png" class="img-circle">
+                </div>
+                <p class="inbox-item-author"><?php echo $project->name;?></p>
+                <p class="inbox-item-text">Start Date  -  <?php echo $project->wo_received_date;?></p>
+              </div>
+            </a>
+          <?php endif;?>
+        <?php endforeach;?>
+      </div>
+    </div>
+  </div>
 </div>
 
 

@@ -44,5 +44,10 @@ class Employeeit extends Model
         return $this->hasMany(EmployeeitTechnology::class,'dim_hemployee_id');
     }
 
+    public function employeeitknowledgebases()
+    {
+        return $this->hasMany(Knowledgebase::class,'dim_hemployee_id');
+    }
+
 
 }
