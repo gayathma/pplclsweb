@@ -2274,7 +2274,7 @@ button.confirm {
 .tech-multi >ul > li > input{
   border: none !important;
 }
-.loader{
+.loader-custom{
     position: fixed;
     right: 0;
     left: 0;
