@@ -6,7 +6,7 @@
         <meta name="description" content="BI Tool to select the best team for a given project.">
         <meta name="author" content="People Clues">
 
-        <link rel="shortcut icon" href="/images/favicon_1.ico">
+        <link rel="shortcut icon" href="/images/favicon.ico">
 
         <title>People Clues</title>
 
@@ -68,8 +68,7 @@
 
                     <!-- Logo container-->
                     <div class="logo">
-                        <a href="/dash" class="logo"><span>People<i
-                                class="md">Clues</i></span></a>
+                        <a href="/dash" class="logo"><img src="/images/logo.png" alt="logo"></a>
                     </div>
                     <!-- End Logo container-->
 

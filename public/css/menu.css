@@ -26,14 +26,13 @@ File: Menu
   color: #5fbeaa;
 }
 #topnav .topbar-main {
-  background-color: #36404a;
+  background-color: #49a2b0;
 }
 #topnav .topbar-main .logo {
   color: #ffffff !important;
   font-size: 20px;
   font-weight: 700;
   letter-spacing: .05em;
-  margin-top: 8px;
   text-transform: uppercase;
   float: left;
 }
@@ -133,7 +132,6 @@ File: Menu
   color: #ffffff;
   padding-left: 20px;
   padding-right: 40px;
-  background: rgba(255, 255, 255, 0.1);
   box-shadow: none;
   border-radius: 30px;
   height: 30px;
