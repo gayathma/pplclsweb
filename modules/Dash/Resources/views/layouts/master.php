@@ -84,9 +84,6 @@
                                     </form>
                                 </li>
                                 <li class="dropdown hidden-xs">
-                                    <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
-                                        <i class="icon-bell"></i> <span class="badge badge-xs badge-danger">3</span>
-                                    </a>
                                     <ul class="dropdown-menu dropdown-menu-lg">
                                         <li class="notifi-title"><span class="label label-default pull-right">New 3</span>Notification</li>
                                         <li class="list-group nicescroll notification-list">

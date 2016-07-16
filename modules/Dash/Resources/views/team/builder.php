@@ -67,6 +67,7 @@
 </div>
 <!-- End row -->
 <div class="row loader" id="loader" style="display:none">
+    <p class="loading-text">Please wait!! your team is generating...</p>
     <div class="sk-cube-grid">
       <div class="sk-cube sk-cube1"></div>
       <div class="sk-cube sk-cube2"></div>
@@ -78,7 +79,6 @@
       <div class="sk-cube sk-cube8"></div>
       <div class="sk-cube sk-cube9"></div>
     </div>
-    <div>Please wait!! your team is generating...</div>
 </div>
 
 

@@ -144,11 +144,8 @@ jsPlumb.ready(function () {
                 maxConnections: -1
             });
         }
-        var arr = <?php echo $tree;?>;
-        jQuery.each(arr, function() {
 
-        }
-
+        
         instance.connect({uuids: ["chartWindow3-bottom", "chartWindow6-top" ], overlays: overlays, detachable: true, reattach: true});
         instance.connect({uuids: ["chartWindow1-bottom", "chartWindow2-top" ], overlays: overlays});
         instance.connect({uuids: ["chartWindow1-bottom", "chartWindow3-top" ], overlays: overlays});

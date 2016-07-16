@@ -1,10 +1,13 @@
 <?php namespace Modules\Dash\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Modules\Dash\Entities\Eloquent\Employeeit;
+use Modules\Dash\Entities\Eloquent\Project;
 use Modules\Dash\Contracts\EmployeeitRepositoryContract as EmployeeitRepository;
 use Modules\Dash\Contracts\ProjectRepositoryContract as ProjectRepository;
 use Modules\Dash\Contracts\SettingRepositoryContract as SettingRepository;
 use View;
+use DateTime;
 
 class DashController extends Controller {
 
@@ -21,12 +24,19 @@ class DashController extends Controller {
 			$template = 'dash::portal.home';
 			$employees = $this->employeeitRepository->all();
 			$projects = $this->projectRepository->all();
+			$vacantEmployees = Employeeit::where('is_available' , 1)->take(50)->get();
+			$ongoingProjectsCount = Project::where('estimated_end_date', '>=', 'CURDATE()')->get()->count();
+			$closedProjectsCount = Project::where('estimated_end_date', '<', 'CURDATE()')->get()->count();
+
 
 		}
 		
 		return View::make($this->layout, ['content' => View::make($template,[
 				'employees' => $employees,
-				'projects' => $projects
+				'projects' => $projects,
+				'vacantEmployees' => $vacantEmployees,
+				'ongoingProjectsCount' => $ongoingProjectsCount,
+				'closedProjectsCount' => $closedProjectsCount
 			])->render()])->render();
 	
 	}

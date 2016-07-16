@@ -34,11 +34,11 @@
             foreach ($projects as $project):?>
                 <div class="card-box m-b-10">
                     <div class="table-box opport-box">
-                        <div class="table-detail">
+                        <div class="table-detail table-detail-custom">
                             <img src="/images/projects/mystery.png" alt="img" class="img-circle thumb-lg m-r-15" />
                         </div>
 
-                        <div class="table-detail">
+                        <div class="table-detail table-detail-text">
                             <div class="member-info">
                                 <h4 class="m-t-0"><b><?php echo $project->name;?> </b></h4>
                                 <p class="text-dark m-b-5"><b>Type: </b> <span class="text-muted"><?php echo (!is_null($project->type))? ucfirst($project->type) : ' - '; ?></span></p>

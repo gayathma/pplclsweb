@@ -17,6 +17,7 @@ class ProjectController extends Controller {
 	private $projectRepository;
 	private $settingRepository;
 	private $employeeitRepository;
+	private $uid = array();
 
 	public function buildTree(\Illuminate\Pagination\LengthAwarePaginator $elements, $parentId = 0) {
 	    $branch = array();
@@ -24,13 +25,17 @@ class ProjectController extends Controller {
 	    	$new_element = new \StdClass;
 	    	$new_element->name = $element->getNameAttribute();
 	    	$new_element->role = $element->role->name;
+	        $record = [];
+	        $record[] = "employee".$element->id."-bottom";
 	        if ($element->role->parent == $parentId) {
 	            $children = $this->buildTree($elements, $element->dim_hrole_id);
 	            if ($children) {
 	                $new_element->children = $children;
+	            	$record[] = "employee".$element->id."-top";
 	            }
 	            $branch[] = $new_element;
 	        }
+	        $this->uid[] = $record;
 	    }
 
 	    return $branch;
@@ -65,6 +70,8 @@ class ProjectController extends Controller {
     		exec('python '.app_path().'/ItModel/SVM_Model.py '.$request::get('project'),$output, $return);
     	}elseif($algo_type == 2){
     		exec('python '.app_path().'/ItModel/KNN_Model.py '.$request::get('project'),$output, $return);
+    	}elseif($algo_type == 3){
+    		exec('python '.app_path().'/ItModel/NB_Model.py '.$request::get('project'),$output, $return);
     	}
 
     	$tree = $this->buildTree($this->employeeitRepository->paginate(6));

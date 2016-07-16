@@ -22,15 +22,10 @@
         <?php if(count($roles)):
             foreach ($roles as $role): ?>
             <div class="col-md-4">
-                <div class="card-box">
-                    <div class="text-center">
-                        <h3 class="text-dark"><b><?php echo $role->name;?></b></h3>
-                    </div>
-                    <div class="text-right">
-                        <span class="badge badge-info"><?php echo count($role->employeeits)?></span>
-                    </div>
-
-                </div>
+                <div class="widget-panel widget-style-2 bg-white">
+                            <h2 class="m-0 text-dark  role-text"><?php echo $role->name;?></h2>
+                            <i class="md role-count text-primary"><?php echo count($role->employeeits)?></i>
+                        </div>
             </div>
         <?php endforeach;?>
         <?php else:?>

@@ -1716,7 +1716,7 @@ ul.ColVis_collection li {
 .transaction-list .tran-text {
   padding-left: 25px;
   white-space: nowrap;
-  display: inline-block;
+  display: inline;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 115px;
@@ -2284,4 +2284,35 @@ button.confirm {
     width: 100%;
     background-repeat: repeat;
     height: 100%;
+}
+
+.table-detail-custom{
+    display: inline-block;
+    vertical-align: middle;
+    width: 150px;
+}
+.table-detail-text{
+  width: 50%;
+}
+.role-text{
+    width: 70%;
+    font-size: 22px;
+    display: inline-block;
+}
+
+.role-count{
+    padding: 18px 28px !important;
+    FONT-FAMILY: initial;
+    FONT-STYLE: normal;
+    font-size: 48px;
+    display: inline-block;
+    width: 30%;
+    color: #5ebda9;
+}
+
+.loading-text{
+    text-align: center;
+    top: 400px;
+    position: relative;
+    color: white;
 }
