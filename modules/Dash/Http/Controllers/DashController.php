@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use Modules\Dash\Entities\Eloquent\Employeeit;
 use Modules\Dash\Entities\Eloquent\Project;
+use Modules\Dash\Entities\Eloquent\Knowledgebase;
 use Modules\Dash\Contracts\EmployeeitRepositoryContract as EmployeeitRepository;
 use Modules\Dash\Contracts\ProjectRepositoryContract as ProjectRepository;
 use Modules\Dash\Contracts\SettingRepositoryContract as SettingRepository;
@@ -25,8 +26,10 @@ class DashController extends Controller {
 			$employees = $this->employeeitRepository->all();
 			$projects = $this->projectRepository->all();
 			$vacantEmployees = Employeeit::where('is_available' , 1)->take(50)->get();
-			$ongoingProjectsCount = Project::where('estimated_end_date', '>=', 'CURDATE()')->get()->count();
-			$closedProjectsCount = Project::where('estimated_end_date', '<', 'CURDATE()')->get()->count();
+			$ongoingProjectsCount = Project::where('estimated_end_date', '>=', 'CURDATE()')->where('is_team_assigned', 1)->get()->count();
+			$closedProjectsCount = Project::where('estimated_end_date', '<', 'CURDATE()')->where('is_team_assigned', 1)->get()->count();
+			$newProjectsCount = Project::where('is_team_assigned', 0)->count();
+			$teams = Knowledgebase::groupBy('dim_hproject_id')->get();
 
 
 		}
@@ -36,7 +39,9 @@ class DashController extends Controller {
 				'projects' => $projects,
 				'vacantEmployees' => $vacantEmployees,
 				'ongoingProjectsCount' => $ongoingProjectsCount,
-				'closedProjectsCount' => $closedProjectsCount
+				'closedProjectsCount' => $closedProjectsCount,
+				'newProjectsCount' => $newProjectsCount,
+				'teams' => $teams
 			])->render()])->render();
 	
 	}

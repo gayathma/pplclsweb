@@ -36,9 +36,10 @@ class EmployeeitRepository extends BaseRepository implements EmployeeitRepositor
 			$roleMembers = Predictionit::join('dim_hemployee', 'dim_hemployee.id', '=', 'predictionit.employee_id')
 				->join('dim_hrole', 'dim_hrole.id', '=', 'dim_hemployee.dim_hrole_id')
 				->join('dim_hgender', 'dim_hgender.id', '=', 'dim_hemployee.dim_hgender_id')
-				->select('dim_hrole.name as role_name', 'dim_hrole.parent as parent','dim_hemployee.*','dim_hgender.gender')
+				->select('dim_hrole.name as role_name', 'dim_hrole.parent as parent','dim_hemployee.*','dim_hgender.gender','predictionit.employee_id')
 				->where('project_id', $attributes['project'])
 				->where('dim_hrole_id', $role)
+				->where('is_available', 1)
 				->orderBy($algo, 'desc')
 				->take($count)
 				->get()->flatten()->all();

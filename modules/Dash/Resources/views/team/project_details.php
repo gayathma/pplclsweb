@@ -44,7 +44,7 @@
 					<label >Description : </label>
 				</div>
 				<div class="col-sm-2"> 
-					<label><?php echo (!is_null($project->description))? $project->description : ' - '; ?></label>
+					<label><?php echo ($project->description != '')? $project->description : ' - '; ?></label>
 				</div>
 			</div>
 		</div>

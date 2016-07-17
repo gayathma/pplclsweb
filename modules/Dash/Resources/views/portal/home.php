@@ -24,6 +24,32 @@
           <div class="clearfix"></div>
       </div>
   </div>
+
+  <div class="col-md-6 col-lg-3">
+      <div class="widget-bg-color-icon card-box">
+          <div class="bg-icon bg-icon-success pull-left">
+              <i class="md md-language text-success"></i>
+          </div>
+          <div class="text-right">
+              <h3 class="text-dark"><b class="counter"><?php echo count($teams);?></b></h3>
+              <p class="text-muted">Predicted Teams</p>
+          </div>
+          <div class="clearfix"></div>
+      </div>
+  </div>
+
+  <div class="col-md-6 col-lg-3">
+      <div class="widget-bg-color-icon card-box">
+          <div class="bg-icon bg-icon-warning pull-left">
+              <i class="md md-language text-warning"></i>
+          </div>
+          <div class="text-right">
+              <h3 class="text-dark"><b class="counter"><?php echo count($teams);?></b></h3>
+              <p class="text-muted">Predicted Teams</p>
+          </div>
+          <div class="clearfix"></div>
+      </div>
+  </div>
 </div>
 <div class="row">
   <div class="col-lg-4">
@@ -141,8 +167,9 @@ $(document).ready(function () {
         name: 'Projects',
         colorByPoint: true,
         data: [
-        {name:'On Going',y:<?php echo $ongoingProjectsCount;?>},
-        {name:'Completed',y:<?php echo $closedProjectsCount;?>}
+          {name:'On Going',y:<?php echo $ongoingProjectsCount;?>},
+          {name:'Completed',y:<?php echo $closedProjectsCount;?>},
+          {name:'New',y:<?php echo $newProjectsCount;?>}
         ]
       }]
     });

@@ -10,7 +10,8 @@ class Project extends Model
     
     protected $table = 'dim_hproject';
     
-    protected $fillable = ['name', 'wo_received_date', 'estimated_end_date', 'project_value', 'type', 'work_to_be_done', 'description'];
+    protected $fillable = ['name', 'wo_received_date', 'estimated_end_date',
+     'project_value', 'type', 'work_to_be_done', 'description', 'is_team_assigned'];
 
     public function projectType()
     {

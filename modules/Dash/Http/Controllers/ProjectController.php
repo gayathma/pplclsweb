@@ -21,11 +21,12 @@ class ProjectController extends Controller {
 	public function buildTree(array $elements, $parentId = 0) {
 	    $branch = array();
 	    foreach ($elements as $element) {
+
 	    	$new_element = new \StdClass;
 	    	$new_element->id = $element->employee_id;
 	    	$new_element->name = $element->first_name.' '.$element->last_name;
 	    	$new_element->role = $element->role_name;
-	        //$record[] = "employee".$element->id."-bottom";
+
 	        if ($element->parent == $parentId) {
 	            $children = $this->buildTree($elements, $element->dim_hrole_id);
 	            if ($children) {
@@ -37,6 +38,7 @@ class ProjectController extends Controller {
 
 	    return $branch;
 	}
+
 
 	public function getAlgorithmAccuracy(Request $request)
     {
@@ -107,7 +109,7 @@ class ProjectController extends Controller {
 		$template = 'dash::team.builder';
 
 		return View::make($this->layout, ['content' => View::make($template,[
-				'projects' => Project::all(),
+				'projects' => Project::where('is_team_assigned', 0)->get(),
 				'settingRepository' => $this->settingRepository
 			])->render()])->render();
 	}

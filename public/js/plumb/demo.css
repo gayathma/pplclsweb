@@ -6,7 +6,8 @@
 /** ELEMENTS **/
 .chart-demo .window { 
 	border:0.1em dotted #d4e06b; 	
-	width:14em; height:4em; 	
+	width:14em; 
+    /*height:4em;*/ 	
 	line-height:4em;	
 }
 
@@ -43,7 +44,7 @@
     color:black;
     padding:0.5em;
     width:80px;
-    height:80px;
+    /*height:80px;*/
     line-height: 80px;
     -webkit-transition: -webkit-box-shadow 0.15s ease-in;
     -moz-transition: -moz-box-shadow 0.15s ease-in;

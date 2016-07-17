@@ -6,7 +6,7 @@
                 name: {
                     required: true
                 },
-                project_type_id: {
+                type: {
                     required: true
                 },
                 duration: {
@@ -96,7 +96,7 @@
                             <div class="col-md-4">
                                 <div class="form-group m-b-20">
                                     <label>Type <span class="text-danger">*</span></label>
-                                    <select class="form-control select2" name="project_type_id">
+                                    <select class="form-control select2" name="type">
                                         <option value="">Select</option>
                                         <?php foreach ($projectTypes as  $projectType): ?>
                                             <option <?php echo (!is_null($project) && $project->type == $projectType->name ? ' selected' : ''); ?> value="<?php echo $projectType->name; ?>"><?php echo $projectType->name; ?></option>
