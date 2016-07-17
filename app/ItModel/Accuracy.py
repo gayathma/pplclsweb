@@ -25,7 +25,7 @@ predicted_result = df_mysql['is_suitable']
 y = predicted_result
 
 # We don't need these columns
-to_drop = ['id','dim_hemployee_id','dim_hproject_id','is_suitable','type','start_date','estimated_end_date','actual_end_date']
+to_drop = ['id','dim_hemployee_id','dim_hproject_id','is_suitable','type','start_date','estimated_end_date','actual_end_date','created_at','updated_at']
 predict_feat_space = df_mysql.drop(to_drop,axis=1)
 
 

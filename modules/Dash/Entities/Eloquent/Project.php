@@ -18,7 +18,7 @@ class Project extends Model
         return $this->belongsTo(ProjectType::class);
     }
 
-    public function knowledgebases()
+    public function employeeitknowledgebases()
     {
         return $this->hasMany(Knowledgebase::class,'dim_hproject_id');
     }

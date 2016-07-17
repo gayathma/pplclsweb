@@ -8,7 +8,7 @@ use Modules\Dash\Contracts\EmployeeitRepositoryContract as EmployeeitRepository;
 use Modules\Dash\Contracts\ProjectRepositoryContract as ProjectRepository;
 use Modules\Dash\Contracts\SettingRepositoryContract as SettingRepository;
 use View;
-use DateTime;
+use DB;
 
 class DashController extends Controller {
 
@@ -25,23 +25,29 @@ class DashController extends Controller {
 			$template = 'dash::portal.home';
 			$employees = $this->employeeitRepository->all();
 			$projects = $this->projectRepository->all();
+			$newProjects = Project::where('is_team_assigned', 0)->get();
 			$vacantEmployees = Employeeit::where('is_available' , 1)->take(50)->get();
 			$ongoingProjectsCount = Project::where('estimated_end_date', '>=', 'CURDATE()')->where('is_team_assigned', 1)->get()->count();
 			$closedProjectsCount = Project::where('estimated_end_date', '<', 'CURDATE()')->where('is_team_assigned', 1)->get()->count();
 			$newProjectsCount = Project::where('is_team_assigned', 0)->count();
+			$thisMonthTeams = Knowledgebase::where(DB::raw('MONTH(created_at)'), '=', date('n'))->groupBy('dim_hproject_id')->get();
 			$teams = Knowledgebase::groupBy('dim_hproject_id')->get();
-
+			$projectNames = Project::where('estimated_end_date', '<', 'CURDATE()')->where('is_team_assigned', 1)->get()->pluck('name');
+			$projectWorkloadData = $this->projectRepository->getWorkloadChartData();
 
 		}
-		
 		return View::make($this->layout, ['content' => View::make($template,[
 				'employees' => $employees,
 				'projects' => $projects,
+				'newProjects' => $newProjects,
 				'vacantEmployees' => $vacantEmployees,
 				'ongoingProjectsCount' => $ongoingProjectsCount,
 				'closedProjectsCount' => $closedProjectsCount,
 				'newProjectsCount' => $newProjectsCount,
-				'teams' => $teams
+				'thisMonthTeams' => $thisMonthTeams,
+				'teams' => $teams,
+				'projectNames' => $projectNames,
+				'projectWorkloadData' => json_encode($projectWorkloadData)
 			])->render()])->render();
 	
 	}

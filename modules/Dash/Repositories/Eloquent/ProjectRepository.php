@@ -3,8 +3,10 @@
 namespace Modules\Dash\Repositories\Eloquent;
 
 use Modules\Dash\Entities\Eloquent\Project;
+use Modules\Dash\Entities\Eloquent\Knowledgebase;
 use Modules\Dash\Contracts\ProjectRepositoryContract;
 use Prettus\Repository\Eloquent\BaseRepository;
+use DB;
 
 
 class ProjectRepository extends BaseRepository implements ProjectRepositoryContract
@@ -23,5 +25,26 @@ class ProjectRepository extends BaseRepository implements ProjectRepositoryContr
     public function model()
     {
         return Project::class;
+    }
+
+    public function getWorkloadChartData()
+    {
+        $all_projects = Project::count();
+        $results = Knowledgebase::join('dim_hproject', 'dim_hproject.id', '=', 'fact_knowledgebase.dim_hproject_id')
+            ->select('dim_hproject.name as project',DB::raw('sum(workload_actual) as data'))
+            ->whereNotNull('actual_end_date')
+            ->groupBy('dim_hproject_id')
+            ->get();
+        
+
+        $result_arr = [];
+        foreach ($results as $result) {
+            $result_arr[] = (($result->data/$all_projects)*10);
+        }
+
+        $data = ['name' => 'Success Rate' , 'data' => $result_arr];
+    
+        return $data;
+
     }
 }

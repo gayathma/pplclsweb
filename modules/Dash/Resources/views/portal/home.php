@@ -41,16 +41,17 @@
   <div class="col-md-6 col-lg-3">
       <div class="widget-bg-color-icon card-box">
           <div class="bg-icon bg-icon-warning pull-left">
-              <i class="md md-language text-warning"></i>
+              <i class="md  md-accessibility text-warning"></i>
           </div>
           <div class="text-right">
-              <h3 class="text-dark"><b class="counter"><?php echo count($teams);?></b></h3>
-              <p class="text-muted">Predicted Teams</p>
+              <h3 class="text-dark"><b class="counter"><?php echo count($thisMonthTeams);?></b></h3>
+              <p class="text-muted"><?php echo date('F');?> Predicted Teams</p>
           </div>
           <div class="clearfix"></div>
       </div>
   </div>
 </div>
+
 <div class="row">
   <div class="col-lg-4">
     <div class="card-box">
@@ -58,7 +59,7 @@
 
       <div class="inbox-widget nicescroll mx-box" tabindex="5001" style="overflow: hidden; outline: none;">
         <?php foreach ($vacantEmployees as $employee) :?>
-          <a href="#">
+          <a href="/dash/profile/<?php echo $employee->id;?>">
             <div class="inbox-item">
               <div class="inbox-item-img">
                 <?php if($employee->gender->gender == 'F'):?>
@@ -97,10 +98,10 @@
 
       <div class="inbox-widget nicescroll mx-box" tabindex="5001" style="overflow: hidden; outline: none;">
         <?php 
-          foreach ($projects as $project) :
-            if(count($project->knowledgebases) == 0):
+          if(count($newProjects) > 0):
+            foreach ($newProjects as $project) :
           ?>
-              <a href="#">
+              <a href="/dash/projects">
                 <div class="inbox-item">
                   <div class="inbox-item-img">
                        <img class="img-circle" src="/images/projects/mystery.png" class="img-circle">
@@ -109,21 +110,36 @@
                   <p class="inbox-item-text">Start Date  -  <?php echo $project->wo_received_date;?></p>
                 </div>
               </a>
-            <?php endif;?>
           <?php endforeach;?>
+        <?php else:?>
+            <a href="#">
+                <div class="inbox-item">
+                  No New Projects Found.
+                </div>
+            </a>
+        <?php endif;?>
       </div>
     </div>
   </div>
 </div>
+
 <div class="row">
   <div class="col-lg-12">
-    <div class="card-box">
+    <div class="portlet"><!-- /primary heading -->
+      <div class="portlet-heading">
+        <h3 class="portlet-title text-dark">
+          Average Project Success Rate
+        </h3>
+        <div class="clearfix"></div>
+      </div>
+      <div>
+        <div class="portlet-body">
+          <div id="avg_workload_chart_container" style="height: 320px;"></div>
+        </div>
+      </div>
     </div>
   </div>
-</div> 
-
-
-
+</div>
 
 <script type="text/javascript">
 //menu active
@@ -131,6 +147,51 @@ $('#dash_menu').addClass('active');
 
 
 $(document).ready(function () {
+
+    //Average Workload Chart
+    $('#avg_workload_chart_container').highcharts({
+      colors: ['#34d3eb'],
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: ''
+      },
+      xAxis: {
+        categories: <?php echo json_encode($projectNames);?>,
+        crosshair: true
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Average Success Rate'
+        }
+      },
+      credits: { 
+        enabled: false 
+      },
+      exporting: {
+        enabled: false 
+      },
+      legend: {
+        enabled: false 
+      },
+      tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.x}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        '<td style="padding:0"><b>{point.y}%</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+      },
+      plotOptions: {
+        column: {
+          pointPadding: 0.2,
+          borderWidth: 0
+        }
+      },
+      series: [<?php echo $projectWorkloadData;?>]
+    });
 
     // Project Status chart
     $('#project_status_chart_container').highcharts({

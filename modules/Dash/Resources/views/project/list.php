@@ -28,7 +28,7 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-8">
+    <div class="col-lg-9">
         <?php
         if(count($projects)): 
             foreach ($projects as $project):?>
@@ -46,12 +46,22 @@
                         </div>
 
                         <div class="table-detail lable-detail">
-                            <?php if(strtotime($project->estimated_end_date) >= strtotime(date('Y-m-d'))):?>
+                            <?php if(strtotime($project->estimated_end_date) >= strtotime(date('Y-m-d')) && ($project->is_team_assigned == 1)):?>
                                 <span class="label label-info">On Going</span>
+                            <?php elseif($project->is_team_assigned == 0):?>
+                                <span class="label label-success">New</span>
                             <?php else:?>
                                 <span class="label label-danger">Completed</span>
                             <?php endif;?>
                         </div>
+
+                        
+                        <div class="table-detail lable-detail">
+                            <?php if($project->is_team_assigned != 0):?>
+                            <a class="btn btn-success waves-effect waves-light" href="/dash/team-builder/team/<?php echo $project->id;?>"> <i class="fa fa-group m-r-5"></i> <span>View Team</span> </a>
+                            <?php endif;?>
+                        </div>
+                        
 
                         <div class="table-detail table-actions-bar">
                             <a href="#" class="table-action-btn"><i class="md md-edit"></i></a>
@@ -72,7 +82,7 @@
             <?php endif;?>
     </div> <!-- end col -->
 
-    <div class="col-lg-4">
+    <div class="col-lg-3">
         <div class="card-box m-b-0">
             <h4 class=" header-title m-t-0 m-b-20 text-dark">Leads Statics</h4>
             <div id="morris-bar-stacked" style="height: 260px;"></div>

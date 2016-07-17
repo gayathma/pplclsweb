@@ -53,19 +53,14 @@
 
         //creating Stacked chart
         var $stckedData  = [
-            { y: '2005', a: 45, b: 180, c: 100 },
-            { y: '2006', a: 75,  b: 65, c: 80 },
-            { y: '2007', a: 100, b: 90, c: 56 },
-            { y: '2008', a: 75,  b: 65, c: 89 },
-            { y: '2009', a: 100, b: 90, c: 120 },
-            { y: '2010', a: 75,  b: 65, c: 110 },
-            { y: '2011', a: 50,  b: 40, c: 85 },
+            
             { y: '2012', a: 75,  b: 65, c: 52 },
             { y: '2013', a: 50,  b: 40, c: 77 },
             { y: '2014', a: 75,  b: 65, c: 90 },
-            { y: '2015', a: 100, b: 90, c: 130 }
+            { y: '2015', a: 100, b: 90, c: 130 },
+            { y: '2016', a: 20,  b: 2, c: 1 },
         ];
-        this.createStackedChart('morris-bar-stacked', $stckedData, 'y', ['a', 'b', 'c'], ['Desktops', 'Tablets', 'Mobiles'], ['#5fbeaa', '#5d9cec', '#ebeff2']);
+        this.createStackedChart('morris-bar-stacked', $stckedData, 'y', ['a', 'b', 'c'], ['New', 'On Going', 'Completed'], ['#5fbeaa', '#5d9cec', '#ebeff2']);
 
         //creating area chart
         var $areaDotData = [

@@ -25,7 +25,7 @@ class CreateProjectRequest extends Request
     {
         return [
             'name' => 'required',
-            'project_type_id' => 'required'
+            'type' => 'required'
         ];
     }
 }

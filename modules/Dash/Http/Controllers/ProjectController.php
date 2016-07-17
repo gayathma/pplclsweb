@@ -8,6 +8,7 @@ use Modules\Dash\Entities\Eloquent\Technology;
 use Modules\Dash\Contracts\ProjectRepositoryContract as ProjectRepository;
 use Modules\Dash\Contracts\SettingRepositoryContract as SettingRepository;
 use Modules\Dash\Contracts\EmployeeitRepositoryContract as EmployeeitRepository;
+use Modules\Dash\Contracts\KnowledgebaseRepositoryContract as KnowledgebaseRepository;
 use Modules\Dash\Http\Requests\CreateProjectRequest;
 use View;
 use Request;
@@ -17,6 +18,7 @@ class ProjectController extends Controller {
 	private $projectRepository;
 	private $settingRepository;
 	private $employeeitRepository;
+	private $knowledgebaseRepository;
 
 	public function buildTree(array $elements, $parentId = 0) {
 	    $branch = array();
@@ -56,9 +58,15 @@ class ProjectController extends Controller {
 			]);
 	}
 
-	public function getTeam($project_id, $algo_type, ProjectRepository $projectRepository,Request $request)
+	public function getTeam($project_id, ProjectRepository $projectRepository)
 	{
-		
+		$project = $projectRepository->find($project_id);
+		$members = $project->employeeitknowledgebases;
+    	
+		return View::make($this->layout, ['content' => View::make('dash::team.team_details',[
+				'project' => $project,
+				'employees' => $members
+			])->render()])->render();
 	}
 
 	public function postPredictTeam( ProjectRepository $projectRepository, Request $request)
@@ -76,11 +84,13 @@ class ProjectController extends Controller {
     		$algo = 'nb_prob';
     	}
     	$members = $this->employeeitRepository->getTeamMembers($request::all(), $algo);
-
+    	$project = $projectRepository->find($request::get('project'));
+    	$this->knowledgebaseRepository->create(array_merge($members, ['project' => $project]));
+    	$project->update(['is_team_assigned' => 1]);
     	$tree = $this->buildTree($members);
 
         return View::make($this->layout, ['content' => View::make('dash::team.team',[
-				'project' => $projectRepository->find($request::get('project')),
+				'project' => $project,
 				'employees' => $members,
 				'tree' => json_encode($tree)
 			])->render()])->render();
@@ -134,11 +144,12 @@ class ProjectController extends Controller {
     }
 
     public function __construct(ProjectRepository $projectRepository, SettingRepository $settingRepository,
-    	EmployeeitRepository $employeeitRepository)
+    	EmployeeitRepository $employeeitRepository, KnowledgebaseRepository $knowledgebaseRepository)
     {
     	$this->projectRepository = $projectRepository;
     	$this->settingRepository = $settingRepository;
     	$this->employeeitRepository = $employeeitRepository;
+    	$this->knowledgebaseRepository = $knowledgebaseRepository;
     }
 
 }

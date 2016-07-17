@@ -70,7 +70,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-4">
+	<div class="col-md-5">
         <div class="card-box">
             <h4 class="m-t-0 header-title m-b-30"><b>Skill Set</b></h4>
             <?php foreach ($employee->employeeittechnologies as $technology):?>
@@ -91,7 +91,7 @@
 			 <?php endforeach; ?>
         </div>
 	</div>
-	<div class="col-lg-5">
+	<div class="col-lg-4">
 	    <div class="card-box">
 	      <h4 class="m-t-0 m-b-20 header-title"><b>Project Success Rates</b></h4>
 
@@ -104,10 +104,10 @@
 	              </div>
 	              <p class="inbox-item-author"><?php echo ($project->project)? $project->project->name : ' - ';?></p>
 	              <p class="inbox-item-text">
-	              	<h5 class="text-muted">Success Rate <span class="pull-right">57%</span></h5>
+	              	<h5 class="text-muted">Success Rate <span class="pull-right"><?php echo $project->workload_actual;?>%</span></h5>
 	              	<div class="progress progress-sm m-0">
-	              		<div class="progress-bar progress-bar-pink" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style="width: 57%">
-	              			<span class="sr-only">57% Complete</span>
+	              		<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo $project->workload_actual;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $project->workload_actual;?>%">
+	              			<span class="sr-only"><?php echo $project->workload_actual;?>% Complete</span>
 	              		</div>
 	              	</div>
 	              </p>

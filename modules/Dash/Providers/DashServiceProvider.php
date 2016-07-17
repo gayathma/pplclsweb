@@ -62,6 +62,11 @@ class DashServiceProvider extends ServiceProvider {
 	        'Modules\Dash\Contracts\TeamRepositoryContract', 
 	        'Modules\Dash\Repositories\Eloquent\TeamRepository'
         );
+
+        $this->app->bind(
+	        'Modules\Dash\Contracts\KnowledgebaseRepositoryContract', 
+	        'Modules\Dash\Repositories\Eloquent\KnowledgebaseRepository'
+        );
 	}
 
 
