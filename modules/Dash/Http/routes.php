@@ -36,6 +36,8 @@ Route::group(['prefix' => 'dash', 'namespace' => 'Modules\Dash\Http\Controllers'
 
 	Route::get('/general-setting/edit', 'SettingController@getEdit');
 	Route::post('/general-setting/edit', 'SettingController@postEdit');
+	Route::get('/general-setting/translate', 'SettingController@getTranslate');
+
 
 	Route::get('/team-structure-apparel', 'DashController@getTeamStructureApparel');
 });

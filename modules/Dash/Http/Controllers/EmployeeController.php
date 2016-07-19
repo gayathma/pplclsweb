@@ -41,6 +41,7 @@ class EmployeeController extends Controller {
     {
     	$this->employeeitRepository = $employeeitRepository;
     	$this->settingRepository = $settingRepository;
+
     }
 	
 }
