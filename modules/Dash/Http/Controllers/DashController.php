@@ -1,12 +1,16 @@
 <?php namespace Modules\Dash\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Modules\Dash\Contracts\EmployeeitRepositoryContract as EmployeeitRepository;
+use Modules\Dash\Contracts\ProjectRepositoryContract as ProjectRepository;
 use Modules\Dash\Contracts\SettingRepositoryContract as SettingRepository;
 use View;
 
 class DashController extends Controller {
 
 	private $settingRepository;
+	private $employeeitRepository;
+	private $projectRepository;
 	
 	public function index()
 	{
@@ -15,10 +19,15 @@ class DashController extends Controller {
 			$template = 'dash::portal.home_apparel';
 		}else{
 			$template = 'dash::portal.home';
+			$employees = $this->employeeitRepository->all();
+			$projects = $this->projectRepository->all();
 
 		}
 		
-		return View::make($this->layout, ['content' => View::make($template)->render()])->render();
+		return View::make($this->layout, ['content' => View::make($template,[
+				'employees' => $employees,
+				'projects' => $projects
+			])->render()])->render();
 	
 	}
 
@@ -44,9 +53,12 @@ class DashController extends Controller {
 		return View::make($this->layout, ['content' => View::make($template)->render()])->render();
 	}
 
-	public function __construct(SettingRepository $settingRepository)
-    {
+	public function __construct(SettingRepository $settingRepository, EmployeeitRepository $employeeitRepository,
+	 	ProjectRepository $projectRepository){
+
     	$this->settingRepository = $settingRepository;
+    	$this->employeeitRepository = $employeeitRepository;
+    	$this->projectRepository = $projectRepository;
     }
 	
 }

@@ -10,7 +10,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 class SettingRepository extends BaseRepository implements SettingRepositoryContract
 {
 
-    public $settings = ['system_type'];
+    public $settings = ['system_type', 'min_team_size'];
 
     public function createOrUpdate($setting, $value)
     {

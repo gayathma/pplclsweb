@@ -1,3 +1,39 @@
+<script type="text/javascript">
+    $(function () {
+        $('#setting_form').validate({
+            ignore: '',
+            rules: {
+                system_type: {
+                    required: true
+                },
+                min_team_size: {
+                    required: true,
+                    digits:true
+                }
+            },
+            errorPlacement: function (error, element) {
+                $(element).closest('.form-group').append(error)
+            },
+            submitHandler: function (form) {
+                $(form).ajaxSubmit({
+                    dataType: 'json',
+                    beforeSubmit: bw.lockform(form),
+                    error :function( jqXhr ) {
+                        bw.unlockform(form);  
+                    },
+                    success: function (response) {
+                        if(response.success){ 
+                            location.reload();                 
+                        }else{
+                            bw.unlockform(form);   
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
+
 <!-- Page-Title -->
 <div class="row">
     <div class="col-sm-12">
@@ -30,7 +66,7 @@
                 </span>
             </div>
 
-            <form class="m-b-30"  method="post" action="/dash/general-setting/edit" id="setting_form">
+            <form class="form-horizontal m-t-20"  method="post" action="/dash/general-setting/edit" id="setting_form">
 
                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                 <div class="row">
@@ -44,6 +80,14 @@
                             </select>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Minimum Team Size</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" name="min_team_size" value="<?php echo $setting->get('min_team_size');?>"/>
+                        </div>
+                    </div>
+
                     <div class="form-group m-b-0">
                         <div class="col-sm-offset-3 col-sm-9 m-t-15">
                             <button class="btn btn-default"

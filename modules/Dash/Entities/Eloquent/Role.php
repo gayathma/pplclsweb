@@ -8,9 +8,14 @@ use DB;
 class Role extends Model 
 {
     
-    protected $table = 'role';
+    protected $table = 'dim_hrole';
     
-    protected $fillable = ['name'];
+    protected $fillable = ['name','parent'];
+
+    public function emplyeeits()
+    {
+        return $this->hasMany(Employeeit::class);
+    }
 
 
 }

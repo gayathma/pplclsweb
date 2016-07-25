@@ -8,18 +8,18 @@ use DB;
 class Project extends Model 
 {
     
-    protected $table = 'project';
+    protected $table = 'dim_hproject';
     
-    protected $fillable = ['name', 'start_date', 'end_date', 'project_type_id', 'description'];
-
-    /*public function prphases()
-    {
-        return $this->belongsToMany(Prphase::class,'project_prphase');
-    }*/
+    protected $fillable = ['name', 'wo_received_date', 'estimated_end_date', 'project_value', 'type', 'work_to_be_done', 'description'];
 
     public function projectType()
     {
         return $this->belongsTo(ProjectType::class);
+    }
+
+    public function knowledgebases()
+    {
+        return $this->hasMany(Knowledgebase::class,'dim_hprojects_id');
     }
 
 }

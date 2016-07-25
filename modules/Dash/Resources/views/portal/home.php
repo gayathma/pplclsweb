@@ -1,5 +1,62 @@
 <div class="row">
-	<div class="col-lg-6">
+  <div class="col-md-6 col-lg-3">
+    <div class="widget-bg-color-icon card-box fadeInDown animated">
+        <div class="bg-icon bg-icon-info pull-left">
+            <i class="md md-people text-info"></i>
+        </div>
+        <div class="text-right">
+            <h3 class="text-dark"><b class="counter"><?php echo count($employees);?></b></h3>
+            <p class="text-muted">Total Employees</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-lg-3">
+      <div class="widget-bg-color-icon card-box">
+          <div class="bg-icon bg-icon-pink pull-left">
+              <i class="md md-layers text-pink"></i>
+          </div>
+          <div class="text-right">
+              <h3 class="text-dark"><b class="counter"><?php echo count($projects);?></b></h3>
+              <p class="text-muted">Total Projects</p>
+          </div>
+          <div class="clearfix"></div>
+      </div>
+  </div>
+
+  <div class="col-md-6 col-lg-3">
+      <div class="widget-bg-color-icon card-box">
+          <div class="bg-icon bg-icon-purple pull-left">
+              <i class="md md-equalizer text-purple"></i>
+          </div>
+          <div class="text-right">
+              <h3 class="text-dark"><b class="counter"><?php //echo count($teams);?></b>%</h3>
+              <p class="text-muted">Teams</p>
+          </div>
+          <div class="clearfix"></div>
+      </div>
+  </div>
+
+  <div class="col-md-6 col-lg-3">
+      <div class="widget-bg-color-icon card-box">
+          <div class="bg-icon bg-icon-success pull-left">
+              <i class="md md-remove-red-eye text-success"></i>
+          </div>
+          <div class="text-right">
+              <h3 class="text-dark"><b class="counter">64,570</b></h3>
+              <p class="text-muted">Today's Visits</p>
+          </div>
+          <div class="clearfix"></div>
+      </div>
+  </div>
+</div>
+
+
+
+
+<div class="row">
+	<div class="col-lg-12">
 		<div class="card-box">
 
 			<h4 class="header-title m-t-0 m-b-30">Cost of Projects</h4>
@@ -7,195 +64,9 @@
 			<div id="stacked-bar-chart" class="ct-chart ct-golden-section"></div>
 		</div>
 	</div><!-- end col-->
-	<div class="col-lg-6">
-		<div class="card-box">
-			<h4 class="header-title m-t-0 m-b-30">Employee Skill Matrix</h4>
-      <div class="legend">
-        <div style="position: absolute; width: 81px; height: 80px; top: 50px; right: 50px; opacity: 0.85; background-color: rgb(255, 255, 255);"> </div>
-        <table style="position:absolute;top:50px;right:10px;;font-size:smaller;color:#545454">
-          <tbody>
-            <tr>
-              <td class="legendColorBox">
-                <div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(24,138,226);overflow:hidden"></div></div>
-              </td>
-              <td class="legendLabel">
-                <div style="font-size:13px;">&nbsp;Programming</div>
-              </td>
-            </tr>
-            <tr>
-              <td class="legendColorBox">
-                <div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(16,196,105);overflow:hidden"></div></div>
-              </td>
-              <td class="legendLabel">
-                <div style="font-size:13px;">&nbsp;Communication</div>
-              </td>
-            </tr>
-            <tr>
-              <td class="legendColorBox">
-                <div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(249,200,81);overflow:hidden"></div></div>
-              </td>
-              <td class="legendLabel">
-                <div style="font-size:13px;">&nbsp;Project Mgmt</div>
-              </td>
-            </tr>
-            <tr>
-              <td class="legendColorBox">
-                <div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(255,138,204);overflow:hidden"></div></div>
-              </td>
-              <td class="legendLabel">
-                <div style="font-size:13px;">&nbsp;Leadership</div>
-              </td>
-            </tr>
-            <tr>
-              <td class="legendColorBox">
-                <div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(91,105,188);overflow:hidden"></div></div>
-              </td>
-              <td class="legendLabel">
-                <div style="font-size:13px;">&nbsp;Client Mgmt.</div>
-              </td>
-            </tr>
-            <tr>
-              <td class="legendColorBox">
-                <div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(67,89,102);overflow:hidden"></div></div>
-              </td>
-              <td class="legendLabel">
-                <div style="font-size:13px;">&nbsp;Documentation</div>
-              </td>
-            </tr>
-            <tr>
-              <td class="legendColorBox">
-                <div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(53,184,224);overflow:hidden"></div></div>
-              </td>
-              <td class="legendLabel">
-                <div style="font-size:13px;">&nbsp;Design</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div id="animating-donut" class="ct-chart ct-golden-section"></div>
-    </div>
-  </div><!-- end col-->
 </div> <!-- end row -->
 
-<div class="row">
-	<div class="col-lg-12">
-		<div class="card-box">
 
-			<h4 class="header-title m-t-0 m-b-30">Employee Performance</h4>
-
-			<div class="text-center">
-				<ul class="list-inline chart-detail-list">
-					<li>
-						<h5 style="color: #5b69bc;"><i class="fa fa-circle m-r-5"></i>Viran Fernando</h5>
-					</li>
-					<li>
-						<h5 style="color: #35b8e0;"><i class="fa fa-circle m-r-5"></i>Heshani Herath</h5>
-					</li>
-				</ul>
-			</div>
-			<div id="morris-area-with-dotted" style="height: 300px;"></div>
-		</div>
-	</div><!-- end col-->
-</div><!-- end row -->
-
-<div class="row">
-	<div class="col-lg-6">
-		<div class="card-box">
-			<h4 class="header-title m-t-0 m-b-30"> Employee engagement across the Projects</h4>
-
-			<div id="morris-donut-example" style="height: 360px;"></div>
-
-			<div class="text-center">
-				<ul class="list-inline chart-detail-list">
-					<li>
-						<h5 style="color: #5b69bc;"><i class="fa fa-circle m-r-5"></i>Actively Disengaged</h5>
-					</li>
-					<li>
-						<h5 style="color: #10c469;"><i class="fa fa-circle m-r-5"></i>Engaged</h5>
-					</li>
-					<li>
-						<h5 style="color: #ff8acc;"><i class="fa fa-circle m-r-5"></i>Not Engaged</h5>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div><!-- end col-->
-
-
-	<div class="col-lg-3">
-		<div class="card-box widget-user">
-			<div class="text-center">
-				<h2 class="text-custom" data-plugin="counterup">126</h2>
-				<h5>Employees</h5>
-			</div>
-		</div>
-	</div>
-
-	<div class="col-lg-3">
-		<div class="card-box widget-user">
-			<div class="text-center">
-				<h2 class="text-pink" data-plugin="counterup">22</h2>
-				<h5>Projects</h5>
-			</div>
-		</div>
-	</div>
-
-	<div class="col-lg-3">
-		<div class="card-box widget-user">
-      <div class="widget-chart-1">
-        <div class="widget-chart-box-1">
-          <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#f05050 "
-          data-bgColor="#F9B9B9" value="58"
-          data-skin="tron" data-angleOffset="180" data-readOnly=true
-          data-thickness=".15"/>
-        </div>
-        <div class="widget-detail-1">
-          <h5> Team Response </h5>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-lg-3">
-    <div class="card-box widget-user">
-      <div class="widget-chart-1">
-        <div class="widget-chart-box-1">
-          <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#10c469 "
-          data-bgColor="#AAE2C6" value="78"
-          data-skin="tron" data-angleOffset="180" data-readOnly=true
-          data-thickness=".15"/>
-        </div>
-        <div class="widget-detail-1">
-          <h5> Role Response </h5>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col-lg-6">
-    <div class="card-box widget-user">
-      <p class="font-600 m-b-5">Personal Growth <span class="text-primary pull-right">80%</span></p>
-     <div class="progress progress-bar-primary-alt progress-sm m-b-20">
-      <div class="progress-bar progress-bar-primary progress-animated wow animated animated" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%; visibility: visible; animation-name: animationProgress;">
-      </div><!-- /.progress-bar .progress-bar-danger -->
-    </div><!-- /.progress .no-rounded -->
-
-    <p class="font-600 m-b-5">Relationship With Managers <span class="text-pink pull-right">50%</span></p>
-    <div class="progress progress-bar-pink-alt progress-sm m-b-20">
-      <div class="progress-bar progress-bar-pink progress-animated wow animated animated" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%; visibility: visible; animation-name: animationProgress;">
-      </div><!-- /.progress-bar .progress-bar-pink -->
-    </div><!-- /.progress .no-rounded -->
-    <p class="font-600 m-b-5">Relationship With Colleagues <span class="text-info pull-right">70%</span></p>
-    <div class="progress progress-bar-info-alt progress-sm m-b-20">
-      <div class="progress-bar progress-bar-info progress-animated wow animated animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%; visibility: visible; animation-name: animationProgress;">
-      </div><!-- /.progress-bar .progress-bar-info -->
-    </div><!-- /.progress .no-rounded -->
-  </div>
-</div>
-
-</div><!-- end row -->
 
 <script type="text/javascript">
 //menu active

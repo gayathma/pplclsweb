@@ -1,23 +1,43 @@
 <?php namespace Modules\Dash\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Modules\Dash\Entities\Eloquent\Employeeit;
+use Modules\Dash\Contracts\EmployeeitRepositoryContract as EmployeeitRepository;
+use Modules\Dash\Contracts\SettingRepositoryContract as SettingRepository;
 use View;
 
 class EmployeeController extends Controller {
+
+	private $employeeitRepository;
+	private $settingRepository;
 	
 
 	public function getProfile($id){
 
-		$template = 'dash::portal.profile';
+		if(!is_null($this->settingRepository->get('system_type')) && ($this->settingRepository->get('system_type') == 'apparel')){
+			$template = 'dash::employees.profile_apparel';
+		}else{
+			$template = 'dash::employees.profile';
+		}
 
-		return View::make($this->layout, ['content' => View::make($template)->render()])->render();
+		return View::make($this->layout, ['content' => View::make($template,[
+				'employee' => $this->employeeitRepository->find($id)
+			])->render()])->render();
 	}
 
-	public function getProfileApparel($id){
+	public function getList(){
 
-		$template = 'dash::portal.profile_apparel';
+		$template = 'dash::employees.list';
 
-		return View::make($this->layout, ['content' => View::make($template)->render()])->render();
+		return View::make($this->layout, ['content' => View::make($template,[
+				'employees' => $this->employeeitRepository->paginate(12)
+			])->render()])->render();
 	}
+
+	public function __construct(EmployeeitRepository $employeeitRepository, SettingRepository $settingRepository)
+    {
+    	$this->employeeitRepository = $employeeitRepository;
+    	$this->settingRepository = $settingRepository;
+    }
 	
 }

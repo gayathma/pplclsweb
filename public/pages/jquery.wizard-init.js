@@ -62,7 +62,23 @@
                 return $form_container.valid();
             },
             onFinished: function (event, currentIndex) {
-                alert("Submitted!");
+                $('#loader').show();
+                var form = $('#team_builder_form');
+                $(form).ajaxSubmit({
+                    dataType: 'json',
+                    beforeSubmit: bw.lockform(form),
+                    error :function( jqXhr ) {
+                        bw.unlockform(form);  
+                    },
+                    success: function (response) {
+                        if(response.success){ 
+                            $('#loader').hide(); 
+                            window.open('/dash/team-builder/team/'+$('#project').val());                 
+                        }else{
+                            bw.unlockform(form);   
+                        }
+                    }
+                });
             }
         });
 
@@ -82,7 +98,7 @@
         //initialzing various forms
 
         //form with validation
-        this.createValidatorForm($("#wizard-validation-form"));
+        this.createValidatorForm($("#team_builder_form"));
 
     },
     //init

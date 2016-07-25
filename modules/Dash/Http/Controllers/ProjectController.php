@@ -3,7 +3,6 @@
 use App\Http\Controllers\Controller;
 use Modules\Dash\Entities\Eloquent\ProjectType;
 use Modules\Dash\Entities\Eloquent\Project;
-use Modules\Dash\Entities\Eloquent\Prphase;
 use Modules\Dash\Entities\Eloquent\Role;
 use Modules\Dash\Entities\Eloquent\Technology;
 use Modules\Dash\Contracts\ProjectRepositoryContract as ProjectRepository;
@@ -17,12 +16,28 @@ class ProjectController extends Controller {
 	private $projectRepository;
 	private $settingRepository;
 
+	public function getTeam($project_id, ProjectRepository $projectRepository,Request $request)
+	{
+		return View::make($this->layout, ['content' => View::make('dash::team.team',[
+				'project' => $projectRepository->find($project_id),
+				'teamMembers' => null
+			])->render()])->render();
+	}
+
+	public function postPredictTeam(Request $request)
+    {
+    	$output = array();
+    	exec('python '.app_path().'/KNN_Model.py '.$request::get('project'),$output, $return);
+
+        return $this->printJson(true, [],'');
+    }
+
 	public function getList(){
 
 		$template = 'dash::project.list';
 
 		return View::make($this->layout, ['content' => View::make($template,[
-				'projects' => Project::all()
+				'projects' => $this->projectRepository->paginate(10)
 			])->render()])->render();
 	}
 
@@ -60,8 +75,7 @@ class ProjectController extends Controller {
     	return View::make(
     		$this->layout, ['content' => View::make($template, [
 	    			'project' => null,
-	    			'projectTypes' => ProjectType::all(),
-	    			'phases' => Prphase::all()
+	    			'projectTypes' => ProjectType::all()
     			])->render()])->render();
     }
 

@@ -10,7 +10,7 @@ class Technology extends Model
 {
 	use SoftDeletes;
     
-    protected $table = 'technology';
+    protected $table = 'dim_htechnology';
     
     protected $fillable = ['name'];
 

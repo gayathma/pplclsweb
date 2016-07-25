@@ -6,9 +6,9 @@
     <div class="form-group clearfix">
         <div class="col-lg-4">
             <div class="checkbox checkbox-custom">
-                <input id="experience" type="checkbox" checked>
-                <label for="experience">
-                    Experience
+                <input id="pre_experience" type="checkbox" checked disabled>
+                <label for="pre_experience">
+                    Previouse Experience
                 </label>
             </div>
             <div class="checkbox checkbox-custom">
@@ -17,27 +17,36 @@
                     Educational Qualification
                 </label>
             </div>
+        </div>
+
+        <div class="col-lg-4">
             <div class="checkbox checkbox-custom">
-                <input id="kpi" type="checkbox" >
-                <label for="kpi">
-                    Key Performance Index(KPI)
+                <input id="exp_current_ocu" type="checkbox" checked disabled>
+                <label for="exp_current_ocu">
+                    Experience In Current Occupation
+                </label>
+            </div>
+            <div class="checkbox checkbox-custom">
+                <input id="techs" type="checkbox" checked>
+                <label for="techs">
+                    Technology Distribution
                 </label>
             </div>
         </div>
 
         <div class="col-lg-4">
             <div class="checkbox checkbox-custom">
-                <input id="exp_current_ocu" type="checkbox" checked>
-                <label for="exp_current_ocu">
-                    Experience In Current Occupation
+                <input id="pre_prj_success_rates" type="checkbox" checked disabled>
+                <label for="pre_prj_success_rates">
+                    Previous Project Success Rates
                 </label>
             </div>
             <div class="checkbox checkbox-custom">
-                <input id="skill" type="checkbox" checked>
-                <label for="skill">
-                    Skills
+                <input id="soft_skills" type="checkbox" checked>
+                <label for="soft_skills">
+                    Soft Skills
                 </label>
-            </div>>
+            </div>
         </div>
     </div> 
 <?php endif;?>

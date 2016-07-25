@@ -6,7 +6,7 @@
         <meta name="description" content="BI Tool to select the best team for a given project.">
         <meta name="author" content="People Clues">
 
-        <link rel="shortcut icon" href="assets/images/favicon_1.ico">
+        <link rel="shortcut icon" href="/images/favicon_1.ico">
 
         <title>People Clues</title>
 
@@ -52,6 +52,8 @@
         <script src="<?php echo asset('plugins/bootstrapvalidator/dist/js/bootstrapValidator.js') ?>" type="text/javascript"></script>
         <script type="text/javascript" src="<?php echo asset('plugins/jquery-validation/dist/jquery.validate.min.js') ?>"></script>
 
+        <script src="<?php echo asset('plugins/highcharts/highcharts.js') ?>"></script>
+        <script src="<?php echo asset('plugins/highcharts/exporting.js') ?>"></script>
 
     </head>
 
@@ -189,9 +191,7 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="true"><img src="/images/admin.png" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile</a></li>
-                                        <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>
-                                        <li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li>
+                                        <li><a href="/dash/general-setting/edit"><i class="ti-settings m-r-5"></i> Settings</a></li>
                                         <li><a href="/auth/logout"><i class="ti-power-off m-r-5"></i> Logout</a></li>
                                     </ul>
                                 </li>
@@ -229,15 +229,23 @@
                             <a href="/dash/projects"><i class="md md-folder-special"></i>Projects</a>
                         </li>
                         
-                        <li class="has-submenu" id="team_builder_menu">
+                        <li class="has-submenu" id="human_resources_menu">
                             <a href="/dash/human-resources"><i class="md md-group"></i>Human Resources</a>
+                        </li>
+
+                        <li class="has-submenu" id="analytics_menu">
+                            <a href="#"><i class="md  md-insert-chart"></i>Analytics</a>
+                            <ul class="submenu">
+                                <li id="analytical_designer_menu"><a href="/dash/analytics/analytical-designer">Analytical Designer</a></li>
+                                <li id="predictive_analytics_menu"><a href="/dash/roles"> Predictive Analytics</a></li>
+                            </ul>
                         </li>
 
                         <li class="has-submenu" id="settings_menu">
                             <a href="#"><i class="md md-settings"></i>Settings</a>
                             <ul class="submenu">
                                 <li id="general_setting_menu"><a href="/dash/general-setting/edit"> General Settings</a></li>
-                                <li id="project_phases_menu"><a href="/dash/project-phases"> Project Phases</a></li>
+                                <li id="roles_menu"><a href="/dash/roles"> Roles</a></li>
                                 <li id="technology_menu"><a href="/dash/technologies"> Technologies</a></li>
                             </ul>
                         </li>

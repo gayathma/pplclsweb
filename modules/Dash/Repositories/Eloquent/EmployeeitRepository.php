@@ -1,0 +1,172 @@
+<?php
+
+namespace Modules\Dash\Repositories\Eloquent;
+
+use Modules\Dash\Entities\Eloquent\Employeeit;
+use Modules\Dash\Entities\Eloquent\Technology;
+use Modules\Dash\Entities\Eloquent\Knowledgebase;
+use Modules\Dash\Entities\Eloquent\EmployeeitTechnology;
+use Modules\Dash\Contracts\EmployeeitRepositoryContract;
+use Prettus\Repository\Eloquent\BaseRepository;
+use DB;
+
+
+class EmployeeitRepository extends BaseRepository implements EmployeeitRepositoryContract
+{
+
+	public function create(array $attributes)
+	{
+		$employeeit = Employeeit::create(array_only($attributes, ['name', 'salary', 'role_id', 'experience', 'experience_current_job', 'performance_index']));
+
+		$employeeit->save();
+	}
+
+	public function model()
+	{
+		return Employeeit::class;
+	}
+
+	public function getGenderChartData($project_id)
+	{
+		if($project_id == 0){
+			$all_employees = Employeeit::count();
+
+			$results = Employeeit::join('dim_hgender', 'dim_hgender.id', '=', 'dim_hemployee.dim_hgender_id')
+				->select('dim_hgender.gender',DB::raw('count(*) as y'))
+				->groupBy('dim_hgender_id')
+				->get();
+		}else{
+			$all_employees = Knowledgebase::where('dim_hproject_id', $project_id)->count();
+
+			$results = Knowledgebase::join('dim_hemployee', 'dim_hemployee.id', '=', 'fact_knowledgebase.dim_hemployee_id')
+				->join('dim_hgender', 'dim_hgender.id', '=', 'dim_hemployee.dim_hgender_id')
+				->select('dim_hgender.gender',DB::raw('count(*) as y'))
+				->where('dim_hproject_id', $project_id)
+				->groupBy('dim_hgender_id')
+				->get();
+		}
+
+		$result_arr = [];
+		foreach ($results as $result) {
+			$re = new \StdClass;
+			$re->y = round(($result->y * 100) / $all_employees,1) ;
+			if($result->gender == 'M'){
+				$re->name = "Male";
+			}elseif($result->gender == 'F'){
+				$re->name = "Female";
+			}else{
+				$re->name = "Other";
+			}
+			$result_arr[] = $re;
+		}
+		return $result_arr;
+
+	}
+
+	public function getRoleChartData($project_id)
+	{
+		if($project_id == 0){
+			$all_employees = Employeeit::count();
+			$results = Employeeit::join('dim_hrole', 'dim_hrole.id', '=', 'dim_hemployee.dim_hrole_id')
+				->select('dim_hrole.name as role',DB::raw('count(*) as y'))
+				->groupBy('dim_hrole_id')
+				->get();
+		}else{
+			$all_employees = Knowledgebase::where('dim_hproject_id', $project_id)->count();
+			$results = Knowledgebase::join('dim_hemployee', 'dim_hemployee.id', '=', 'fact_knowledgebase.dim_hemployee_id')
+				->join('dim_hrole', 'dim_hrole.id', '=', 'dim_hemployee.dim_hrole_id')
+				->select('dim_hrole.name as role',DB::raw('count(*) as y'))
+				->where('dim_hproject_id', $project_id)
+				->groupBy('dim_hrole_id')
+				->get();
+		}
+
+		$result_arr = [];
+		foreach ($results as $result) {
+			$re = new \StdClass;
+			$re->y = round(($result->y * 100) / $all_employees,1) ;
+			$re->name = $result->role;
+
+			$result_arr[] = $re;
+		}
+		return $result_arr;
+
+	}
+
+	public function getTechnologyChartData($project_id)
+	{
+
+		$technologies = Technology::all();
+		$result_arr = [];
+		if($project_id == 0){
+			foreach ($technologies as $technology) {
+
+				$level1[] = EmployeeitTechnology::where('dim_htechnology_id', $technology->id)
+					->where('grade', 0)->count();
+
+				$level2[] = EmployeeitTechnology::where('dim_htechnology_id', $technology->id)
+					->whereBetween('grade', [1, 2])->count();
+
+				$level3[] = EmployeeitTechnology::where('dim_htechnology_id', $technology->id)
+					->whereBetween('grade', [3, 4])->count();
+
+				$level4[] = EmployeeitTechnology::where('dim_htechnology_id', $technology->id)
+					->whereBetween('grade', [5, 6])->count();
+
+				$level5[] = EmployeeitTechnology::where('dim_htechnology_id', $technology->id)
+					->whereBetween('grade', [7, 8])->count();
+
+				$level6[] = EmployeeitTechnology::where('dim_htechnology_id', $technology->id)
+					->whereBetween('grade', [9, 10])->count();
+
+			}
+		}else{
+
+			foreach ($technologies as $technology) {
+
+				$level1[] = Knowledgebase::join('dim_hemployee_dim_htechnology', 'dim_hemployee_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase.dim_hemployee_id')
+					->where('dim_htechnology_id', $technology->id)
+					->where('dim_hproject_id', $project_id)
+					->where('grade', 0)->count();
+
+				$level2[] = Knowledgebase::join('dim_hemployee_dim_htechnology', 'dim_hemployee_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase.dim_hemployee_id')
+					->where('dim_htechnology_id', $technology->id)
+					->where('dim_hproject_id', $project_id)
+					->whereBetween('grade', [1, 2])->count();
+
+				$level3[] = Knowledgebase::join('dim_hemployee_dim_htechnology', 'dim_hemployee_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase.dim_hemployee_id')
+					->where('dim_htechnology_id', $technology->id)
+					->where('dim_hproject_id', $project_id)
+					->whereBetween('grade', [3, 4])->count();
+
+				$level4[] = Knowledgebase::join('dim_hemployee_dim_htechnology', 'dim_hemployee_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase.dim_hemployee_id')
+					->where('dim_htechnology_id', $technology->id)
+					->where('dim_hproject_id', $project_id)
+					->whereBetween('grade', [5, 6])->count();
+
+				$level5[] = Knowledgebase::join('dim_hemployee_dim_htechnology', 'dim_hemployee_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase.dim_hemployee_id')
+					->where('dim_htechnology_id', $technology->id)
+					->where('dim_hproject_id', $project_id)
+					->whereBetween('grade', [7, 8])->count();
+
+				$level6[] = Knowledgebase::join('dim_hemployee_dim_htechnology', 'dim_hemployee_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase.dim_hemployee_id')
+					->where('dim_htechnology_id', $technology->id)
+					->where('dim_hproject_id', $project_id)
+					->whereBetween('grade', [9, 10])->count();
+
+			}
+			
+		}
+
+		$result_arr = [['name' => '0','data' => $level1 ],
+		['name' => '1 - 2','data' => $level2 ],
+		['name' => '3 - 4','data' => $level3 ],
+		['name' => '5 - 6','data' => $level4 ],
+		['name' => '7 - 8','data' => $level5 ],
+		['name' => '9 - 10','data' => $level6 ]];
+	
+		return $result_arr;
+	}
+
+
+}

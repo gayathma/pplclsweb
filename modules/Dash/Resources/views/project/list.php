@@ -35,18 +35,22 @@
                 <div class="card-box m-b-10">
                     <div class="table-box opport-box">
                         <div class="table-detail">
-                            <img src="/images/projects/mystery.jpg" alt="img" class="img-circle thumb-lg m-r-15" />
+                            <img src="/images/projects/mystery.png" alt="img" class="img-circle thumb-lg m-r-15" />
                         </div>
 
                         <div class="table-detail">
                             <div class="member-info">
                                 <h4 class="m-t-0"><b><?php echo $project->name;?> </b></h4>
-                                <p class="text-dark m-b-5"><b>Type: </b> <span class="text-muted"><?php echo (!is_null($project->projectType))? $project->projectType->name : ' - '; ?></span></p>
+                                <p class="text-dark m-b-5"><b>Type: </b> <span class="text-muted"><?php echo (!is_null($project->type))? ucfirst($project->type) : ' - '; ?></span></p>
                             </div>
                         </div>
 
                         <div class="table-detail lable-detail">
-                            <span class="label label-info">Hot</span>
+                            <?php if(strtotime($project->estimated_end_date) >= strtotime(date('Y-m-d'))):?>
+                                <span class="label label-info">On Going</span>
+                            <?php else:?>
+                                <span class="label label-danger">Completed</span>
+                            <?php endif;?>
                         </div>
 
                         <div class="table-detail table-actions-bar">
@@ -56,6 +60,7 @@
                     </div>
                 </div>
             <?php endforeach;?>
+            <?php echo $projects->render(); ?>
             <?php else:?>
                 <div class="card-box m-b-10">
                     <div class="table-box opport-box">
@@ -142,5 +147,9 @@
             </div>
         </div>
     </div>
-
 </div>
+<script type="text/javascript">
+//menu active
+$('#projects_menu').addClass('active');
+
+</script>

@@ -13,8 +13,8 @@ class ProjectRepository extends BaseRepository implements ProjectRepositoryContr
     public function create(array $attributes)
     {
         $dates = explode('-', $attributes['duration']);
-        $project = Project::create(array_only(array_merge($attributes,['start_date' => trim($dates[0]), 'end_date' => trim($dates[1])]), [
-            'name', 'start_date', 'end_date', 'project_type_id', 'description'
+        $project = Project::create(array_only(array_merge($attributes,['wo_received_date' => trim($dates[0]), 'estimated_end_date' => trim($dates[1])]), [
+            'name', 'wo_received_date', 'estimated_end_date', 'type', 'description'
             ]));
 
         $project->save();

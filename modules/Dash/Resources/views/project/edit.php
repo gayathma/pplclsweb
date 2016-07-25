@@ -9,9 +9,6 @@
                 project_type_id: {
                     required: true
                 },
-                'project_phases[]': {
-                    required: true
-                },
                 duration: {
                     required: true
                 }
@@ -102,7 +99,7 @@
                                     <select class="form-control select2" name="project_type_id">
                                         <option value="">Select</option>
                                         <?php foreach ($projectTypes as  $projectType): ?>
-                                            <option <?php echo (!is_null($project) && $project->project_type_id == $projectType->id ? ' selected' : ''); ?> value="<?php echo $projectType->id; ?>"><?php echo $projectType->name; ?></option>
+                                            <option <?php echo (!is_null($project) && $project->type == $projectType->name ? ' selected' : ''); ?> value="<?php echo $projectType->name; ?>"><?php echo $projectType->name; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -124,19 +121,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!--<div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group m-b-20">
-                                    <label>Project Phases <span class="text-danger">*</span></label>
-                                    <select class="select2 select2-multiple" multiple="multiple" multiple data-placeholder="Select" name="project_phases[]">
-                                        <?php foreach ($phases as  $phase): ?>
-                                            <option  value="<?php echo $phase->id; ?>"><?php echo $phase->name; ?></option>
-                                        <?php endforeach ?>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>-->
 
                         <button type="reset" class="btn w-sm btn-white waves-effect">Cancel</button>
                         <button type="submit" class="btn w-sm btn-default waves-effect waves-light">
