@@ -17,9 +17,9 @@ mysql_cn = pymysql.connect(host='localhost',
 df_mysql = pd.read_sql('select f.*,'
                        'e.age,e.working_experience_current,e.dim_hrole_id,e.working_experience_previous,e.dim_hqualifications_id,e.is_pmp_certified,e.grade,'
                        'p.type,p.project_value '
-                       ' from fact_knowledgebase f '
-                       'inner join dim_hemployee e on e.id = f.dim_hemployee_id '
-                       'inner join dim_hproject p on p.id = f.dim_hproject_id;', con=mysql_cn)
+                       ' from fact_knowledgebase_apparel f '
+                       'inner join dim_hemployee_apparel e on e.id = f.dim_hemployee_id '
+                       'inner join dim_hproject_apparel p on p.id = f.dim_hproject_id;', con=mysql_cn)
 
 predicted_result = df_mysql['is_suitable']
 y = predicted_result

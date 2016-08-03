@@ -18,7 +18,7 @@
 <!-- Page-Title -->
 
 <div class="row">
-	<div class="col-sm-5 col-md-4 col-lg-3">
+	<div class="col-sm-5 col-md-4 col-lg-4">
 		<div class="profile-detail card-box">
 			<div>
 				<?php if($employee->gender->gender == 'F'):?>
@@ -33,7 +33,7 @@
 						<p class="text-muted"><?php echo $employee->role->name;?></p>
 					</li>
 				</ul>
-				<div class=" m-b-12"><i class="icon-badge" style="font-size: 20px;"></i><span class="badge badge-xs badge-warning" style="position: absolute;top: 255px;left: 162px;"><?php echo $employee->grade?></span></div>
+				<div class=" m-b-12"><i class="icon-badge" style="font-size: 20px;"></i><span class="badge badge-xs badge-warning" style="position: absolute;top: 255px;left: 200px;"><?php echo $employee->grade?></span></div>
 
 				<hr>
 
@@ -54,7 +54,7 @@
 
 			<div class="friend-list">
 				<?php if(!is_null($employee->team)): ?>
-					<?php if(count($employee->team->emplyeeits) > 0):?>
+					<?php if(count($employee->team->emplyeeapparel) > 0):?>
 						<?php foreach ($employee->team->emplyeeapparel as $member):?>
 							<a href="/dash/profile/<?php echo $member->id;?>">
 								<?php if($member->gender->gender == 'F'):?>
@@ -70,27 +70,6 @@
 		</div>
 	</div>
 
-	<div class="col-md-5">
-        <div class="card-box">
-            <h4 class="m-t-0 header-title m-b-30"><b>Skill Set</b></h4>
-            <?php foreach ($employee->employeeappareltechnologies as $technology):?>
-	            <div class="row m-b-10">
-		            <div class="col-md-3">
-		            	<strong> <?php echo $technology->technology->name;?></strong>
-		            </div>
-		            <div class="col-md-6">
-			            <div class="progress progress-md">
-			            	<?php  $grade = $technology->grade * 10; ?>
-			            	<div class="progress-bar progress-bar-custom progress-bar-striped progress-animated wow animated" role="progressbar" aria-valuenow="<?php echo $grade;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $grade;?>%;">
-			            		<span class="sr-only"><?php echo $grade;?>% Complete</span>
-			            		<?php echo $grade;?>% 
-			            	</div>
-			            </div>
-			        </div>
-			    </div>
-			 <?php endforeach; ?>
-        </div>
-	</div>
 	<div class="col-lg-4">
 	    <div class="card-box">
 	      <h4 class="m-t-0 m-b-20 header-title"><b>Project Success Rates</b></h4>
@@ -102,7 +81,7 @@
 	              <div class="inbox-item-img">
 	                 <img class="img-circle" src="/images/projects/mystery.png" class="img-circle">
 	              </div>
-	              <p class="inbox-item-author"><?php echo ($project->project)? $project->project->name : ' - ';?></p>
+	              <p class="inbox-item-author"><?php echo ($project->projectapparel)? $project->projectapparel->name : ' - ';?></p>
 	              <p class="inbox-item-text">
 	              	<h5 class="text-muted">Success Rate <span class="pull-right"><?php echo $project->workload_actual;?>%</span></h5>
 	              	<div class="progress progress-sm m-0">

@@ -92,10 +92,12 @@ class ProjectController extends Controller {
 			
 		$project = $projectapparelRepository->find($project_id);
 		$members = $project->employeeapparelknowledgebases;
+            
     	
 		return View::make($this->layout, ['content' => View::make('dash::team.team_details',[
 				'project' => $project,
-				'employees' => $members
+				'employees' => $members,
+				'settingRepository' => $this->settingRepository
 			])->render()])->render();
 			
 		}
