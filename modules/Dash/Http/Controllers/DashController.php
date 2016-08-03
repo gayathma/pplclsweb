@@ -2,10 +2,15 @@
 
 use App\Http\Controllers\Controller;
 use Modules\Dash\Entities\Eloquent\Employeeit;
+use Modules\Dash\Entities\Eloquent\Employeeapparel;
 use Modules\Dash\Entities\Eloquent\Project;
+use Modules\Dash\Entities\Eloquent\Projectapparel;
 use Modules\Dash\Entities\Eloquent\Knowledgebase;
+use Modules\Dash\Entities\Eloquent\Knowledgebaseapparel;
 use Modules\Dash\Contracts\EmployeeitRepositoryContract as EmployeeitRepository;
+use Modules\Dash\Contracts\EmployeeapparelRepositoryContract as EmployeeapparelRepository;
 use Modules\Dash\Contracts\ProjectRepositoryContract as ProjectRepository;
+use Modules\Dash\Contracts\ProjectapparelRepositoryContract as ProjectapparelRepository;
 use Modules\Dash\Contracts\SettingRepositoryContract as SettingRepository;
 use View;
 use DB;
@@ -15,12 +20,25 @@ class DashController extends Controller {
 	private $settingRepository;
 	private $employeeitRepository;
 	private $projectRepository;
+	private $employeeapparelRepository;
+	private $projectapparelRepository;
 	
 	public function index()
 	{
 		if(!is_null($this->settingRepository->get('system_type')) && ($this->settingRepository->get('system_type') == 'apparel')){
 
 			$template = 'dash::portal.home_apparel';
+			$employees = $this->employeeapparelRepository->all();
+			$projects = $this->projectapparelRepository->all();
+			$newProjects = Projectapparel::where('is_team_assigned', 0)->get();
+			$vacantEmployees = Employeeapparel::where('is_available' , 1)->take(50)->get();
+			$ongoingProjectsCount = Projectapparel::where('estimated_end_date', '>=', 'CURDATE()')->where('is_team_assigned', 1)->get()->count();
+			$closedProjectsCount = Projectapparel::where('estimated_end_date', '<', 'CURDATE()')->where('is_team_assigned', 1)->get()->count();
+			$newProjectsCount = Projectapparel::where('is_team_assigned', 0)->count();
+			$thisMonthTeams = Knowledgebaseapparel::where(DB::raw('MONTH(created_at)'), '=', date('n'))->groupBy('dim_hproject_id')->get();
+			$teams = Knowledgebaseapparel::groupBy('dim_hproject_id')->get();
+			$projectNames = Projectapparel::where('estimated_end_date', '<', 'CURDATE()')->where('is_team_assigned', 1)->get()->pluck('name');
+			$projectWorkloadData = $this->projectapparelRepository->getWorkloadChartData();
 		}else{
 			$template = 'dash::portal.home';
 			$employees = $this->employeeitRepository->all();
@@ -75,12 +93,14 @@ class DashController extends Controller {
 	}
 
 	public function __construct(SettingRepository $settingRepository, EmployeeitRepository $employeeitRepository,
-	 	ProjectRepository $projectRepository){
+	 	ProjectRepository $projectRepository, EmployeeapparelRepository $employeeapparelRepository,
+	 	ProjectapparelRepository $projectapparelRepository){
 
     	$this->settingRepository = $settingRepository;
     	$this->employeeitRepository = $employeeitRepository;
     	$this->projectRepository = $projectRepository;
-    	$this->employeeitRepository = $employeeitRepository;
+		$this->projectapparelRepository = $projectapparelRepository;
+    	$this->employeeapparelRepository = $employeeapparelRepository;
     }
 	
 }

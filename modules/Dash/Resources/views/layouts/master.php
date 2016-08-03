@@ -242,7 +242,9 @@
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         <li class="has-submenu" id="dash_menu">
+
                             <a href="/dash"><i class="md md-dashboard"></i><?php echo  Lang::get('custom.dashboard');?></a>
+
                         </li>
 
                         <li class="has-submenu" id="team_builder_menu">

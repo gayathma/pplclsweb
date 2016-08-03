@@ -32,6 +32,11 @@ class DashServiceProvider extends ServiceProvider {
 	        'Modules\Dash\Contracts\ProjectRepositoryContract', 
 	        'Modules\Dash\Repositories\Eloquent\ProjectRepository'
         );
+		
+		$this->app->bind(
+	        'Modules\Dash\Contracts\ProjectapparelRepositoryContract', 
+	        'Modules\Dash\Repositories\Eloquent\ProjectapparelRepository'
+        );
 
         $this->app->bind(
 	        'Modules\Dash\Contracts\ProjectTypeRepositoryContract', 
@@ -41,6 +46,11 @@ class DashServiceProvider extends ServiceProvider {
         $this->app->bind(
 	        'Modules\Dash\Contracts\RoleRepositoryContract', 
 	        'Modules\Dash\Repositories\Eloquent\RoleRepository'
+        );
+		
+		$this->app->bind(
+	        'Modules\Dash\Contracts\RoleapparelRepositoryContract', 
+	        'Modules\Dash\Repositories\Eloquent\RoleapparelRepository'
         );
 
         $this->app->bind(
@@ -56,6 +66,11 @@ class DashServiceProvider extends ServiceProvider {
         $this->app->bind(
 	        'Modules\Dash\Contracts\EmployeeitRepositoryContract', 
 	        'Modules\Dash\Repositories\Eloquent\EmployeeitRepository'
+        );
+		
+		$this->app->bind(
+	        'Modules\Dash\Contracts\EmployeeapparelRepositoryContract', 
+	        'Modules\Dash\Repositories\Eloquent\EmployeeapparelRepository'
         );
 
         $this->app->bind(

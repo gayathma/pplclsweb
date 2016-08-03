@@ -28,7 +28,13 @@
     <?php
     if(count($employees)): 
         foreach ($employees as $employee):
-            $employee = $employee->employeeit;
+            if(!is_null($settingRepository->get('system_type')) && ($settingRepository->get('system_type') == 'apparel')){
+                $employee = $employee->employeeapparel;
+                
+            }else{
+                $employee = $employee->employeeit;
+            }
+
             ?>
             <div class="col-sm-6 col-lg-3">
                 <div class="card-box">
