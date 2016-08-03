@@ -1,0 +1,38 @@
+<?php
+
+return [
+    'dashboard' => 'Dashboard',
+    'team_builder' => 'Team Builder',
+    'projects' => 'Projects',
+    'hr' => 'Human Resources',
+    'analytics' => 'Analytics',
+    'analytical_designer' => 'Analytical Designer',
+    'predictive_analytics' => 'Predictive Analytics',
+    'settings' => 'Settings',
+    'general_settings' => 'General Settings',
+    'roles' => 'Roles',
+    'total_employees' => 'Total Employees',
+    'total_projects' => 'Total Projects',
+    'predicted_teams' => 'Predicted Teams',
+    'vacant_employees' => 'Vacant Employees',
+    'project_status' => 'Project Status',
+    'new_projects' => 'New Projects',
+    'avg_success_rate' => 'Average Project Success Rate',
+    'technology_distribution' => 'Technology Distribution',
+    'search' => 'Search',
+    'start_date' => 'Start Date',
+    'grade' => 'Grade',
+    'on_going' => 'On Going',
+    'new' => 'New',
+    'completed' => 'Completed',
+    'avg_success_rate_2' => 'Average Success Rate',
+    'total_employees' => 'Total Employees',
+    'employees' => 'Employees',
+    'all_projects' => 'All Projects',
+    'employee_vs_gender' => 'Employees Vs Gender',
+    'Employee_vs_role' => 'Employees Vs Role',
+    'male' => 'Male',
+    'female' => 'Female',
+
+
+];

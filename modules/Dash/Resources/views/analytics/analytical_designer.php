@@ -1,24 +1,28 @@
+ <?php 
+ $lang = (Session::has('lang'))? Session::get('lang'): App::getLocale();
+ \App::setLocale($lang);
+ ?>
 <!-- Page-Title -->
 <div class="row">
     <div class="col-sm-12">
     	<div class="btn-group pull-right m-t-15 open">
              <select class="form-control" id="project_id">
-             	<option value="" selected="true">All Projects</option>
+             	<option value="" selected="true"><?php echo  Lang::get('custom.all_projects');?></option>
              	<?php foreach ($projects as $project): ?>
              		<option value="<?php echo $project->id;?>"><?php echo $project->name;?></option>
              	<?php endforeach; ?>
              </select>
         </div>
-        <h4 class="page-title">Analytics</h4>
+        <h4 class="page-title"><?php echo  Lang::get('custom.analytics');?></h4>
         <ol class="breadcrumb">
             <li>
-                <a href="/dash">Dashboard</a>
+                <a href="/dash"><?php echo  Lang::get('custom.dashboard');?></a>
             </li>
             <li>
-                <a href="#">Analytics</a>
+                <a href="#"><?php echo  Lang::get('custom.analytics');?></a>
             </li>
             <li class="active">
-                Analytical Designer
+                <?php echo  Lang::get('custom.analytical_designer');?>
             </li>
         </ol>
     </div>
@@ -30,7 +34,7 @@
 		<div class="portlet"><!-- /primary heading -->
 			<div class="portlet-heading">
 				<h3 class="portlet-title text-dark">
-					Technology Distribution
+					<?php echo  Lang::get('custom.technology_distribution');?>
 				</h3>
 				<div class="clearfix"></div>
 			</div>
@@ -48,7 +52,7 @@
 		<div class="portlet"><!-- /primary heading -->
 			<div class="portlet-heading">
 				<h3 class="portlet-title text-dark">
-					Employees Vs Gender
+					<?php echo  Lang::get('custom.employee_vs_gender');?>
 				</h3>
 				<div class="clearfix"></div>
 			</div>
@@ -63,7 +67,7 @@
 		<div class="portlet"><!-- /primary heading -->
 			<div class="portlet-heading">
 				<h3 class="portlet-title text-dark">
-					Employees Vs Role
+					<?php echo  Lang::get('custom.Employee_vs_role');?>
 				</h3>
 				<div class="clearfix"></div>
 			</div>
@@ -115,7 +119,7 @@ $(document).ready(function () {
                 }
             },
             series: [{
-                name: 'Employees',
+                name: '<?php echo  Lang::get('custom.employees');?>',
                 colorByPoint: true,
                 data: <?php echo $gender_chart_data;?>
             }]
@@ -150,7 +154,7 @@ $(document).ready(function () {
                 }
             },
             series: [{
-                name: 'Employees',
+                name: '<?php echo  Lang::get('custom.employees');?>',
                 colorByPoint: true,
                 data: <?php echo $role_chart_data;?>
             }]
@@ -171,7 +175,7 @@ $(document).ready(function () {
 	        yAxis: {
 	            min: 0,
 	            title: {
-	                text: 'Expertise Level'
+	                text: '<?php echo  Lang::get('custom.total_employees');?>'
 	            }
 	        },
             credits: { 
@@ -247,7 +251,7 @@ $(document).ready(function () {
 				        yAxis: {
 				            min: 0,
 				            title: {
-				                text: 'Expertise Level'
+				                text: '<?php echo  Lang::get('custom.total_employees');?>'
 				            }
 				        },
 			            credits: { 

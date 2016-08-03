@@ -10,6 +10,12 @@ class SettingController extends Controller {
 
 	private $settingRepository;
 
+    public function getTranslate(Request $request)
+    {
+
+        \Session::set('lang', $request::get('lang'));
+    }
+
 
     public function postEdit(Request $request)
     {

@@ -74,13 +74,28 @@
 
 
                     <div class="menu-extras">
-
+                        <?php 
+                            $lang = (Session::has('lang'))? Session::get('lang'): App::getLocale();
+                            \App::setLocale($lang);
+                        ?>
                         <ul class="nav navbar-nav navbar-right pull-right">
                                 <li>
                                     <form role="search" class="navbar-left app-search pull-left hidden-xs">
-                                         <input type="text" placeholder="Search..." class="form-control">
+                                         <input type="text" placeholder="<?php echo  Lang::get('custom.search');?>..." class="form-control">
                                          <a href="#"><i class="fa fa-search"></i></a>
                                     </form>
+                                </li>
+                                <li class="dropdown hidden-xs">
+                                  <?php 
+                                  if($lang == 'en'):?>
+                                    <a onclick="languageTranslate('si')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                                        <span >සිංහල</span>
+                                    </a>
+                                  <?php elseif($lang == 'si'):?>
+                                    <a onclick="languageTranslate('en')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                                        <span >English</span>
+                                    </a>
+                                  <?php endif;?>
                                 </li>
                                 <li class="dropdown hidden-xs">
                                     <ul class="dropdown-menu dropdown-menu-lg">
@@ -214,35 +229,37 @@
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         <li class="has-submenu" id="dash_menu">
-                            <a href="/dash"><i class="md md-dashboard"></i>Dashboard (උපකරණ පුවරුව)</a>
+
+                            <a href="/dash"><i class="md md-dashboard"></i><?php echo  Lang::get('custom.dashboard');?></a>
+
                         </li>
 
                         <li class="has-submenu" id="team_builder_menu">
-                            <a href="/dash/team-builder"><i class="md md-account-circle"></i>Team Builder</a>
+                            <a href="/dash/team-builder"><i class="md md-account-circle"></i><?php echo  Lang::get('custom.team_builder');?></a>
                         </li>
 
                         <li class="has-submenu" id="projects_menu">
-                            <a href="/dash/projects"><i class="md md-folder-special"></i>Projects</a>
+                            <a href="/dash/projects"><i class="md md-folder-special"></i><?php echo  Lang::get('custom.projects');?></a>
                         </li>
                         
                         <li class="has-submenu" id="human_resources_menu">
-                            <a href="/dash/human-resources"><i class="md md-group"></i>Human Resources</a>
+                            <a href="/dash/human-resources"><i class="md md-group"></i><?php echo  Lang::get('custom.hr');?></a>
                         </li>
 
                         <li class="has-submenu" id="analytics_menu">
-                            <a href="#"><i class="md  md-insert-chart"></i>Analytics</a>
+                            <a href="#"><i class="md  md-insert-chart"></i><?php echo  Lang::get('custom.analytics');?></a>
                             <ul class="submenu">
-                                <li id="analytical_designer_menu"><a href="/dash/analytics/analytical-designer">Analytical Designer</a></li>
-                                <li id="predictive_analytics_menu"><a href="/dash/roles"> Predictive Analytics</a></li>
+                                <li id="analytical_designer_menu"><a href="/dash/analytics/analytical-designer"><?php echo  Lang::get('custom.analytical_designer');?></a></li>
+                                <li id="predictive_analytics_menu"><a href="#"> <?php echo  Lang::get('custom.predictive_analytics');?></a></li>
                             </ul>
                         </li>
 
                         <li class="has-submenu" id="settings_menu">
-                            <a href="#"><i class="md md-settings"></i>Settings</a>
+                            <a href="#"><i class="md md-settings"></i><?php echo  Lang::get('custom.settings');?></a>
                             <ul class="submenu">
-                                <li id="general_setting_menu"><a href="/dash/general-setting/edit"> General Settings</a></li>
-                                <li id="roles_menu"><a href="/dash/roles"> Roles</a></li>
-                                <li id="technology_menu"><a href="/dash/technologies"> Technologies</a></li>
+                                <li id="general_setting_menu"><a href="/dash/general-setting/edit"> <?php echo  Lang::get('custom.general_settings');?></a></li>
+                                <li id="roles_menu"><a href="/dash/roles"> <?php echo  Lang::get('custom.roles');?></a></li>
+                                <li id="technology_menu"><a href="/dash/technologies"> <?php echo  Lang::get('custom.technologies');?></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -347,10 +364,21 @@
                     delay: 100,
                     time: 1200
                 });
-
                 $(".knob").knob();
-
             });
+
+            function languageTranslate(lang){
+              $.ajax({
+                url: '/dash/general-setting/translate',
+                type: 'get',
+                data: {
+                  lang : lang
+                },
+                success: function (response) {
+                  location.reload();  
+                }
+              });
+            }
         </script>
 
 
