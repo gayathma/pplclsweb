@@ -38,8 +38,12 @@ class AnalyticsController extends Controller {
 
 	public function getList(){
 
+	if(!is_null($this->settingRepository->get('system_type')) && ($this->settingRepository->get('system_type') == 'apparel')){
+		$template = 'dash::analytics.analytical_designer_apparel';
+	}
+	else{
 		$template = 'dash::analytics.analytical_designer';
-
+	}
 		return View::make($this->layout, ['content' => View::make($template,[
 				'projects' => $this->projectRepository->all(),
 				'gender_chart_data' => json_encode($this->employeeitRepository->getGenderChartData(0)),

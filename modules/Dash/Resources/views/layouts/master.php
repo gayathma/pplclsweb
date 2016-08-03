@@ -214,7 +214,7 @@
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
                         <li class="has-submenu" id="dash_menu">
-                            <a href="/dash"><i class="md md-dashboard"></i>Dashboard</a>
+                            <a href="/dash"><i class="md md-dashboard"></i>Dashboard (උපකරණ පුවරුව)</a>
                         </li>
 
                         <li class="has-submenu" id="team_builder_menu">
