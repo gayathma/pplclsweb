@@ -33,6 +33,9 @@ return [
     'Employee_vs_role' => 'Employees Vs Role',
     'male' => 'Male',
     'female' => 'Female',
+    'success_rate' => 'Success Rate',
+    'type' => 'Type',
+    'completed' => 'අවසන්'
 
 
 ];

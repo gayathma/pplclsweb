@@ -1,13 +1,17 @@
 <!-- Page-Title -->
+ <?php 
+ $lang = (Session::has('lang'))? Session::get('lang'): App::getLocale();
+ \App::setLocale($lang);
+ ?>
 <div class="row">
     <div class="col-sm-12">
-        <h4 class="page-title">Projects</h4>
+        <h4 class="page-title"><?php echo  Lang::get('custom.projects');?></h4>
         <ol class="breadcrumb">
             <li>
-                <a href="/dash">Dashboard</a>
+                <a href="/dash"><?php echo  Lang::get('custom.dashboard');?></a>
             </li>
             <li class="active">
-                Projects
+                <?php echo  Lang::get('custom.projects');?>
             </li>
         </ol>
     </div>
@@ -17,7 +21,7 @@
     <div class="col-sm-8">
         <form role="form">
             <div class="form-group contact-search m-b-30">
-                <input type="text" id="search" class="form-control" placeholder="Search...">
+                <input type="text" id="search" class="form-control" placeholder="<?php echo  Lang::get('custom.search');?>...">
                 <button type="submit" class="btn btn-white"><i class="fa fa-search"></i></button>
             </div> <!-- form-group -->
         </form>
@@ -41,7 +45,7 @@
                         <div class="table-detail table-detail-text">
                             <div class="member-info">
                                 <h4 class="m-t-0"><b><?php echo $project->name;?> </b></h4>
-                                <p class="text-dark m-b-5"><b>Type: </b> <span class="text-muted"><?php echo (!is_null($project->type))? ucfirst($project->type) : ' - '; ?></span></p>
+                                <p class="text-dark m-b-5"><b><?php echo  Lang::get('custom.type');?>: </b> <span class="text-muted"><?php echo (!is_null($project->type))? ucfirst($project->type) : ' - '; ?></span></p>
                             </div>
                         </div>
 

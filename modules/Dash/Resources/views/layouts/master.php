@@ -91,9 +91,22 @@
                                     <a onclick="languageTranslate('si')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
                                         <span >සිංහල</span>
                                     </a>
+                                    <a onclick="languageTranslate('ta')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                                        <span >தமிழ்</span>
+                                    </a>
                                   <?php elseif($lang == 'si'):?>
                                     <a onclick="languageTranslate('en')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
                                         <span >English</span>
+                                    </a>
+                                    <a onclick="languageTranslate('ta')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                                        <span >தமிழ்</span>
+                                    </a>
+                                  <?php elseif($lang == 'ta'):?>
+                                    <a onclick="languageTranslate('en')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                                        <span >English</span>
+                                    </a>
+                                    <a onclick="languageTranslate('si')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                                        <span >සිංහල</span>
                                     </a>
                                   <?php endif;?>
                                 </li>

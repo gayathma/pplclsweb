@@ -7,7 +7,8 @@ use Modules\Dash\Entities\Eloquent\Knowledgebase;
 use Modules\Dash\Contracts\ProjectRepositoryContract;
 use Prettus\Repository\Eloquent\BaseRepository;
 use DB;
-
+use Lang;
+use Session;
 
 class ProjectRepository extends BaseRepository implements ProjectRepositoryContract
 {
@@ -24,11 +25,14 @@ class ProjectRepository extends BaseRepository implements ProjectRepositoryContr
  
     public function model()
     {
+        $lang = (Session::has('lang'))? Session::get('lang'): App::getLocale();
+         \App::setLocale($lang);
         return Project::class;
     }
 
     public function getWorkloadChartData()
     {
+
         $all_projects = Project::count();
         $results = Knowledgebase::join('dim_hproject', 'dim_hproject.id', '=', 'fact_knowledgebase.dim_hproject_id')
             ->select('dim_hproject.name as project',DB::raw('sum(workload_actual) as data'))
@@ -42,9 +46,10 @@ class ProjectRepository extends BaseRepository implements ProjectRepositoryContr
             $result_arr[] = (($result->data/$all_projects)*10);
         }
 
-        $data = ['name' => 'Success Rate' , 'data' => $result_arr];
+        $data = ['name' => Lang::get('custom.success_rate') , 'data' => $result_arr];
     
         return $data;
 
     }
+
 }
