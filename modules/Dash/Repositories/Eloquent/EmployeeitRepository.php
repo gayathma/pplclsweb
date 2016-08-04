@@ -12,6 +12,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use DB;
 use Lang;
 use Session;
+use App;
 
 class EmployeeitRepository extends BaseRepository implements EmployeeitRepositoryContract
 {
@@ -27,7 +28,7 @@ class EmployeeitRepository extends BaseRepository implements EmployeeitRepositor
 	public function model()
 	{
 		$lang = (Session::has('lang'))? Session::get('lang'): App::getLocale();
-         \App::setLocale($lang);
+         App::setLocale($lang);
 		return Employeeit::class;
 	}
 

@@ -9,6 +9,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use DB;
 use Lang;
 use Session;
+use App;
 
 class ProjectRepository extends BaseRepository implements ProjectRepositoryContract
 {
@@ -26,7 +27,7 @@ class ProjectRepository extends BaseRepository implements ProjectRepositoryContr
     public function model()
     {
         $lang = (Session::has('lang'))? Session::get('lang'): App::getLocale();
-         \App::setLocale($lang);
+        App::setLocale($lang);
         return Project::class;
     }
 
