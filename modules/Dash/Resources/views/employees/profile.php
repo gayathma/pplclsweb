@@ -1,16 +1,16 @@
 <!-- Page-Title -->
 <div class="row">
 	<div class="col-sm-12">
-		<h4 class="page-title">Human Resources</h4>
+		<h4 class="page-title"><?php echo  Lang::get('custom.hr');?></h4>
 		<ol class="breadcrumb">
 			<li>
-				<a href="/dash">Dashboard</a>
+				<a href="/dash"><?php echo  Lang::get('custom.dashboard');?></a>
 			</li>
 			<li>
-				<a href="/dash/human-resources">Human Resources</a>
+				<a href="/dash/human-resources"><?php echo  Lang::get('custom.hr');?></a>
 			</li>
 			<li class="active">
-				Profile
+				<?php echo  Lang::get('custom.profile');?>
 			</li>
 		</ol>
 	</div>
@@ -39,11 +39,11 @@
 
 				<div class="text-left">
 
-					<p class="text-muted font-13"><strong>Email :</strong> <span class="m-l-15"><?php echo $employee->email;?></span></p>
+					<p class="text-muted font-13"><strong><?php echo  Lang::get('custom.email');?> :</strong> <span class="m-l-15"><?php echo $employee->email;?></span></p>
 
-					<p class="text-muted font-13"><strong>Age :</strong> <span class="m-l-15"><?php echo $employee->age;?></span></p>
+					<p class="text-muted font-13"><strong><?php echo  Lang::get('custom.age');?> :</strong> <span class="m-l-15"><?php echo $employee->age;?></span></p>
 
-					<p class="text-muted font-13"><strong>Education :</strong> <span class="m-l-15"><?php echo ($employee->qualification)? $employee->qualification->qualification: '-';?></span></p>
+					<p class="text-muted font-13"><strong><?php echo  Lang::get('custom.education');?> :</strong> <span class="m-l-15"><?php echo ($employee->qualification)? $employee->qualification->qualification: '-';?></span></p>
 				</div>
 			</div>
 
@@ -93,7 +93,7 @@
 	</div>
 	<div class="col-lg-4">
 	    <div class="card-box">
-	      <h4 class="m-t-0 m-b-20 header-title"><b>Project Success Rates</b></h4>
+	      <h4 class="m-t-0 m-b-20 header-title"><b><?php echo  Lang::get('custom.project_success_rates');?></b></h4>
 
 	      <div class="inbox-widget nicescroll mx-box" tabindex="5001" style="overflow: hidden; outline: none;">
 	        <?php foreach ($projects as $project) :?>
@@ -104,7 +104,7 @@
 	              </div>
 	              <p class="inbox-item-author"><?php echo ($project->project)? $project->project->name : ' - ';?></p>
 	              <p class="inbox-item-text">
-	              	<h5 class="text-muted">Success Rate <span class="pull-right"><?php echo $project->workload_actual;?>%</span></h5>
+	              	<h5 class="text-muted"><?php echo  Lang::get('custom.success_rate');?><span class="pull-right"><?php echo $project->workload_actual;?>%</span></h5>
 	              	<div class="progress progress-sm m-0">
 	              		<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo $project->workload_actual;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $project->workload_actual;?>%">
 	              			<span class="sr-only"><?php echo $project->workload_actual;?>% Complete</span>

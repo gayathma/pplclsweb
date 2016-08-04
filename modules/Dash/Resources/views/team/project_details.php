@@ -10,8 +10,8 @@
 
 		<div class="row">
 			<div class="form-group clearfix">
-				<div class="col-sm-2"> 
-					<label >Type : </label>
+				<div class="col-sm-4"> 
+					<label ><?php echo  Lang::get('custom.type');?> : </label>
 				</div>
 				<div class="col-sm-2"> 
 					<label><?php echo (!is_null($project->type))? ucfirst($project->type) : ' - '; ?></label>
@@ -20,8 +20,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group clearfix">
-				<div class="col-sm-2"> 
-					<label >Start Date : </label>
+				<div class="col-sm-4"> 
+					<label ><?php echo  Lang::get('custom.start_date');?> : </label>
 				</div>
 				<div class="col-sm-2"> 
 					<label><?php echo ($project->wo_received_date != '')? $project->wo_received_date : '-';?></label>
@@ -30,8 +30,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group clearfix">
-				<div class="col-sm-2"> 
-					<label >Estimated End Date : </label>
+				<div class="col-sm-4"> 
+					<label ><?php echo  Lang::get('custom.estimated_end_date');?> : </label>
 				</div>
 				<div class="col-sm-2"> 
 					<label><?php echo ($project->estimated_end_date != '')? $project->estimated_end_date : '-';?></label>
@@ -40,8 +40,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group clearfix">
-				<div class="col-sm-2"> 
-					<label >Description : </label>
+				<div class="col-sm-4"> 
+					<label ><?php echo  Lang::get('custom.description');?> : </label>
 				</div>
 				<div class="col-sm-2"> 
 					<label><?php echo ($project->description != '')? $project->description : ' - '; ?></label>

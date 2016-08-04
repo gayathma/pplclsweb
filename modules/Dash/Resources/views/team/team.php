@@ -1,16 +1,20 @@
+<?php 
+ $lang = (Session::has('lang'))? Session::get('lang'): App::getLocale();
+ \App::setLocale($lang);
+ ?>
 <!-- Page-Title -->
 <div class="row">
     <div class="col-sm-12">
-        <h4 class="page-title">Team Builder</h4>
+        <h4 class="page-title"><?php echo  Lang::get('custom.team_builder');?></h4>
         <ol class="breadcrumb">
             <li>
-                <a href="/dash">Dashboard</a>
+                <a href="/dash"><?php echo  Lang::get('custom.dashboard');?></a>
             </li>
             <li >
-                <a href="/dash/team-builder/">Team Builder</a>
+                <a href="/dash/team-builder/"><?php echo  Lang::get('custom.team_builder');?></a>
             </li>
             <li class="active">
-                Predicted Team
+                <?php echo  Lang::get('custom.predicted_team');?>
             </li>
         </ol>
     </div>
@@ -19,7 +23,7 @@
 
 <div class="row">
 	<div class="col-md-8 col-md-offset-2 text-center m-b-15">
-		<h3 class="h4"><b>Team Members For Project "<?php echo $project->name;?>"</b></h3>
+		<h3 class="h4"><b><?php echo  Lang::get('custom.team_members_for_project');?> "<?php echo $project->name;?>"</b></h3>
 	</div>
 </div>
 

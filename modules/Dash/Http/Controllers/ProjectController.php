@@ -107,65 +107,65 @@ class ProjectController extends Controller {
     	
 		return View::make($this->layout, ['content' => View::make('dash::team.team_details',[
 				'project' => $project,
-				'employees' => $members
+				'employees' => $members,
+				'settingRepository' => $this->settingRepository
 			])->render()])->render();
 		}
 	}
 
 	public function postPredictTeam( ProjectRepository $projectRepository, ProjectapparelRepository $projectapparelRepository, Request $request)
     {
-		if(!is_null($this->settingRepository->get('system_type')) && ($this->settingRepository->get('system_type') == 'apparel')){
+		if(!is_null($this->settingRepository->get('system_type')) && ($this->settingRepository->get('system_type') == 'apparel'))
+		{
 			
-		$output = array();
-    	$algo_type = $request::get('algo');
-    	if($algo_type == 1){ 
-    		exec('python '.app_path().'/ApparelModel/SVM_Model.py '.$request::get('project'),$output, $return);
-    		$algo = 'svm_prob';
-    	}elseif($algo_type == 2){
-    		exec('python '.app_path().'/ApparelModel/KNN_Model.py '.$request::get('project'),$output, $return);
-    		$algo = 'knn_prob';
-    	}elseif($algo_type == 3){
-    		exec('python '.app_path().'/ApparelModel/NB_Model.py '.$request::get('project'),$output, $return);
-    		$algo = 'nb_prob';
-    	}
-    	$members = $this->employeeapparelRepository->getTeamMembers($request::all(), $algo);
-    	$project = $projectapparelRepository->find($request::get('project'));
-    	$this->knowledgebaseRepository->create(array_merge($members, ['project' => $project]));
-    	$project->update(['is_team_assigned' => 1]);
-    	$tree = $this->buildTree($members);
+			$output = array();
+	    	$algo_type = $request::get('algo');
+	    	if($algo_type == 1){ 
+	    		exec('python '.app_path().'/ApparelModel/SVM_Model.py '.$request::get('project'),$output, $return);
+	    		$algo = 'svm_prob';
+	    	}elseif($algo_type == 2){
+	    		exec('python '.app_path().'/ApparelModel/KNN_Model.py '.$request::get('project'),$output, $return);
+	    		$algo = 'knn_prob';
+	    	}elseif($algo_type == 3){
+	    		exec('python '.app_path().'/ApparelModel/NB_Model.py '.$request::get('project'),$output, $return);
+	    		$algo = 'nb_prob';
+	    	}
+	    	$members = $this->employeeapparelRepository->getTeamMembers($request::all(), $algo);
+	    	$project = $projectapparelRepository->find($request::get('project'));
+	    	$this->knowledgebaseRepository->create(array_merge($members, ['project' => $project]));
+	    	$project->update(['is_team_assigned' => 1]);
+	    	$tree = $this->buildTree($members);
 
-        return View::make($this->layout, ['content' => View::make('dash::team.team',[
-				'project' => $project,
-				'employees' => $members,
-				'tree' => json_encode($tree)
-			])->render()])->render();		
-		}
-		
-		else{
+	        return View::make($this->layout, ['content' => View::make('dash::team.team',[
+					'project' => $project,
+					'employees' => $members,
+					'tree' => json_encode($tree)
+				])->render()])->render();		
+		}else{
 			
-		$output = array();
-    	$algo_type = $request::get('algo');
-    	if($algo_type == 1){ 
-    		exec('python '.app_path().'/ItModel/SVM_Model.py '.$request::get('project'),$output, $return);
-    		$algo = 'svm_prob';
-    	}elseif($algo_type == 2){
-    		exec('python '.app_path().'/ItModel/KNN_Model.py '.$request::get('project'),$output, $return);
-    		$algo = 'knn_prob';
-    	}elseif($algo_type == 3){
-    		exec('python '.app_path().'/ItModel/NB_Model.py '.$request::get('project'),$output, $return);
-    		$algo = 'nb_prob';
-    	}
-    	$members = $this->employeeitRepository->getTeamMembers($request::all(), $algo);
-    	$project = $projectRepository->find($request::get('project'));
-    	$this->knowledgebaseRepository->create(array_merge($members, ['project' => $project]));
-    	$project->update(['is_team_assigned' => 1]);
-    	$tree = $this->buildTree($members);
+			$output = array();
+	    	$algo_type = $request::get('algo');
+	    	if($algo_type == 1){ 
+	    		exec('python '.app_path().'/ItModel/SVM_Model.py '.$request::get('project'),$output, $return);
+	    		$algo = 'svm_prob';
+	    	}elseif($algo_type == 2){
+	    		exec('python '.app_path().'/ItModel/KNN_Model.py '.$request::get('project'),$output, $return);
+	    		$algo = 'knn_prob';
+	    	}elseif($algo_type == 3){
+	    		exec('python '.app_path().'/ItModel/NB_Model.py '.$request::get('project'),$output, $return);
+	    		$algo = 'nb_prob';
+	    	}
+	    	$members = $this->employeeitRepository->getTeamMembers($request::all(), $algo);
+	    	$project = $projectRepository->find($request::get('project'));
+	    	$this->knowledgebaseRepository->create(array_merge($members, ['project' => $project]));
+	    	$project->update(['is_team_assigned' => 1]);
+	    	$tree = $this->buildTree($members);
 
-        return View::make($this->layout, ['content' => View::make('dash::team.team',[
-				'project' => $project,
-				'employees' => $members,
-				'tree' => json_encode($tree)
-			])->render()])->render();
+	        return View::make($this->layout, ['content' => View::make('dash::team.team',[
+					'project' => $project,
+					'employees' => $members,
+					'tree' => json_encode($tree)
+				])->render()])->render();
 			
 		}
     	

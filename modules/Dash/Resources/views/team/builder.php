@@ -43,25 +43,25 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-5">
-                                    <label class="col-lg-1 control-label "> Or </label>
-                                    <a class="btn btn-default waves-effect waves-light" href="/dash/project/new"> Add New Project</a>
+                                    <label class="col-lg-1 control-label "> <?php echo  Lang::get('custom.or');?> </label>&nbsp;&nbsp;
+                                    <a class="btn btn-default waves-effect waves-light" href="/dash/project/new"> <?php echo  Lang::get('custom.add_new_project');?></a>
                                 </div>
                             </div>
                             <div id="project_details" class="row">
                             </div>
                         </div>
                     </section>
-                    <h3>Job Roles & Technologies</h3>
+                    <h3><?php echo  Lang::get('custom.job_roles_and_technologies');?></h3>
                     <section class="step_two">
 
                     </section>
 
-                    <h3>Team Selection Criteria</h3>
+                    <h3><?php echo  Lang::get('custom.team_selection_criteria');?></h3>
                     <section>
                         <?php echo View::make('dash::team.wizard_partials.step_three', ['settingRepository' => $settingRepository])->render(); ?>                  
                     </section>
 
-                    <h3> Select Algorithm</h3>
+                    <h3><?php echo  Lang::get('custom.select_algorithm');?></h3>
                     <section class="step_four">
                     </section>
                 </div>
@@ -71,7 +71,7 @@
 </div>
 <!-- End row -->
 <div class="row loader-custom" id="loader" style="display:none">
-    <p class="loading-text">Please wait!! your team is generating...</p>
+    <p class="loading-text"><?php echo  Lang::get('custom.please_wait');?></p>
     <div class="sk-cube-grid">
       <div class="sk-cube sk-cube1"></div>
       <div class="sk-cube sk-cube2"></div>

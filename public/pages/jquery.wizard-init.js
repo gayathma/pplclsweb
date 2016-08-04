@@ -28,6 +28,11 @@
             headerTag: "h3",
             bodyTag: "section",
             transitionEffect: "slideLeft",
+            labels: {
+                finish: "<?php echo  Lang::get('custom.finish');?>",
+                next: "<?php echo  Lang::get('custom.next');?>",
+                previous: "<?php echo  Lang::get('custom.previous');?>"
+            },
             onStepChanging: function (event, currentIndex, newIndex) {
                 $form_container.validate().settings.ignore = ":disabled,:hidden";
 
