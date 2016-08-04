@@ -33,20 +33,23 @@
         });
     });
 </script>
-
+<?php 
+ $lang = (Session::has('lang'))? Session::get('lang'): App::getLocale();
+ \App::setLocale($lang);
+?>
 <!-- Page-Title -->
 <div class="row">
     <div class="col-sm-12">
-        <h4 class="page-title">Settings</h4>
+        <h4 class="page-title"><?php echo  Lang::get('custom.settings');?></h4>
         <ol class="breadcrumb">
             <li>
-                <a href="/dash">Dashboard</a>
+                <a href="/dash"><?php echo  Lang::get('custom.dashboard');?></a>
             </li>
             <li>
-                <a href="#">Settings</a>
+                <a href="#"><?php echo  Lang::get('custom.settings');?></a>
             </li>
             <li class="active">
-                General Settings
+                <?php echo  Lang::get('custom.general_settings');?>
             </li>
         </ol>
     </div>
@@ -58,7 +61,7 @@
     <div class="col-md-12">
 
         <div class="card-box">
-            <h4 class="m-t-0 header-title"><b>System Configuration</b></h4>
+            <h4 class="m-t-0 header-title"><b><?php echo  Lang::get('custom.system_config');?></b></h4>
 
             <div class="text-center">
                 <span id="animationSandbox" style="display: block;">
@@ -71,10 +74,10 @@
                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                 <div class="row">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Industry</label>
+                        <label class="col-sm-3 control-label"><?php echo  Lang::get('custom.industry');?></label>
                         <div class="col-sm-4">
                             <select class="form-control js--animations" name="system_type">
-                                <option value="">Select Industry</option>
+                                <option value=""><?php echo  Lang::get('custom.select_industry');?></option>
                                 <option value="it" <?php echo ($setting->get('system_type') == 'it')? 'selected': '' ; ?>>IT Industry</option>
                                 <option value="apparel" <?php echo ($setting->get('system_type') == 'apparel')? 'selected': '' ; ?>>Apparel Industry</option>
                             </select>
@@ -82,7 +85,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Minimum Team Size</label>
+                        <label class="col-sm-3 control-label"><?php echo  Lang::get('custom.min_team_size');?></label>
                         <div class="col-sm-4">
                             <input class="form-control" type="text" name="min_team_size" value="<?php echo $setting->get('min_team_size');?>"/>
                         </div>
@@ -91,7 +94,7 @@
                     <div class="form-group m-b-0">
                         <div class="col-sm-offset-3 col-sm-9 m-t-15">
                             <button class="btn btn-default"
-                            type="submit">Save
+                            type="submit"><?php echo  Lang::get('custom.save');?>
                             </button>
                         </div>
                         <!-- /input-group -->

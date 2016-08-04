@@ -22,21 +22,21 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="card-box">
-            <h4 class="m-t-0 header-title"><b>Start Composing Your Team</b></h4>
+            <h4 class="m-t-0 header-title"><b><?php echo  Lang::get('custom.start_composing_your_team');?></b></h4>
             <p class="text-muted m-b-30 font-13">
-                Team composer let you to create your team more efficient and accurate manner. 
+                Team composer lets you to create your team more efficient and accurate manner. 
 
                 <form  method="POST" action="/dash/team-builder/predict-team" id="team_builder_form">
                     <?php echo csrf_field(); ?>
                     <div >
-                        <h3>Choose Your Project</h3>
+                        <h3><?php echo  Lang::get('custom.choose_your_project');?></h3>
                         <section>
                             <div class="row">
                                 <div class="form-group clearfix">
-                                    <label class="col-lg-2 control-label " for="project">Select Project </label>
+                                    <label class="col-lg-2 control-label " for="project"><?php echo  Lang::get('custom.select_project');?></label>
                                     <div class="col-lg-4">
                                         <select class="form-control  required" id="project" name="project">
-                                            <option value="">Select</option>
+                                            <option value=""><?php echo  Lang::get('custom.select');?></option>
                                             <?php foreach ($projects as  $project): ?>
                                             <option value="<?php echo $project->id; ?>"><?php echo $project->name; ?></option>
                                         <?php endforeach; ?>

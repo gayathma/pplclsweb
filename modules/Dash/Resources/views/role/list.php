@@ -1,16 +1,20 @@
+<?php 
+ $lang = (Session::has('lang'))? Session::get('lang'): App::getLocale();
+ \App::setLocale($lang);
+?>
 <!-- Page-Title -->
 <div class="row">
     <div class="col-sm-12">
-        <h4 class="page-title">Settings</h4>
+        <h4 class="page-title"><?php echo  Lang::get('custom.settings');?></h4>
         <ol class="breadcrumb">
             <li>
-                <a href="/dash">Dashboard</a>
+                <a href="/dash"><?php echo  Lang::get('custom.dashboard');?></a>
             </li>
             <li>
-                <a href="#">Settings</a>
+                <a href="#"><?php echo  Lang::get('custom.settings');?></a>
             </li>
             <li class="active">
-                Roles
+                <?php echo  Lang::get('custom.roles');?>
             </li>
         </ol>
     </div>

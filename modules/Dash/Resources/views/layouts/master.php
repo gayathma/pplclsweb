@@ -85,132 +85,43 @@
                                          <a href="#"><i class="fa fa-search"></i></a>
                                     </form>
                                 </li>
-                                <li class="dropdown hidden-xs">
+                                
                                   <?php 
                                   if($lang == 'en'):?>
-                                    <a onclick="languageTranslate('si')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
-                                        <span >සිංහල</span>
-                                    </a>
-                                    <a onclick="languageTranslate('ta')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
-                                        <span >தமிழ்</span>
-                                    </a>
+                                    <li class="dropdown hidden-xs">
+                                      <a onclick="languageTranslate('si')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                                          <span >සිංහල</span>
+                                      </a>
+                                    </li>
+                                    <li class="dropdown hidden-xs">
+                                      <a onclick="languageTranslate('ta')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                                          <span >தமிழ்</span>
+                                      </a>
+                                    </li>
                                   <?php elseif($lang == 'si'):?>
-                                    <a onclick="languageTranslate('en')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
-                                        <span >English</span>
-                                    </a>
-                                    <a onclick="languageTranslate('ta')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
-                                        <span >தமிழ்</span>
-                                    </a>
+                                    <li class="dropdown hidden-xs">
+                                      <a onclick="languageTranslate('en')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                                          <span >English</span>
+                                      </a>
+                                    </li>
+                                    <li class="dropdown hidden-xs">
+                                      <a onclick="languageTranslate('ta')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                                          <span >தமிழ்</span>
+                                      </a>
+                                    </li>
                                   <?php elseif($lang == 'ta'):?>
-                                    <a onclick="languageTranslate('en')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
-                                        <span >English</span>
-                                    </a>
-                                    <a onclick="languageTranslate('si')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
-                                        <span >සිංහල</span>
-                                    </a>
+                                    <li class="dropdown hidden-xs">
+                                      <a onclick="languageTranslate('en')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                                          <span >English</span>
+                                      </a>
+                                    </li>
+                                    <li class="dropdown hidden-xs">
+                                      <a onclick="languageTranslate('si')" href="javascript;" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                                          <span >සිංහල</span>
+                                      </a>
+                                    </li>
                                   <?php endif;?>
-                                </li>
-                                <li class="dropdown hidden-xs">
-                                    <ul class="dropdown-menu dropdown-menu-lg">
-                                        <li class="notifi-title"><span class="label label-default pull-right">New 3</span>Notification</li>
-                                        <li class="list-group nicescroll notification-list">
-                                           <!-- list item-->
-                                           <a href="javascript:void(0);" class="list-group-item">
-                                              <div class="media">
-                                                 <div class="pull-left p-r-10">
-                                                    <em class="fa fa-diamond fa-2x text-primary"></em>
-                                                 </div>
-                                                 <div class="media-body">
-                                                    <h5 class="media-heading">A new order has been placed A new order has been placed</h5>
-                                                    <p class="m-0">
-                                                        <small>There are new settings available</small>
-                                                    </p>
-                                                 </div>
-                                              </div>
-                                           </a>
-
-                                           <!-- list item-->
-                                           <a href="javascript:void(0);" class="list-group-item">
-                                              <div class="media">
-                                                 <div class="pull-left p-r-10">
-                                                    <em class="fa fa-cog fa-2x text-custom"></em>
-                                                 </div>
-                                                 <div class="media-body">
-                                                    <h5 class="media-heading">New settings</h5>
-                                                    <p class="m-0">
-                                                        <small>There are new settings available</small>
-                                                    </p>
-                                                 </div>
-                                              </div>
-                                           </a>
-
-                                           <!-- list item-->
-                                           <a href="javascript:void(0);" class="list-group-item">
-                                              <div class="media">
-                                                 <div class="pull-left p-r-10">
-                                                    <em class="fa fa-bell-o fa-2x text-danger"></em>
-                                                 </div>
-                                                 <div class="media-body">
-                                                    <h5 class="media-heading">Updates</h5>
-                                                    <p class="m-0">
-                                                        <small>There are <span class="text-primary font-600">2</span> new updates available</small>
-                                                    </p>
-                                                 </div>
-                                              </div>
-                                           </a>
-
-                                           <!-- list item-->
-                                           <a href="javascript:void(0);" class="list-group-item">
-                                              <div class="media">
-                                                 <div class="pull-left p-r-10">
-                                                    <em class="fa fa-user-plus fa-2x text-info"></em>
-                                                 </div>
-                                                 <div class="media-body">
-                                                    <h5 class="media-heading">New user registered</h5>
-                                                    <p class="m-0">
-                                                        <small>You have 10 unread messages</small>
-                                                    </p>
-                                                 </div>
-                                              </div>
-                                           </a>
-
-                                           <!-- list item-->
-                                           <a href="javascript:void(0);" class="list-group-item">
-                                              <div class="media">
-                                                 <div class="pull-left p-r-10">
-                                                    <em class="fa fa-diamond fa-2x text-primary"></em>
-                                                 </div>
-                                                 <div class="media-body">
-                                                    <h5 class="media-heading">A new order has been placed A new order has been placed</h5>
-                                                    <p class="m-0">
-                                                        <small>There are new settings available</small>
-                                                    </p>
-                                                 </div>
-                                              </div>
-                                           </a>
-
-                                           <!-- list item-->
-                                            <a href="javascript:void(0);" class="list-group-item">
-                                                <div class="media">
-                                                    <div class="pull-left p-r-10">
-                                                     <em class="fa fa-cog fa-2x text-custom"></em>
-                                                    </div>
-                                                    <div class="media-body">
-                                                      <h5 class="media-heading">New settings</h5>
-                                                      <p class="m-0">
-                                                        <small>There are new settings available</small>
-                                                    </p>
-                                                    </div>
-                                              </div>
-                                           </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);" class="list-group-item text-right">
-                                                <small class="font-600">See all notifications</small>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                
 
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="true"><img src="/images/admin.png" alt="user-img" class="img-circle"> </a>

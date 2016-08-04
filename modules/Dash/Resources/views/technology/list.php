@@ -1,16 +1,20 @@
+<?php 
+ $lang = (Session::has('lang'))? Session::get('lang'): App::getLocale();
+ \App::setLocale($lang);
+?>
 <!-- Page-Title -->
 <div class="row">
     <div class="col-sm-12">
-        <h4 class="page-title">Settings</h4>
+        <h4 class="page-title"><?php echo  Lang::get('custom.settings');?></h4>
         <ol class="breadcrumb">
             <li>
-                <a href="/dash">Dashboard</a>
+                <a href="/dash"><?php echo  Lang::get('custom.dashboard');?></a>
             </li>
             <li>
-                <a href="#">Settings</a>
+                <a href="#"><?php echo  Lang::get('custom.settings');?></a>
             </li>
             <li class="active">
-                Technologies
+                <?php echo  Lang::get('custom.technologies');?>
             </li>
         </ol>
     </div>
@@ -24,7 +28,7 @@
                 <div class="col-sm-12">
                     <div class="btn-group pull-right m-t-15">
                         <a href="/dash/technology/new" class="btn btn-default btn-md waves-effect waves-light m-b-30 bw-modal" data-animation="fadein" 
-                        data-overlaySpeed="200" data-overlayColor="#36404a"><i class="md md-add"></i> Add New Technology</a>
+                        data-overlaySpeed="200" data-overlayColor="#36404a"><i class="md md-add"></i> <?php echo  Lang::get('custom.add_new_technology');?></a>
                     </div>
                </div>
            </div>
@@ -34,9 +38,9 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Created Date</th>
-                        <th style="min-width: 90px;">Action</th>
+                        <th><?php echo  Lang::get('custom.name');?></th>
+                        <th><?php echo  Lang::get('custom.created_date');?></th>
+                        <th style="min-width: 90px;"><?php echo  Lang::get('custom.action');?></th>
                     </tr>
                 </thead>
 
@@ -57,9 +61,9 @@
                                     <?php echo date('Y-m-d', strtotime($technology->created_at));?>
                                 </td>
                                 <td>
-                                    <a href="/dash/technology/edit?tech_id=<?php echo $technology->id;?>" class="table-action-btn bw-modal" title="Edit" data-animation="fadein" 
+                                    <a href="/dash/technology/edit?tech_id=<?php echo $technology->id;?>" class="table-action-btn bw-modal" title="<?php echo  Lang::get('custom.edit');?>" data-animation="fadein" 
                                         data-overlaySpeed="200" data-overlayColor="#36404a"><i class="md md-edit"></i></a>
-                                    <a href="javascript:;" onclick="deleteTechnology(<?php echo $technology->id;?>)"  class="table-action-btn bw-ajaxlink" title="Delete" ><i class="md md-close"></i></a>
+                                    <a href="javascript:;" onclick="deleteTechnology(<?php echo $technology->id;?>)"  class="table-action-btn bw-ajaxlink" title="<?php echo  Lang::get('custom.delete');?>" ><i class="md md-close"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach;?>

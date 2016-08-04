@@ -10,7 +10,8 @@ use Modules\Dash\Entities\Eloquent\EmployeeitTechnology;
 use Modules\Dash\Contracts\EmployeeitRepositoryContract;
 use Prettus\Repository\Eloquent\BaseRepository;
 use DB;
-
+use Lang;
+use Session;
 
 class EmployeeitRepository extends BaseRepository implements EmployeeitRepositoryContract
 {
@@ -25,6 +26,8 @@ class EmployeeitRepository extends BaseRepository implements EmployeeitRepositor
 
 	public function model()
 	{
+		$lang = (Session::has('lang'))? Session::get('lang'): App::getLocale();
+         \App::setLocale($lang);
 		return Employeeit::class;
 	}
 
@@ -74,11 +77,11 @@ class EmployeeitRepository extends BaseRepository implements EmployeeitRepositor
 			$re = new \StdClass;
 			$re->y = round(($result->y * 100) / $all_employees,1) ;
 			if($result->gender == 'M'){
-				$re->name = "Male";
+				$re->name = Lang::get('custom.male');
 			}elseif($result->gender == 'F'){
-				$re->name = "Female";
+				$re->name = Lang::get('custom.female');
 			}else{
-				$re->name = "Other";
+				$re->name = Lang::get('custom.other');
 			}
 			$result_arr[] = $re;
 		}

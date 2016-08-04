@@ -21,7 +21,7 @@
     <div class="col-sm-12">
         <form role="form">
             <div class="form-group contact-search m-b-30">
-                <input type="text" id="search" class="form-control" placeholder="Search...">
+                <input type="text" id="search" class="form-control" placeholder="<?php echo  Lang::get('custom.search');?>...">
                 <button type="submit" class="btn btn-white"><i class="fa fa-search"></i></button>
             </div> <!-- form-group -->
         </form>
