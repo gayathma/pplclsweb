@@ -82,4 +82,15 @@ return [
     'education' => 'Education',
     'project_success_rates' => 'Project Success Rates',
 
+    'no_new_projects_found' => 'No new projects found',
+    'team_composer_lets_you_to_create_your_team_more_efficient_and_accurate_manner' => 'Team composer lets you to create your team more efficient and accurate manner',
+    'example' => 'e.g',
+    'no_new_employees_found' => 'No new employees found',
+    'add_job_roles' => 'Add job roles',
+    'select_the_attributes_that_needs_to_be_accounted_by_the_algorithm' => 'Select the attributes that needs to be accounted by the algorithm',
+    'previous_experience' => 'Previous Experience',
+    'educational_qualifications' => 'Educational Qualifications',
+    'experience_in_current_occupation' => 'Experience In Current Occupation',
+    'amount_of_estimated_work' => 'Amount of Estimated Work',
+    'previous_project_success_rates' => 'Previous Project Success Rates',
 ];

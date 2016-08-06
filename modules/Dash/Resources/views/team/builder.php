@@ -24,7 +24,7 @@
         <div class="card-box">
             <h4 class="m-t-0 header-title"><b><?php echo  Lang::get('custom.start_composing_your_team');?></b></h4>
             <p class="text-muted m-b-30 font-13">
-                Team composer lets you to create your team more efficient and accurate manner. 
+                <?php echo  Lang::get('custom.team_composer_lets_you_to_create_your_team_more_efficient_and_accurate_manner');?>
 
                 <form  method="POST" action="/dash/team-builder/predict-team" id="team_builder_form">
                     <?php echo csrf_field(); ?>

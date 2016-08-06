@@ -4,7 +4,8 @@ namespace Modules\Dash\Repositories\Eloquent;
 
 use Modules\Dash\Entities\Eloquent\Employeeapparel;
 use Modules\Dash\Entities\Eloquent\Technology;
-use Modules\Dash\Entities\Eloquent\Knowledgebase;
+use Modules\Dash\Entities\Eloquent\EmployeeapparelTechnology;
+use Modules\Dash\Entities\Eloquent\Knowledgebaseapparel;
 use Modules\Dash\Entities\Eloquent\Predictionapparel;
 use Modules\Dash\Contracts\EmployeeapparelRepositoryContract;
 use Prettus\Repository\Eloquent\BaseRepository;
@@ -32,10 +33,10 @@ class EmployeeapparelRepository extends BaseRepository implements Employeeappare
 		$members = [];
 		foreach ($attributes['roles'] as $role) {
 			$count = $attributes['count'][$role];
-			$roleMembers = Predictionapparel::join('dim_hemployee', 'dim_hemployee.id', '=', 'predictionapparel.employee_id')
-				->join('dim_hrole', 'dim_hrole.id', '=', 'dim_hemployee.dim_hrole_id')
-				->join('dim_hgender', 'dim_hgender.id', '=', 'dim_hemployee.dim_hgender_id')
-				->select('dim_hrole.name as role_name', 'dim_hrole.parent as parent','dim_hemployee.*','dim_hgender.gender','predictionapparel.employee_id')
+			$roleMembers = Predictionapparel::join('dim_hemployee_apparel', 'dim_hemployee_apparel.id', '=', 'predictionapparel.employee_id')
+				->join('dim_hrole_apparel', 'dim_hrole_apparel.id', '=', 'dim_hemployee_apparel.dim_hrole_id')
+				->join('dim_hgender', 'dim_hgender.id', '=', 'dim_hemployee_apparel.dim_hgender_id')
+				->select('dim_hrole_apparel.name as role_name', 'dim_hrole_apparel.parent as parent','dim_hemployee_apparel.*','dim_hgender.gender','predictionapparel.employee_id')
 				->where('project_id', $attributes['project'])
 				->where('dim_hrole_id', $role)
 				->where('is_available', 1)
@@ -53,15 +54,15 @@ class EmployeeapparelRepository extends BaseRepository implements Employeeappare
 		if($project_id == 0){
 			$all_employees = Employeeapparel::count();
 
-			$results = Employeeapparel::join('dim_hgender', 'dim_hgender.id', '=', 'dim_hemployee.dim_hgender_id')
+			$results = Employeeapparel::join('dim_hgender', 'dim_hgender.id', '=', 'dim_hemployee_apparel.dim_hgender_id')
 				->select('dim_hgender.gender',DB::raw('count(*) as y'))
 				->groupBy('dim_hgender_id')
 				->get();
 		}else{
-			$all_employees = Knowledgebase::where('dim_hproject_id', $project_id)->count();
+			$all_employees = Knowledgebaseapparel::where('dim_hproject_id', $project_id)->count();
 
-			$results = Knowledgebase::join('dim_hemployee', 'dim_hemployee.id', '=', 'fact_knowledgebase.dim_hemployee_id')
-				->join('dim_hgender', 'dim_hgender.id', '=', 'dim_hemployee.dim_hgender_id')
+			$results = Knowledgebaseapparel::join('dim_hemployee_apparel', 'dim_hemployee_apparel.id', '=', 'fact_knowledgebase_apparel.dim_hemployee_id')
+				->join('dim_hgender', 'dim_hgender.id', '=', 'dim_hemployee_apparel.dim_hgender_id')
 				->select('dim_hgender.gender',DB::raw('count(*) as y'))
 				->where('dim_hproject_id', $project_id)
 				->groupBy('dim_hgender_id')
@@ -89,15 +90,15 @@ class EmployeeapparelRepository extends BaseRepository implements Employeeappare
 	{
 		if($project_id == 0){
 			$all_employees = Employeeapparel::count();
-			$results = Employeeapparel::join('dim_hrole', 'dim_hrole.id', '=', 'dim_hemployee.dim_hrole_id')
-				->select('dim_hrole.name as role',DB::raw('count(*) as y'))
+			$results = Employeeapparel::join('dim_hrole_apparel', 'dim_hrole_apparel.id', '=', 'dim_hemployee_apparel.dim_hrole_id')
+				->select('dim_hrole_apparel.name as role',DB::raw('count(*) as y'))
 				->groupBy('dim_hrole_id')
 				->get();
 		}else{
-			$all_employees = Knowledgebase::where('dim_hproject_id', $project_id)->count();
-			$results = Knowledgebase::join('dim_hemployee', 'dim_hemployee.id', '=', 'fact_knowledgebase.dim_hemployee_id')
-				->join('dim_hrole', 'dim_hrole.id', '=', 'dim_hemployee.dim_hrole_id')
-				->select('dim_hrole.name as role',DB::raw('count(*) as y'))
+			$all_employees = Knowledgebaseapparel::where('dim_hproject_id', $project_id)->count();
+			$results = Knowledgebaseapparel::join('dim_hemployee_apparel', 'dim_hemployee_apparel.id', '=', 'fact_knowledgebase_apparel.dim_hemployee_id')
+				->join('dim_hrole_apparel', 'dim_hrole_apparel.id', '=', 'dim_hemployee_apparel.dim_hrole_id')
+				->select('dim_hrole_apparel.name as role',DB::raw('count(*) as y'))
 				->where('dim_hproject_id', $project_id)
 				->groupBy('dim_hrole_id')
 				->get();
@@ -146,32 +147,32 @@ class EmployeeapparelRepository extends BaseRepository implements Employeeappare
 
 			foreach ($technologies as $technology) {
 
-				$level1[] = Knowledgebase::join('dim_hemployee_dim_htechnology', 'dim_hemployee_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase.dim_hemployee_id')
+				$level1[] = Knowledgebaseapparel::join('dim_hemployee_apparel_dim_htechnology', 'dim_hemployee_apparel_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase_apparel.dim_hemployee_id')
 					->where('dim_htechnology_id', $technology->id)
 					->where('dim_hproject_id', $project_id)
 					->where('grade', 0)->count();
 
-				$level2[] = Knowledgebase::join('dim_hemployee_dim_htechnology', 'dim_hemployee_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase.dim_hemployee_id')
+				$level2[] = Knowledgebaseapparel::join('dim_hemployee_apparel_dim_htechnology', 'dim_hemployee_apparel_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase_apparel.dim_hemployee_id')
 					->where('dim_htechnology_id', $technology->id)
 					->where('dim_hproject_id', $project_id)
 					->whereBetween('grade', [1, 2])->count();
 
-				$level3[] = Knowledgebase::join('dim_hemployee_dim_htechnology', 'dim_hemployee_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase.dim_hemployee_id')
+				$level3[] = Knowledgebaseapparel::join('dim_hemployee_apparel_dim_htechnology', 'dim_hemployee_apparel_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase_apparel.dim_hemployee_id')
 					->where('dim_htechnology_id', $technology->id)
 					->where('dim_hproject_id', $project_id)
 					->whereBetween('grade', [3, 4])->count();
 
-				$level4[] = Knowledgebase::join('dim_hemployee_dim_htechnology', 'dim_hemployee_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase.dim_hemployee_id')
+				$level4[] = Knowledgebaseapparel::join('dim_hemployee_apparel_dim_htechnology', 'dim_hemployee_apparel_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase_apparel.dim_hemployee_id')
 					->where('dim_htechnology_id', $technology->id)
 					->where('dim_hproject_id', $project_id)
 					->whereBetween('grade', [5, 6])->count();
 
-				$level5[] = Knowledgebase::join('dim_hemployee_dim_htechnology', 'dim_hemployee_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase.dim_hemployee_id')
+				$level5[] = Knowledgebaseapparel::join('dim_hemployee_apparel_dim_htechnology', 'dim_hemployee_apparel_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase_apparel.dim_hemployee_id')
 					->where('dim_htechnology_id', $technology->id)
 					->where('dim_hproject_id', $project_id)
 					->whereBetween('grade', [7, 8])->count();
 
-				$level6[] = Knowledgebase::join('dim_hemployee_dim_htechnology', 'dim_hemployee_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase.dim_hemployee_id')
+				$level6[] = Knowledgebaseapparel::join('dim_hemployee_apparel_dim_htechnology', 'dim_hemployee_apparel_dim_htechnology.dim_hemployee_id', '=', 'fact_knowledgebase_apparel.dim_hemployee_id')
 					->where('dim_htechnology_id', $technology->id)
 					->where('dim_hproject_id', $project_id)
 					->whereBetween('grade', [9, 10])->count();

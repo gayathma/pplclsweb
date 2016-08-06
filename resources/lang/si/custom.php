@@ -83,4 +83,16 @@ return [
     'education' => 'අධ්‍යාපනික සුදුසුකම්',
     'project_success_rates' => 'ව්‍යාපෘති සාර්ථකත්ව අනුපාත',
 
+    'no_new_projects_found' => 'නව ව්‍යාපෘති නොමැත',
+    'team_composer_lets_you_to_create_your_team_more_efficient_and_accurate_manner' => 'කණ්ඩායම් නිර්මාපකය ඔබට කාර්යක්ෂම හා නිවැරදි ලෙස කණ්ඩායම් නිර්මාණය කිරීමට උපකාර වේ',
+    'example' => 'උදාහරණයක්',
+    'no_new_employees_found' => 'නව සේවකයින් නොමැත',
+    'add_job_roles' => 'තනතුරු ඇතුලත් කරන්න',
+    'select_the_attributes_that_needs_to_be_accounted_by_the_algorithm' => 'ඇල්ගොරිතම හරහා ගිණුම්ගත කලයුතු ගුණාංග තෝරන්න',
+    'previous_experience' => 'පෙර සුදුසුකම්',
+    'educational_qualifications' => 'අධ්‍යාපන සුදුසුකම්',
+    'experience_in_current_occupation' => 'වර්තමාන රැකියා අත්දැකීම්',
+    'amount_of_estimated_work' => 'ඇස්තමේන්තු වැඩ ප්රමාණය',
+    'previous_project_success_rates' => 'පෙර ව්යාපෘතිය සාර්ථක අනුපාත',
+
 ];

@@ -6,7 +6,7 @@
         </div>
         <div class="text-right">
             <h3 class="text-dark"><b class="counter"><?php echo count($employees);?></b></h3>
-            <p class="text-muted">Total Employees</p>
+            <p class="text-muted"><?php echo Lang::get('custom.total_employees');?></p>
         </div>
         <div class="clearfix"></div>
     </div>
@@ -19,7 +19,7 @@
           </div>
           <div class="text-right">
               <h3 class="text-dark"><b class="counter"><?php echo count($projects);?></b></h3>
-              <p class="text-muted">Total Projects</p>
+              <p class="text-muted"><?php echo Lang::get('custom.total_projects');?></p>
           </div>
           <div class="clearfix"></div>
       </div>
@@ -32,7 +32,7 @@
           </div>
           <div class="text-right">
               <h3 class="text-dark"><b class="counter"><?php echo count($teams);?></b></h3>
-              <p class="text-muted">Predicted Teams</p>
+              <p class="text-muted"><?php echo Lang::get('custom.predicted_teams');?></p>
           </div>
           <div class="clearfix"></div>
       </div>
@@ -45,7 +45,7 @@
           </div>
           <div class="text-right">
               <h3 class="text-dark"><b class="counter"><?php echo count($thisMonthTeams);?></b></h3>
-              <p class="text-muted"><?php echo date('F');?> Predicted Teams</p>
+              <p class="text-muted"><?php echo date('F');?> <?php echo Lang::get('custom.predicted_teams');?></p>
           </div>
           <div class="clearfix"></div>
       </div>
@@ -55,7 +55,7 @@
 <div class="row">
   <div class="col-lg-4">
     <div class="card-box">
-      <h4 class="m-t-0 m-b-20 header-title"><b>Vacant Employees</b></h4>
+      <h4 class="m-t-0 m-b-20 header-title"><b><?php echo Lang::get('custom.vacant_employees');?></b></h4>
 
       <div class="inbox-widget nicescroll mx-box" tabindex="5001" style="overflow: hidden; outline: none;">
         <?php foreach ($vacantEmployees as $employee) :?>
@@ -70,7 +70,7 @@
               </div>
               <p class="inbox-item-author"><?php echo ($employee->salutation)? $employee->salutation->title.'. ': ' ';?><?php echo $employee->getNameAttribute();?></p>
               <p class="inbox-item-text"><?php echo ($employee->role)? $employee->role->name: $employee->role_name;?></p>
-              <p class="inbox-item-date">Grade <?php echo $employee->grade;?></p>
+              <p class="inbox-item-date"><?php echo Lang::get('custom.grade');?> <?php echo $employee->grade;?></p>
             </div>
           </a>
         <?php endforeach;?>
@@ -81,7 +81,7 @@
     <div class="portlet"><!-- /primary heading -->
       <div class="portlet-heading">
         <h3 class="portlet-title text-dark">
-          Project Status
+            <?php echo Lang::get('custom.project_status');?>
         </h3>
         <div class="clearfix"></div>
       </div>
@@ -94,7 +94,7 @@
   </div>
   <div class="col-lg-4">
     <div class="card-box">
-      <h4 class="m-t-0 m-b-20 header-title"><b>New Projects</b></h4>
+      <h4 class="m-t-0 m-b-20 header-title"><b><?php echo Lang::get('custom.new_projects');?></b></h4>
 
       <div class="inbox-widget nicescroll mx-box" tabindex="5001" style="overflow: hidden; outline: none;">
         <?php 
@@ -107,14 +107,14 @@
                        <img class="img-circle" src="/images/projects/mystery.png" class="img-circle">
                   </div>
                   <p class="inbox-item-author"><?php echo $project->name;?></p>
-                  <p class="inbox-item-text">Start Date  -  <?php echo $project->wo_received_date;?></p>
+                  <p class="inbox-item-text"><?php echo Lang::get('custom.start_date');?>  -  <?php echo $project->wo_received_date;?></p>
                 </div>
               </a>
           <?php endforeach;?>
         <?php else:?>
             <a href="#">
                 <div class="inbox-item">
-                  No New Projects Found.
+                    <?php echo Lang::get('custom.no_new_projects_found');?>
                 </div>
             </a>
         <?php endif;?>
@@ -128,7 +128,7 @@
     <div class="portlet"><!-- /primary heading -->
       <div class="portlet-heading">
         <h3 class="portlet-title text-dark">
-          Average Project Success Rate
+            <?php echo Lang::get('custom.avg_success_rate');?>
         </h3>
         <div class="clearfix"></div>
       </div>
@@ -164,7 +164,7 @@ $(document).ready(function () {
       yAxis: {
         min: 0,
         title: {
-          text: 'Average Success Rate'
+          text: '<?php echo Lang::get('custom.avg_success_rate_2');?>'
         }
       },
       credits: { 
@@ -225,12 +225,12 @@ $(document).ready(function () {
         }
       },
       series: [{
-        name: 'Projects',
+        name: '<?php echo Lang::get('custom.projects');?>',
         colorByPoint: true,
         data: [
-          {name:'On Going',y:<?php echo $ongoingProjectsCount;?>},
-          {name:'Completed',y:<?php echo $closedProjectsCount;?>},
-          {name:'New',y:<?php echo $newProjectsCount;?>}
+          {name:'<?php echo Lang::get('custom.on_going');?>',y:<?php echo $ongoingProjectsCount;?>},
+          {name:'<?php echo Lang::get('custom.completed');?>',y:<?php echo $closedProjectsCount;?>},
+          {name:'<?php echo Lang::get('custom.new');?>',y:<?php echo $newProjectsCount;?>}
         ]
       }]
     });

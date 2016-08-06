@@ -28,7 +28,12 @@
             <div class="col-md-4">
                 <div class="widget-panel widget-style-2 bg-white">
                             <h2 class="m-0 text-dark  role-text"><?php echo $role->name;?></h2>
-                            <i class="md role-count text-primary"><?php echo count($role->employeeits)?></i>
+                    <?php if(!is_null($settingRepository->get('system_type')) && ($settingRepository->get('system_type') == 'apparel')){ ?>
+                        <i class="md role-count text-primary"><?php echo count($role->employeeapparel)?></i>
+                    <?php }else{ ?>
+                        <i class="md role-count text-primary"><?php echo count($role->employeeits)?></i>
+                    <?php } ?>
+
                         </div>
             </div>
         <?php endforeach;?>

@@ -57,7 +57,7 @@
         <div class="card-box m-b-10">
             <div class="table-box opport-box">
                 <div class="table-detail">
-                    No Employees Found.
+                    <?php echo  Lang::get('custom.no_new_employees_found');?>
                 </div>
             </div>
         </div>

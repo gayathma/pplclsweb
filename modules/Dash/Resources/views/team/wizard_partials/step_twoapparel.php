@@ -1,8 +1,8 @@
-<p class="text-muted m-b-30 font-13">Add Job Roles and Technologies</p>
+<p class="text-muted m-b-30 font-13"><?php echo  Lang::get('custom.add_job_roles');?></p>
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th>Job Roles</th>
+            <th><?php echo  Lang::get('custom.roles');?></th>
 
         </tr>
     </thead>

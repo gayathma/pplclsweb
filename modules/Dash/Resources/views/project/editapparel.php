@@ -36,16 +36,16 @@
 <?php if (is_null($project)): ?>
     <div class="row">
         <div class="col-sm-12">
-            <h4 class="page-title">New Project</h4>
+            <h4 class="page-title"><?php echo  Lang::get('custom.add_new_project');?></h4>
             <ol class="breadcrumb">
                 <li>
-                    <a href="/dash">Dashboard</a>
+                    <a href="/dash"><?php echo  Lang::get('custom.dashboard');?></a>
                 </li>
                 <li>
-                    <a href="/dash/projects">Projects</a>
+                    <a href="/dash/projects"><?php echo  Lang::get('custom.projects');?></a>
                 </li>
                 <li class="active">
-                    New Project
+                    <?php echo  Lang::get('custom.add_new_project');?>
                 </li>
             </ol>
 
@@ -54,16 +54,16 @@
 <?php else: ?>
     <div class="row">
         <div class="col-sm-12">
-            <h4 class="page-title">Edit Project</h4>
+            <h4 class="page-title"><?php echo  Lang::get('custom.edit_project');?></h4>
             <ol class="breadcrumb">
                 <li>
-                    <a href="/dash">Dashboard</a>
+                    <a href="/dash"><?php echo  Lang::get('custom.dashboard');?></a>
                 </li>
                 <li>
-                    <a href="/dash/projects">Projects</a>
+                    <a href="/dash/projects"><?php echo  Lang::get('custom.projects');?></a>
                 </li>
                 <li class="active">
-                    Edit Project
+                    <?php echo  Lang::get('custom.edit_project');?>
                 </li>
             </ol>
 
@@ -81,18 +81,18 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-box">
-                        <h5 class="text-muted text-uppercase m-t-0 m-b-20"><b>Project Details</b></h5>
+                        <h5 class="text-muted text-uppercase m-t-0 m-b-20"><b><?php echo  Lang::get('custom.project_details');?></b></h5>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group m-b-20">
-                                    <label>Project Name <span class="text-danger">*</span></label>
-                                    <input name="name" type="text" class="form-control" placeholder="e.g : CRM Project">
+                                    <label><?php echo  Lang::get('custom.project_name');?> <span class="text-danger">*</span></label>
+                                    <input name="name" type="text" class="form-control" placeholder="<?php echo  Lang::get('custom.example');?> : CRM Project">
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group m-b-20">
-                                    <label>Project Duration <span class="text-danger">*</span></label>
+                                    <label><?php echo  Lang::get('custom.project_duration');?> <span class="text-danger">*</span></label>
                                     <?php $date =  date('m/d/Y').' - '.date('m/d/Y', strtotime('+1 month'));?>
                                     <input class="form-control input-daterange-datepicker" type="text" name="duration" value="<?php echo $date;?>"/>
                                 </div>
@@ -102,15 +102,15 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group m-b-20">
-                                    <label>Description </label>
-                                    <textarea class="form-control" name="description" rows="5" placeholder="Please enter description"></textarea>
+                                    <label><?php echo  Lang::get('custom.description');?> </label>
+                                    <textarea class="form-control" name="description" rows="5" placeholder="<?php echo  Lang::get('custom.please_enter_description');?>"></textarea>
                                 </div>
                             </div>
                         </div>
 
-                        <button type="reset" class="btn w-sm btn-white waves-effect">Cancel</button>
+                        <button type="reset" class="btn w-sm btn-white waves-effect"><?php echo  Lang::get('custom.cancel');?></button>
                         <button type="submit" class="btn w-sm btn-default waves-effect waves-light">
-                            Save
+                            <?php echo  Lang::get('custom.save');?>
                         </button>
                     </div>
                 </div>

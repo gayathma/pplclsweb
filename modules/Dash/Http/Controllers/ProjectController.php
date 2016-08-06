@@ -75,7 +75,8 @@ class ProjectController extends Controller {
 	public function getProjectDetails(ProjectRepository $projectRepository,ProjectapparelRepository $projectapparelRepository,Request $request){
 		if(!is_null($this->settingRepository->get('system_type')) && ($this->settingRepository->get('system_type') == 'apparel')){
 			return View::make('dash::team.project_details', [
-				'project' => ($request::get('project_id') != '')? $projectapparelRepository->find($request::get('project_id')) : null
+				'project' => ($request::get('project_id') != '')? $projectapparelRepository->find($request::get('project_id')) : null,
+				'settingRepository' => $this->settingRepository
 			]);
 			
 		}

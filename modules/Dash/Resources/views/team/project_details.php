@@ -8,16 +8,19 @@
 		</div>
 	</div>
 
-		<div class="row">
-			<div class="form-group clearfix">
-				<div class="col-sm-4"> 
-					<label ><?php echo  Lang::get('custom.type');?> : </label>
-				</div>
-				<div class="col-sm-2"> 
-					<label><?php echo (!is_null($project->type))? ucfirst($project->type) : ' - '; ?></label>
-				</div>
+	<?php if(!is_null($settingRepository->get('system_type')) && ($settingRepository->get('system_type') == 'apparel')){ ?>
+
+	<?php } else { ?>
+		<div class="form-group clearfix">
+			<div class="col-sm-4">
+				<label ><?php echo  Lang::get('custom.type');?> : </label>
+			</div>
+			<div class="col-sm-2">
+				<label><?php echo (!is_null($project->type))? ucfirst($project->type) : ' - '; ?></label>
 			</div>
 		</div>
+		</div>
+	<?php } ?>
 		<div class="row">
 			<div class="form-group clearfix">
 				<div class="col-sm-4"> 
