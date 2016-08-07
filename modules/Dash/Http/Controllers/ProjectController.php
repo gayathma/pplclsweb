@@ -133,7 +133,7 @@ class ProjectController extends Controller {
 	    	}
 	    	$members = $this->employeeapparelRepository->getTeamMembers($request::all(), $algo);
 	    	$project = $projectapparelRepository->find($request::get('project'));
-	    	$this->knowledgebaseRepository->create(array_merge($members, ['project' => $project]));
+	    	$this->knowledgebaseapparelRepository->create(array_merge($members, ['project' => $project]));
 	    	$project->update(['is_team_assigned' => 1]);
 	    	$tree = $this->buildTree($members);
 
