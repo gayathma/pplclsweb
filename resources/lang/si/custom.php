@@ -95,4 +95,6 @@ return [
     'amount_of_estimated_work' => 'ඇස්තමේන්තු වැඩ ප්රමාණය',
     'previous_project_success_rates' => 'පෙර ව්යාපෘතිය සාර්ථක අනුපාත',
 
+    'algo_selection' => 'ඇල්ගොරිතම තේරීමේ ක්‍රමය',
+
 ];

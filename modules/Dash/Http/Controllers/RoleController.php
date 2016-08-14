@@ -49,7 +49,8 @@ class RoleController extends Controller {
 			$template = 'dash::role.list';
 
 			return View::make($this->layout, ['content' => View::make($template,[
-					'roles' => Role::all()
+					'roles' => Role::all(),
+					'settingRepository'=>$this->settingRepository
 				])->render()])->render();
 			
 		}

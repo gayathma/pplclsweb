@@ -93,4 +93,6 @@ return [
     'experience_in_current_occupation' => 'Experience In Current Occupation',
     'amount_of_estimated_work' => 'Amount of Estimated Work',
     'previous_project_success_rates' => 'Previous Project Success Rates',
+
+    'algo_selection' => 'Algorithm Selection Method',
 ];

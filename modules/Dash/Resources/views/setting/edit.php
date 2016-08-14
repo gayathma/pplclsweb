@@ -76,7 +76,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label"><?php echo  Lang::get('custom.industry');?></label>
                         <div class="col-sm-4">
-                            <select class="form-control js--animations" name="system_type">
+                            <select class="form-control" name="system_type" readonly>
                                 <option value=""><?php echo  Lang::get('custom.select_industry');?></option>
                                 <option value="it" <?php echo ($setting->get('system_type') == 'it')? 'selected': '' ; ?>>IT Industry</option>
                                 <option value="apparel" <?php echo ($setting->get('system_type') == 'apparel')? 'selected': '' ; ?>>Apparel Industry</option>
@@ -88,6 +88,27 @@
                         <label class="col-sm-3 control-label"><?php echo  Lang::get('custom.min_team_size');?></label>
                         <div class="col-sm-4">
                             <input class="form-control" type="text" name="min_team_size" value="<?php echo $setting->get('min_team_size');?>"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"><?php echo  Lang::get('custom.algo_selection');?></label>
+                        <div class="col-sm-4">
+                            <div class="radio radio-info">
+                                <input type="radio" name="model_select_method" id="automatic" value="automatic" <?php if($setting->get('model_select_method') == "automatic"):?> checked="" <?php endif; ?> />
+                                <label for="automatic">
+                                    Automatically Select The Best Algorithm 
+                                </label>
+
+                            </div>
+
+                            <div class="radio radio-info">
+                                <input type="radio" name="model_select_method" id="manual" value="manual" <?php if($setting->get('model_select_method') == "manual"):?> checked="" <?php endif; ?>>
+                                <label for="manual">
+                                    Manually Select Algorithm 
+                                </label>
+                            </div>
+
                         </div>
                     </div>
 
