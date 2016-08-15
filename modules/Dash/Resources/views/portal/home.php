@@ -49,7 +49,8 @@
           </div>
           <div class="text-right">
               <h3 class="text-dark"><b class="counter"><?php echo count($thisMonthTeams);?></b></h3>
-              <p class="text-muted"><?php echo date('F');?> <?php echo  Lang::get('custom.predicted_teams');?></p>
+              <p class="text-muted"><?php echo date('F');?><?php //setlocale(LC_TIME, "fr_FR");
+//echo strftime("%h");;?> <?php echo  Lang::get('custom.predicted_teams');?></p>
           </div>
           <div class="clearfix"></div>
       </div>

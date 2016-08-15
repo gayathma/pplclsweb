@@ -19,10 +19,10 @@
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-5">
                                 <input class="form-control" type="number" min="1"/>
                             </div>
-                            <div class="col-lg-1">
+                            <div class="col-lg-2">
                                 <a href="javascript:;" class="btn btn-icon waves-effect waves-light btn-info" onclick="addRole(this)"><i class="fa fa-plus"></i></a>
                             </div>
                         </div>
