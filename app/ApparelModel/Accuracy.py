@@ -61,3 +61,4 @@ def accuracy(y_true,y_pred):
 print ("Support Vector Machine", "%.3f" % accuracy(y, run_cv(X,y,SVC)))
 print ("K - Nearest Neighbors", "%.3f" % accuracy(y, run_cv(X,y,KNN)))
 print ("Naive Bayes", "%.3f" % accuracy(y, run_cv(X,y,NB)))
+print ("Random Forest", "%.3f" % accuracy(y, run_cv(X,y,RF)))

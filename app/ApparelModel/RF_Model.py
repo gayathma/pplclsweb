@@ -65,12 +65,12 @@ def run_prob_cv(X, y, clf_class, **kwargs):
         #dict['']=clf.predict_proba(X_test)
     return y_prob
 
-from sklearn.svm import SVC as SVM
+from sklearn.ensemble import RandomForestClassifier as RF
 import warnings
 warnings.filterwarnings('ignore')
 
 # Use 10 estimators so predictions are all multiples of 0.1
-pred_prob = run_prob_cv(X, y, SVM, probability=True)
+pred_prob = run_prob_cv(X, y, RF)
 pred_selected = pred_prob[:,1]
 is_selected = y == 1
 
@@ -114,7 +114,7 @@ for num in range(0,len(em)):
 
     try:
        # Execute the SQL command
-       cursor.execute ("UPDATE predictionapparel SET svm_prob=%s WHERE project_id=%d AND employee_id=%d"%
+       cursor.execute ("UPDATE predictionapparel SET rf_prob=%s WHERE project_id=%d AND employee_id=%d"%
                     (e[num],project_id,em[num]))
 
        # Commit your changes in the database

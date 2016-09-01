@@ -1,4 +1,4 @@
-__author__ = 'Gayathma'
+__author__ = 'Pathum'
 
 import pandas as pd
 import pymysql
@@ -101,12 +101,12 @@ project_id = int(sys.argv[1])
 
 for num in range(0,len(em)):
     # execute the SQL query to find a record exist or not
-    cursor.execute("SELECT * FROM predictionit WHERE project_id=%d AND employee_id=%d "
+    cursor.execute("SELECT * FROM predictionapparel WHERE project_id=%d AND employee_id=%d "
                    %(project_id,em[num]))
     # count results and if result exist update the record otherwise insert
     if (cursor.rowcount == 0):
         try:
-            cursor.execute("INSERT INTO predictionit (project_id, employee_id) VALUES (%d,%d)"
+            cursor.execute("INSERT INTO predictionapparel (project_id, employee_id) VALUES (%d,%d)"
                            %(project_id, em[num]))
             mysql_cn.commit()
         except:
@@ -114,7 +114,7 @@ for num in range(0,len(em)):
 
     try:
        # Execute the SQL command
-       cursor.execute ("UPDATE predictionit SET nb_prob=%s WHERE project_id=%d AND employee_id=%d"%
+       cursor.execute ("UPDATE predictionapparel SET nb_prob=%s WHERE project_id=%d AND employee_id=%d"%
                     (e[num],project_id,em[num]))
 
        # Commit your changes in the database
