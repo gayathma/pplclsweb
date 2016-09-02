@@ -7,6 +7,7 @@ from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier as RF
 from sklearn.neighbors import KNeighborsClassifier as KNN
 from sklearn.naive_bayes import GaussianNB as NB
+from sklearn.tree import DecisionTreeClassifier as CART
 
 # Connect to the database
 mysql_cn = pymysql.connect(host='localhost',
@@ -62,3 +63,5 @@ print ("Support Vector Machine", "%.3f" % accuracy(y, run_cv(X,y,SVC)))
 print ("K - Nearest Neighbors", "%.3f" % accuracy(y, run_cv(X,y,KNN)))
 print ("Naive Bayes", "%.3f" % accuracy(y, run_cv(X,y,NB)))
 print ("Random Forest", "%.3f" % accuracy(y, run_cv(X,y,RF)))
+print ("Classification And Regression Tree", "%.3f" % accuracy(y, run_cv(X,y,CART)))
+

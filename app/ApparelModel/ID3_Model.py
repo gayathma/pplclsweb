@@ -65,12 +65,12 @@ def run_prob_cv(X, y, clf_class, **kwargs):
         #dict['']=clf.predict_proba(X_test)
     return y_prob
 
-from sklearn.neighbors import KNeighborsClassifier as KNN
+from sklearn.tree import DecisionTreeClassifier as CART
 import warnings
 warnings.filterwarnings('ignore')
 
 # Use 10 estimators so predictions are all multiples of 0.1
-pred_prob = run_prob_cv(X, y, KNN, n_neighbors=10)
+pred_prob = run_prob_cv(X, y, CART)
 pred_selected = pred_prob[:,1]
 is_selected = y == 1
 
@@ -87,7 +87,6 @@ for prob in counts.index:
 # pandas-fu
 counts = pd.concat([counts,true_prob], axis=1).reset_index()
 counts.columns = ['pred_prob', 'count', 'true_prob']
-
 
 employee = df_mysql['id']
 em =  employee.tolist()
@@ -115,7 +114,7 @@ for num in range(0,len(em)):
 
     try:
        # Execute the SQL command
-       cursor.execute ("UPDATE predictionapparel SET knn_prob=%s WHERE project_id=%d AND employee_id=%d"%
+       cursor.execute ("UPDATE predictionapparel SET cart_prob=%s WHERE project_id=%d AND employee_id=%d"%
                     (e[num],project_id,em[num]))
 
        # Commit your changes in the database

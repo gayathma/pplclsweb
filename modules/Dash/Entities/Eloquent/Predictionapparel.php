@@ -11,6 +11,6 @@ class Predictionapparel extends Model
     protected $table = 'predictionapparel';
     
     protected $fillable = ['project_id', 'employee_id', 'knn_prob',
-     	'svm_prob', 'nb_prob'];
+     	'svm_prob', 'nb_prob', 'rf_prob'];
 
 }
