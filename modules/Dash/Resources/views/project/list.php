@@ -68,8 +68,8 @@
                         
 
                         <div class="table-detail table-actions-bar">
-                            <a href="#" class="table-action-btn" title="<?php echo  Lang::get('custom.edit');?>"><i class="md md-edit"></i></a>
-                            <a href="#" class="table-action-btn" title="<?php echo  Lang::get('custom.delete');?>"><i class="md md-close"></i></a>
+                            <a href="/dash/project/edit?pid=<?php echo $project->id; ?>" class="table-action-btn" title="<?php echo  Lang::get('custom.edit');?>"><i class="md md-edit"></i></a>
+                            <a href="/dash/project/delete?pid=<?php echo $project->id; ?>" class="table-action-btn" title="<?php echo  Lang::get('custom.delete');?>"><i class="md md-close"></i></a>
                         </div>
                     </div>
                 </div>

@@ -15,6 +15,8 @@ Route::group(['prefix' => 'dash', 'namespace' => 'Modules\Dash\Http\Controllers'
 	Route::get('/projects', 'ProjectController@getList');
 	Route::get('/project/new', 'ProjectController@getNew');
 	Route::post('/project/new', 'ProjectController@postNew');
+	Route::get('/project/edit', 'ProjectController@getEdit');
+	Route::post('/project/edit', 'ProjectController@postEdit');
 	Route::get('/project/get-project', 'ProjectController@getProjectDetails');
 
 	Route::get('/roles', 'RoleController@getList');

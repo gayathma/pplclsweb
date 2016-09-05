@@ -70,7 +70,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Use 10 estimators so predictions are all multiples of 0.1
-pred_prob = run_prob_cv(X, y, RF)
+pred_prob = run_prob_cv(X, y, RF,  n_estimators=10)
 pred_selected = pred_prob[:,1]
 is_selected = y == 1
 
@@ -105,9 +105,7 @@ for num in range(0,len(em)):
                    %(project_id,em[num]))
     # count results and if result exist update the record otherwise insert
     if (cursor.rowcount == 0):
-		
         try:
-			#print 'dsf'
             cursor.execute("INSERT INTO predictionapparel (project_id, employee_id) VALUES (%d,%d)"
                            %(project_id, em[num]))
             mysql_cn.commit()

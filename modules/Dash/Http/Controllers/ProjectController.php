@@ -126,14 +126,14 @@ class ProjectController extends Controller {
 			$output = array();
 	    	$algo_type = $request::get('algo');
 	    	if($algo_type == 1){ 
-	    		exec('python '.app_path().'/ApparelModel/SVM_Model.py '.$request::get('project'),$output, $return);
-	    		$algo = 'svm_prob';
+	    		exec('python '.app_path().'/ApparelModel/RF_Model.py '.$request::get('project'),$output, $return);
+	    		$algo = 'rf_prob';
 	    	}elseif($algo_type == 2){
-	    		exec('python '.app_path().'/ApparelModel/KNN_Model.py '.$request::get('project'),$output, $return);
-	    		$algo = 'knn_prob';
+	    		exec('python '.app_path().'/ApparelModel/ID3_Model.py '.$request::get('project'),$output, $return);
+	    		$algo = 'cart_prob';
 	    	}elseif($algo_type == 3){
-	    		exec('python '.app_path().'/ApparelModel/NB_Model.py '.$request::get('project'),$output, $return);
-	    		$algo = 'nb_prob';
+	    		exec('python '.app_path().'/ApparelModel/LDA_Model.py '.$request::get('project'),$output, $return);
+	    		$algo = 'lda_prob';
 	    	}
 	    	$members = $this->employeeapparelRepository->getTeamMembers($request::all(), $algo);
 	    	$project = $projectapparelRepository->find($request::get('project'));
@@ -242,19 +242,46 @@ class ProjectController extends Controller {
 		
 	}
 
+	public function postEdit(Request $request)
+    {
+    	if(!is_null($this->settingRepository->get('system_type')) && ($this->settingRepository->get('system_type') == 'apparel')){
+    		$this->projectapparelRepository->find($request::get('pid'))->update($request::all());
+		}else{
+			$this->projectRepository->find($request::get('pid'))->update($request::all());
+		}
+
+        return $this->printJson(true, [], 'Project Successfully Saved !!');
+    }
+
+	public function getEdit(ProjectRepository $projectRepository, ProjectapparelRepository $projectapparelRepository, Request $request)
+    {
+    	if(!is_null($this->settingRepository->get('system_type')) && ($this->settingRepository->get('system_type') == 'apparel')){
+    		$template = 'dash::project.editapparel';
+    		$project = $this->projectapparelRepository->find($request::get('pid'));
+		}else{
+			$template = 'dash::project.edit';
+			$project = $this->projectRepository->find($request::get('pid'));
+		}
+
+        return View::make(
+	    		$this->layout, ['content' => View::make($template, [
+		    			'project' => $project,
+		    			'projectTypes' => ProjectType::all()
+	    			])->render()])->render();
+    }
+
 	public function postNew(CreateProjectRequest $request)
     {
 		
 		if(!is_null($this->settingRepository->get('system_type')) && ($this->settingRepository->get('system_type') == 'apparel')){
-		$batch = $this->projectapparelRepository->create($request->all());
+			$batch = $this->projectapparelRepository->create($request->all());
 
-        return $this->printJson(true, [],'Project Created Successfully!!');
+	        return $this->printJson(true, [],'Project Created Successfully!!');
 			
-		}
-		else{
-        $batch = $this->projectRepository->create($request->all());
+		}else{
+	        $batch = $this->projectRepository->create($request->all());
 
-        return $this->printJson(true, [],'Project Created Successfully!!');
+	        return $this->printJson(true, [],'Project Created Successfully!!');
 		
 		}
     }
@@ -264,20 +291,19 @@ class ProjectController extends Controller {
 		if(!is_null($this->settingRepository->get('system_type')) && ($this->settingRepository->get('system_type') == 'apparel')){
 			$template = 'dash::project.editapparel';
 
-    	return View::make(
-    		$this->layout, ['content' => View::make($template, [
-	    			'project' => null
-    			])->render()])->render();
-		}
-		else{
+	    	return View::make(
+	    		$this->layout, ['content' => View::make($template, [
+		    			'project' => null
+	    			])->render()])->render();
+		}else{
 			
 			$template = 'dash::project.edit';
 
-    	return View::make(
-    		$this->layout, ['content' => View::make($template, [
-	    			'project' => null,
-	    			'projectTypes' => ProjectType::all()
-    			])->render()])->render();
+	    	return View::make(
+	    		$this->layout, ['content' => View::make($template, [
+		    			'project' => null,
+		    			'projectTypes' => ProjectType::all()
+	    			])->render()])->render();
 			
 		}
     	
