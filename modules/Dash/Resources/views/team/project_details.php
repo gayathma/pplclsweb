@@ -11,6 +11,7 @@
 	<?php if(!is_null($settingRepository->get('system_type')) && ($settingRepository->get('system_type') == 'apparel')){ ?>
 
 	<?php } else { ?>
+	<div class="row">
 		<div class="form-group clearfix">
 			<div class="col-sm-4">
 				<label ><?php echo  Lang::get('custom.type');?> : </label>

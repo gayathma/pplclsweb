@@ -82,7 +82,8 @@ class ProjectController extends Controller {
 		}
 		else{
 		return View::make('dash::team.project_details', [
-				'project' => ($request::get('project_id') != '')? $projectRepository->find($request::get('project_id')) : null
+				'project' => ($request::get('project_id') != '')? $projectRepository->find($request::get('project_id')) : null,
+				'settingRepository' => $this->settingRepository
 			]);
 		}
 	}
