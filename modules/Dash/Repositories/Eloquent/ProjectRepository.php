@@ -44,7 +44,7 @@ class ProjectRepository extends BaseRepository implements ProjectRepositoryContr
 
         $result_arr = [];
         foreach ($results as $result) {
-            $result_arr[] = (($result->data/$all_projects)*10);
+            $result_arr[] = round((($result->data/$all_projects)*10), 2);
         }
 
         $data = ['name' => Lang::get('custom.success_rate') , 'data' => $result_arr];

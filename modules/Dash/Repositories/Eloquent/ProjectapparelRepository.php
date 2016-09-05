@@ -40,7 +40,7 @@ class ProjectapparelRepository extends BaseRepository implements ProjectapparelR
 
         $result_arr = [];
         foreach ($results as $result) {
-            $result_arr[] = (($result->data/$all_projects)*10);
+            $result_arr[] = round((($result->data/$all_projects)*10), 2);
         }
 
         $data = ['name' => 'Success Rate' , 'data' => $result_arr];
