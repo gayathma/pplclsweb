@@ -310,8 +310,9 @@
                         },
                         onStepChanging: function (event, currentIndex, newIndex) {
                             $form_container.validate().settings.ignore = ":disabled,:hidden";
-
+console.log(currentIndex);
                             if(currentIndex === 1){
+                                console.log($('.role-row').length);
                                 if($().length){
                                     return false;
                                 }else{

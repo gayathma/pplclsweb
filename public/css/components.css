@@ -2265,6 +2265,7 @@ button.confirm {
     text-align: center;
     line-height: 24px;
     font-size: 20px;
+    vertical-align: sub;
 }
 
 .tech-multi >ul > li{
@@ -2316,3 +2317,8 @@ button.confirm {
     position: relative;
     color: white;
 }
+
+.role-row{
+      margin-top: 8px;
+}
+

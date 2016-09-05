@@ -37,6 +37,7 @@
                 $form_container.validate().settings.ignore = ":disabled,:hidden";
 
                 if(currentIndex === 1){
+                    console.log($('.role-row').length);
                     if($().length){
                         return false;
                     }else{

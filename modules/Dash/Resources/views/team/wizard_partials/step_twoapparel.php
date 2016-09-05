@@ -56,7 +56,7 @@
             $(element).parent().parent().parent().find('#emp_count_'+$(job_role).val()).html(employee_count);
             $(element).parent().parent().parent().find('#emp_count_'+$(job_role).val()).next().val(employee_count);
         }else{
-            $(element).parent().parent().parent().append('<div class="row"><div class="col-lg-6"><p class="text-muted">'+$(job_role).find("option:selected").text()+'</p></div><div class="col-lg-2"><span class="badge badge-success" id="emp_count_'+$(job_role).val()+'">'+employee_count+'</span><input type="hidden" name="count['+$(job_role).val()+']" value="'+employee_count+'"/><input type="hidden" name="roles[]" value="'+$(job_role).val()+'" /><a href="javascript:;" class="remove" onclick="removeRole(this)"><i class="md md-close"></i></a></div></div>');
+            $(element).parent().parent().parent().append('<div class="row role-row"><div class="col-lg-6"><p class="text-muted">'+$(job_role).find("option:selected").text()+'</p></div><div class="col-lg-2"><span class="badge badge-success" id="emp_count_'+$(job_role).val()+'">'+employee_count+'</span><input type="hidden" name="count['+$(job_role).val()+']" value="'+employee_count+'"/><input type="hidden" name="roles[]" value="'+$(job_role).val()+'" /><a href="javascript:;" class="remove" onclick="removeRole(this)"><i class="md md-close"></i></a></div></div>');
         }
     }
 
