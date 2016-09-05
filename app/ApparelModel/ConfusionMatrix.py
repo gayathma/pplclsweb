@@ -1,4 +1,4 @@
-__author__ = 'Gayathma'
+__author__ = 'Pathum'
 
 from __future__ import division
 import numpy as np

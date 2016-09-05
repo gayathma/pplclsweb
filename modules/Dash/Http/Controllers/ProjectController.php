@@ -1,4 +1,5 @@
-<?php namespace Modules\Dash\Http\Controllers;
+<?php 
+namespace Modules\Dash\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Modules\Dash\Entities\Eloquent\ProjectType;
@@ -13,6 +14,7 @@ use Modules\Dash\Contracts\SettingRepositoryContract as SettingRepository;
 use Modules\Dash\Contracts\EmployeeitRepositoryContract as EmployeeitRepository;
 use Modules\Dash\Contracts\EmployeeapparelRepositoryContract as EmployeeapparelRepository;
 use Modules\Dash\Contracts\KnowledgebaseRepositoryContract as KnowledgebaseRepository;
+use Modules\Dash\Contracts\KnowledgebaseapparelRepositoryContract as KnowledgebaseapparelRepository;
 use Modules\Dash\Http\Requests\CreateProjectRequest;
 use Modules\Dash\Http\Requests\CreateProjectRequestapparel;
 use View;
@@ -26,6 +28,7 @@ class ProjectController extends Controller {
 	private $employeeitRepository;
 	private $employeeapparelRepository;
 	private $knowledgebaseRepository;
+	private $knowledgebaseapparelRepository;
 
 	public function buildTree(array $elements, $parentId = 0) {
 	    $branch = array();
@@ -281,7 +284,7 @@ class ProjectController extends Controller {
     }
 
     public function __construct(ProjectRepository $projectRepository,ProjectapparelRepository $projectapparelRepository, SettingRepository $settingRepository,
-    	EmployeeitRepository $employeeitRepository, EmployeeapparelRepository $employeeapparelRepository, KnowledgebaseRepository $knowledgebaseRepository)
+    	EmployeeitRepository $employeeitRepository, EmployeeapparelRepository $employeeapparelRepository, KnowledgebaseRepository $knowledgebaseRepository, KnowledgebaseapparelRepository $knowledgebaseapparelRepository)
     {
     	$this->projectRepository = $projectRepository;
 		$this->projectapparelRepository = $projectapparelRepository;
@@ -289,6 +292,7 @@ class ProjectController extends Controller {
     	$this->employeeitRepository = $employeeitRepository;
 		$this->employeeapparelRepository = $employeeapparelRepository;
     	$this->knowledgebaseRepository = $knowledgebaseRepository;
+		$this->knowledgebaseapparelRepository = $knowledgebaseapparelRepository;
     }
 
 }
