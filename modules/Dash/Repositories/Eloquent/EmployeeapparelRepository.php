@@ -36,7 +36,7 @@ class EmployeeapparelRepository extends BaseRepository implements Employeeappare
 			$roleMembers = Predictionapparel::join('dim_hemployee_apparel', 'dim_hemployee_apparel.id', '=', 'predictionapparel.employee_id')
 				->join('dim_hrole_apparel', 'dim_hrole_apparel.id', '=', 'dim_hemployee_apparel.dim_hrole_id')
 				->join('dim_hgender', 'dim_hgender.id', '=', 'dim_hemployee_apparel.dim_hgender_id')
-				->select('dim_hrole_apparel.name as role_name', 'dim_hrole_apparel.parent as parent','dim_hemployee_apparel.*','dim_hgender.gender','predictionapparel.employee_id')
+				->select('dim_hrole_apparel.name as role_name', 'dim_hemployee_apparel.*','dim_hgender.gender','predictionapparel.employee_id')
 				->where('project_id', $attributes['project'])
 				->where('dim_hrole_id', $role)
 				->where('is_available', 1)

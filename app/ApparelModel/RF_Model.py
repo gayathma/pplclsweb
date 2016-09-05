@@ -105,7 +105,9 @@ for num in range(0,len(em)):
                    %(project_id,em[num]))
     # count results and if result exist update the record otherwise insert
     if (cursor.rowcount == 0):
+		
         try:
+			#print 'dsf'
             cursor.execute("INSERT INTO predictionapparel (project_id, employee_id) VALUES (%d,%d)"
                            %(project_id, em[num]))
             mysql_cn.commit()
