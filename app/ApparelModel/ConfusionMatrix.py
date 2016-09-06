@@ -1,14 +1,13 @@
 __author__ = 'Pathum'
 
-from __future__ import division
+
 import numpy as np
 import pymysql
 import pandas as pd
 from sklearn.cross_validation import KFold
-from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier as RF
-from sklearn.neighbors import KNeighborsClassifier as KNN
-
+from sklearn.tree import DecisionTreeClassifier as CART
+from sklearn.lda import LDA as LDA
 # Connect to the database
 mysql_cn = pymysql.connect(host='localhost',
                              user='root',
@@ -62,32 +61,20 @@ y = np.array(y)
 class_names = np.unique(y)
 
 confusion_matrices = [
-    ( "Support Vector Machines", confusion_matrix(y,run_cv(X,y,SVC)) ),
     ( "Random Forest", confusion_matrix(y,run_cv(X,y,RF)) ),
-    ( "K-Nearest-Neighbors", confusion_matrix(y,run_cv(X,y,KNN)) ),
+    ( "Classification And Regression Tree", confusion_matrix(y,run_cv(X,y,CART)) ),
+    ( "Linear Discriminant Analysis", confusion_matrix(y,run_cv(X,y,LDA)) ),
 ]
 
 print(confusion_matrices)
 
 import matplotlib.pylab as pl
 
-cm = confusion_matrix(y,run_cv(X,y,SVC))
-fig = pl.figure()
-ax = fig.add_subplot(111)
-cax = ax.matshow(cm)
-pl.title('Confusion matrix of the SVM classifier')
-fig.colorbar(cax)
-
-pl.xlabel('True Class')
-pl.ylabel('Predicted Class')
-pl.show()
-
-
 cm = confusion_matrix(y,run_cv(X,y,RF))
 fig = pl.figure()
 ax = fig.add_subplot(111)
 cax = ax.matshow(cm)
-pl.title('Confusion matrix of the Random Forest classifier')
+pl.title('Confusion matrix of the RF classifier')
 fig.colorbar(cax)
 
 pl.xlabel('True Class')
@@ -95,11 +82,23 @@ pl.ylabel('Predicted Class')
 pl.show()
 
 
-cm = confusion_matrix(y,run_cv(X,y,KNN))
+cm = confusion_matrix(y,run_cv(X,y,CART))
 fig = pl.figure()
 ax = fig.add_subplot(111)
 cax = ax.matshow(cm)
-pl.title('Confusion matrix of the K-nearest classifier')
+pl.title('Confusion matrix of the CART classifier')
+fig.colorbar(cax)
+
+pl.xlabel('True Class')
+pl.ylabel('Predicted Class')
+pl.show()
+
+
+cm = confusion_matrix(y,run_cv(X,y,LDA))
+fig = pl.figure()
+ax = fig.add_subplot(111)
+cax = ax.matshow(cm)
+pl.title('Confusion matrix of the LDA classifier')
 fig.colorbar(cax)
 
 pl.xlabel('True Class')
