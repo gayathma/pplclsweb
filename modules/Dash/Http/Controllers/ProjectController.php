@@ -129,7 +129,7 @@ class ProjectController extends Controller {
 	    		exec('python '.app_path().'/ApparelModel/RF_Model.py '.$request::get('project'),$output, $return);
 	    		$algo = 'rf_prob';
 	    	}elseif($algo_type == 2){
-	    		exec('python '.app_path().'/ApparelModel/ID3_Model.py '.$request::get('project'),$output, $return);
+	    		exec('python '.app_path().'/ApparelModel/CART_Model.py '.$request::get('project'),$output, $return);
 	    		$algo = 'cart_prob';
 	    	}elseif($algo_type == 3){
 	    		exec('python '.app_path().'/ApparelModel/LDA_Model.py '.$request::get('project'),$output, $return);
