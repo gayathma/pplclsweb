@@ -15,7 +15,7 @@ Today in most sectors like ICT, Apparel and BPO as the common practice employees
 
 ## Screenshots
 
-[Absolute README link](https://github.com/gayathma/pplclsweb/screens/dash.png)
+![Alt text](/screens/dash.png?raw=true "Dashboard Screen")
 
 
 ### License
