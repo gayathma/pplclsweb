@@ -15,7 +15,10 @@ Today in most sectors like ICT, Apparel and BPO as the common practice employees
 
 ## Screenshots
 
+Tri Language Dashboard
+
 ![Alt text](/screens/dash.png?raw=true "Dashboard Screen")
+
 
 
 ### License
